@@ -81,6 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
             'read_default_file': "/home/ubuntu/Django/mysql.cnf",
+            'charset' : 'utf8mb4'
         }
     }
 }
