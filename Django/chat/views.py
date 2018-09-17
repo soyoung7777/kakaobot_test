@@ -268,6 +268,7 @@ def message(request):
         end = str(data['result']['parameters']['all_to'])
         text = start+"에서 "+end+"까지 가는 길 알려드릴게요!\n\n\n"
         text += pathPrint.get_result(start, end, '', DB.diff_path)
+        url_str = "http://pf.kakao.com/"
 
         if not eq(text[0],"더"):
             DB.diff_path += 1
@@ -275,27 +276,31 @@ def message(request):
             DB.save()
 
         return JsonResponse({
-        'message': {'text': text},
+            'message': {'text': text,
+                        'message_button': {'label':"자세히 보기",'url':url_str+"_fyjPC"}
+                        },
         })
 
 
     if eq(str(data['result']['metadata']['intentName']),"PathFind_transportation"):
-            start = str(data['result']['parameters']['all_from'])
-            end = str(data['result']['parameters']['all_to'])
-            tsType = str(data['result']['parameters']['transportation'])
-            if eq(tsType,"지하철") or eq(tsType,"버스"):
-                text = pathPrint.get_result(start, end, tsType, DB.diff_path)
-            elif eq(tsType,"고속버스") or eq(tsType,"시외버스"):
-                text = anotherPathPrint.get_result(start, end, tsType)
+        start = str(data['result']['parameters']['all_from'])
+        end = str(data['result']['parameters']['all_to'])
+        tsType = str(data['result']['parameters']['transportation'])
+        if eq(tsType,"지하철") or eq(tsType,"버스"):
+            text = pathPrint.get_result(start, end, tsType, DB.diff_path)
+        elif eq(tsType,"고속버스") or eq(tsType,"시외버스"):
+            text = anotherPathPrint.get_result(start, end, tsType)
 
-            if not eq(text[0],"더"):
-                DB.diff_path += 1
-                DB.limit_time = time.time() + 10
-                DB.save()
+        if not eq(text[0],"더"):
+            DB.diff_path += 1
+            DB.limit_time = time.time() + 10
+            DB.save()
 
-            return JsonResponse({
-                'message': {'text': text},
-            })
+        return JsonResponse({
+            'message': {'text': text,
+                        'message_button': {'label':"자세히 보기",'url':url_str}
+                        },
+        })
 
     if eq(str(data['result']['metadata']['intentName']),"Bus_station"):
         if DB.bus_action == 0 :
