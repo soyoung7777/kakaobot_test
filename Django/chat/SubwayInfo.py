@@ -332,8 +332,8 @@ def getStationExist(stationName, laneID, direction):
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
         realtimeList = real_data['realtimeArrivalList']
-        print("======realtimeList======")
-        print(str(realtimeList))
+        #print("======realtimeList======")
+        #print(str(realtimeList))
         for list in realtimeList:
             print("========list========\n"+str(list))
             if eq(list['subwayId'],str(laneID)):
@@ -342,10 +342,12 @@ def getStationExist(stationName, laneID, direction):
                     print("상행")
                     if eq(list['updnLine'],'상행') or eq(list['updnLine'],'외선'):
                         arrivalData = list
+                        break
                 else:
                     print("하행")
                     if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
+                        break
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
