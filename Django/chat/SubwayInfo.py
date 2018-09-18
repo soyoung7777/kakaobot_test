@@ -208,7 +208,7 @@ def getLaneID(laneName):
     for (first, last) in subwayID:
         if laneName == last:
             open_data_subwayID = first #예:수도권 4호선인 경우 open_data_subwayID = 1004
-return open_data_subwayID
+    return open_data_subwayID
 
 def getStationInfo(myStationName):
     myKey = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
