@@ -337,10 +337,12 @@ def getStationExist(stationName, laneID, direction):
             if eq(list['subwayId'],str(laneID)):
                 print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
-                    if eq(list['updnLine'],"상행") or eq(list['updnLine'],"외선"):
+                    print("상행")
+                    if eq(list['updnLine'],'상행') or eq(list['updnLine'],'외선'):
                         arrivalData = list
                 else:
-                    if eq(list['updnLine'],"하행") or eq(list['updnLine'],"내선"):
+                    print("하행")
+                    if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
         return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
