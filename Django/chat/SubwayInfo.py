@@ -127,7 +127,8 @@ def get_subway_station_and_number_information(subwayData):
         text+="종점인데 어딜가시려구요?👀\n"
     else:
         current_stationID = int(current_stationID)
-        stationID = [current_stationID,current_stationID-2, current_stationID-4]
+        #stationID = [current_stationID,current_stationID-2, current_stationID-4]
+        stationID = [current_stationID,current_stationID+2, current_stationID+4]
         for idx, e in enumerate(stationID):
             new_stationName = getStationName(e,subwaylinemap)
             print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
@@ -136,7 +137,7 @@ def get_subway_station_and_number_information(subwayData):
                 StationExistNameList.append(StationExistName)
         print("station Exist Name List : "+str(StationExistNameList))
 
-        StationIDList = [current_stationID-6,current_stationID-5,current_stationID-4,current_stationID-3,current_stationID-2, current_stationID-1,current_stationID]
+        StationIDList = [current_stationID,current_stationID+1,current_stationID+2,current_stationID+3,current_stationID+4, current_stationID+5,current_stationID+6]
         for id in StationIDList:
             StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
 
@@ -150,7 +151,7 @@ def get_subway_station_and_number_information(subwayData):
                     if eq(total,StationNameList[6]):
                         text+=total+"🚋\n"
                     else:
-                        text+=total+"🚋\n   ↓↓↓   \n"
+                        text+=total+"🚋\n   ↑↑↑   \n"
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
@@ -159,7 +160,7 @@ def get_subway_station_and_number_information(subwayData):
                 if eq(total,StationNameList[6]):
                     text +=total+"\n"
                 else:
-                    text+=total+"\n   ↓↓↓   \n"
+                    text+=total+"\n   ↑↑↑   \n"
     #하행일 때(direction:2)
     StationNameList=[]
     StationExistNameList = []
@@ -170,7 +171,7 @@ def get_subway_station_and_number_information(subwayData):
         text+="종점인데 어딜가시려구요?👀\n"
     else:
         current_stationID = int(current_stationID)
-        stationID = [current_stationID+4,current_stationID+2, current_stationID]
+        stationID = [current_stationID,current_stationID-2, current_stationID-4]
         for idx, e in enumerate(stationID):
             new_stationName = getStationName(e,subwaylinemap)
             StationExistName = getStationExist(new_stationName, current_laneID, 2)
@@ -178,7 +179,7 @@ def get_subway_station_and_number_information(subwayData):
                 StationExistNameList.append(StationExistName)
         print("station Exist Name List : "+str(StationExistNameList))
 
-        StationIDList = [current_stationID+6,current_stationID+5,current_stationID+4,current_stationID+3,current_stationID+2, current_stationID+1,current_stationID]
+        StationIDList = [current_stationID-6,current_stationID-5,current_stationID-4,current_stationID-3,current_stationID-2, current_stationID-1,current_stationID]
         for id in StationIDList:
             StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
 
