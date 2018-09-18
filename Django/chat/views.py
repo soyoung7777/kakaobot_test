@@ -486,3 +486,6 @@ def message(request):
         'message':{'text':txt},
         'keyboard':{'type':'text'}
     })
+
+def index(request):
+    return render(request, 'chat/index.html')
