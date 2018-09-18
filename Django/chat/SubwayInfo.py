@@ -326,6 +326,7 @@ def getStationExist(stationName, laneID, direction):
     open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
     print("laneID : "+str(laneID))
     print("direction : "+str(direction))
+    arrivalData={}
     try:
         request = urllib.request.Request(open_data_url)
         response = urllib.request.urlopen(request)
