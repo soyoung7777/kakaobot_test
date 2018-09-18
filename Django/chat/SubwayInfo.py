@@ -119,7 +119,7 @@ def get_subway_station_and_number_information(subwayData):
     StationNameList=[]
     StationExistNameList = []
     #상행일 때(direction:1)
-    for key, value in subwaylinemap:
+    for key, value in subwaylinemap.items():
         if eq(value, subwayData[0]):
             current_stationID = key
     if current_stationID =="1":
@@ -161,7 +161,7 @@ def get_subway_station_and_number_information(subwayData):
     #하행일 때(direction:2)
     StationNameList=[]
     StationExistNameList = []
-    for key, value in subwaylinemap:
+    for key, value in subwaylinemap.items():
         if eq(value, subwayData[0]):
             current_stationID = key
     if str(int(current_stationID)+1) not in subwaylinemap:
@@ -239,7 +239,7 @@ def getStationInfo(myStationName):
 #     return stationName
 
 def getStationName(stationID, subwaylinemap):
-    for key, value in subwaylinemap:
+    for key, value in subwaylinemap.items():
         if eq(str(stationID), key):
             return value
 
