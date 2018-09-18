@@ -86,18 +86,15 @@ def get_subway_station_and_number_information(subwayData):
 #     stationName = "서울역"
     #stationName = str(json_Data['result']['parameters']['subway_station'])
     stationName = subwayData[0]
-    print("lineNumber : "+subwayData[1])
-    print("lineNumber type: "+str(type(subwayData[1])))
-    subwayData[1] = re.sub('\'',"",subwayData[1])
-    subwayData[1] = re.sub('수도권 ',"",subwayData[1])
+    #subwayData[1] = re.sub('\'',"",subwayData[1])
+    #subwayData[1] = re.sub('수도권 ',"",subwayData[1])
     print("stationName : "+subwayData[0])
     print("lineNumber : "+subwayData[1])
-    print("lineNumber type: "+str(type(subwayData[1])))
 
     data = getStationInfo(stationName)
 
     station_info = data['result']['station']
-    current_stationID = 0
+    #current_stationID = 0
 
     print(json.loads(json.dumps(data)))
     # print("station Dictionary : "+str(subwayData[1]))
@@ -109,12 +106,16 @@ def get_subway_station_and_number_information(subwayData):
             current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
             break
     current_laneID = getLaneID(current_laneName)
+    print("current_laneName : "+current_laneName)
+    print("current_laneID : "+current_laneID)
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json') as f:
         subwaylinemap = json.load(f)
 
     subwaylinemap = subwaylinemap[str(current_laneID)]
+    print("=====subway노선도=====\n"+json.loads(json.dumps(data)))
+
     text=""
     StationNameList=[]
     StationExistNameList = []
@@ -129,6 +130,7 @@ def get_subway_station_and_number_information(subwayData):
         stationID = [current_stationID,current_stationID-2, current_stationID-4]
         for idx, e in enumerate(stationID):
             new_stationName = getStationName(e,subwaylinemap)
+            print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
             StationExistName = getStationExist(new_stationName, current_laneID, 1)
             if not eq(StationExistName,"error"):
                 StationExistNameList.append(StationExistName)
@@ -327,7 +329,8 @@ def getStationExist(stationName, laneID, direction):
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
         realtimeList = real_data['realtimeArrivalList']
-
+        print("======realtimeList======")
+        print(str(realtimeList))
         for list in realtimeList:
             if eq(list['subwayId'], laneID):
                 if direction == 1:#상행 or 외선인 경우
