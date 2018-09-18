@@ -134,7 +134,7 @@ def get_subway_station_and_number_information(subwayData):
             print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
             StationExistName = getStationExist(new_stationName, current_laneID, 1)
             print("StationExistName : "+StationExistName)
-            if not eq(StationExistName,"error"):
+            if not eq(StationExistName,"error" or "none"):
                 StationExistNameList.append(StationExistName)
         print("station Exist Name List : "+str(StationExistNameList))
 
@@ -351,6 +351,8 @@ def getStationExist(stationName, laneID, direction):
                         arrivalData = list
                         break
         print(str(arrivalData))
+        if arrivalData == {}:
+            return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
