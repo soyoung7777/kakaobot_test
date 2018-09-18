@@ -174,6 +174,7 @@ def get_subway_station_and_number_information(subwayData):
         stationID = [current_stationID,current_stationID-2, current_stationID-4]
         for idx, e in enumerate(stationID):
             new_stationName = getStationName(e,subwaylinemap)
+            print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
             StationExistName = getStationExist(new_stationName, current_laneID, 2)
             if not eq(StationExistName,"error"):
                 StationExistNameList.append(StationExistName)
@@ -185,7 +186,7 @@ def get_subway_station_and_number_information(subwayData):
 
         print("station Name List : "+str(StationNameList))
 
-        text +="💌["+stationName+" "+current_laneName+" 하행선 정보입니다]💌\n"
+        text +="\n💌["+stationName+" "+current_laneName+" 하행선 정보입니다]💌\n"
         for total in StationNameList:
             exist = False
             for element in StationExistNameList:
@@ -345,6 +346,7 @@ def getStationExist(stationName, laneID, direction):
                     print("하행")
                     if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
+        print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
         return "error"
