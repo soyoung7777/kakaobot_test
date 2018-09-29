@@ -4,6 +4,7 @@ import urllib.request
 import urllib.parse
 import ast
 import re
+import time
 from operator import eq
 
 subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수도권 3호선"],[1004, "수도권 4호선"],[1005, "수도권 5호선"]
@@ -138,7 +139,7 @@ def get_subway_station_and_number_information(subwayData):
                 if not eq(StationExistName,"error" or "none"):#시간표정보
                 #else:
                     StationExistNameList.append(StationExistName)
-                    print("station Exist Name List : "+str(StationExistNameList))
+                    #print("station Exist Name List : "+str(StationExistNameList))
 
             else:
                 StationExistName = getStationExist(s, current_laneID, 2)
@@ -146,7 +147,7 @@ def get_subway_station_and_number_information(subwayData):
                 if not eq(StationExistName,"error" or "none"):#시간표정보
                 #else:
                     StationExistNameList.append(StationExistName)
-                    print("station Exist Name List : "+str(StationExistNameList))
+        print("station Exist Name List : "+str(StationExistNameList))
 
         for total in full_list:
             exist = False
