@@ -166,6 +166,7 @@ def get_subway_station_and_number_information(subwayData):
                 else:
                     text+=total+"\n   ↓↓↓   \n"
             text+="\n\n"
+            StationExistNameList = []
     # subwaylinemap = subwaylinemap[str(current_laneID)]
     # print("=====subway노선도=====\n"+str(subwaylinemap))
     #
