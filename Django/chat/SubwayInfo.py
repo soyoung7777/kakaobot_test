@@ -8,8 +8,8 @@ import time
 from operator import eq
 
 subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수도권 3호선"],[1004, "수도권 4호선"],[1005, "수도권 5호선"]
-,[1006, "수도권 6호선"],[1007, "수도권 7호선"],[1008, "수도권 8호선"],[1009, "수도권 9호선"],[1065,"수도권 공항철도"],[1071,"수도권 수인선"],[1075,"수도권 분당선"]
-,[1075,"수도권 분당선"],[1063,"경의중앙선"],[1067,"수도권 경춘선"],[1077,"수도권 신분당선"],[1077,"수도권 신분당선"]]
+,[1006, "수도권 6호선"],[1007, "수도권 7호선"],[1008, "수도권 8호선"],[1009, "수도권 9호선"],[1065,"수도권 공항철도"]
+,[1071,"수도권 수인선"],,[1075,"수도권 분당선"],[1063,"경의중앙선"],[1067,"수도권 경춘선"],[1077,"수도권 신분당선"]]
 
 def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
@@ -82,10 +82,8 @@ def config_exist_subway_station_and_number(subwayData):
     return Exist
 
 def get_subway_station_and_number_information(subwayData):
-#     option = get_option(stationName)
-#
-#     stationName = "서울역"
-    #stationName = str(json_Data['result']['parameters']['subway_station'])
+
+    day = getDayType()
     stationName = subwayData[0]
     #subwayData[1] = re.sub('\'',"",subwayData[1])
     #subwayData[1] = re.sub('수도권 ',"",subwayData[1])
@@ -111,6 +109,9 @@ def get_subway_station_and_number_information(subwayData):
     print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
+    with open('/home/ubuntu/Django/chat/SubwayStationID.json') as f:
+        subwaystationid = json.load(f)
+    subwaystationid = subwaystationid[str(current_laneID)]
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json') as f:
         subwaylinemap = json.load(f)
     subwaylinemap = subwaylinemap[str(current_laneID)]
@@ -134,19 +135,20 @@ def get_subway_station_and_number_information(subwayData):
         for s in full_list:
             print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
-                start_time = time.time()
+                #start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 1)
-                print("--- %s seconds ---" %(time.time() - start_time))
+                #print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
                 if not eq(StationExistName,"error" or "none"):#시간표정보
+                    #getSchedule(subwaystationid[s],1,day)
                 #else:
                     StationExistNameList.append(StationExistName)
                     #print("station Exist Name List : "+str(StationExistNameList))
 
             else:
-                start_time = time.time()
+                #start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 2)
-                print("--- %s seconds ---" %(time.time() - start_time))
+                #print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
                 if not eq(StationExistName,"error" or "none"):#시간표정보
                 #else:
@@ -271,11 +273,34 @@ def get_subway_station_and_number_information(subwayData):
     print(text)
     return text
 
-def getLineMap(stationName, subwaylinemap):
-    return subwaylinemap[stationName]
-    # for key, value in subwaylinemap.items():
-    #     if eq(key, stationName):
-    #         return value
+def getDayType():
+    now = time.localtime()
+    if 0<=now.tm_wday<=4:#월,화,수,목,금
+        return 1
+    elif now.tm_wday == 5:#토
+        return 2
+    elif now.tm_wday == 6:#일
+        return 3
+
+# def getSchedule(subwaystationid, direction, day):
+#     open_data_key = "714d78526b7369683130356e4d455357"
+#     enckey = urllib.parse.quote_plus(open_data_key)
+#
+#     encStationID = urllib.parse.quote_plus(subwaystationid)
+#     encDirection = urllib.parse.quote_plus(direction)
+#     encDay = urllib.parse.quote_plus(day)
+#
+#     open_data_url = "http://openAPI.seoul.go.kr:8088/"+enckey+"/json/SearchSTNTimeTableByFRCodeService/1/1000/"+encStationID+"/"+encDay+"/"+encDirection+"/"
+#
+#     request = urllib.request.Request(open_data_url)
+#     response = urllib.request.urlopen(request)
+#
+#     real_json = response.read().decode('utf-8')
+#     real_data = json.loads(real_json)
+#     schedule = real_data['SearchSTNTimeTableByFRCodeService']['row']
+#
+#     for e in schedule:
+#         e['ARRIVETIME']
 
 def getLaneID(laneName):
     for (first, last) in subwayID:
