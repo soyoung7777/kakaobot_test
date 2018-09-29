@@ -112,9 +112,14 @@ def get_subway_station_and_number_information(subwayData):
     #if eq(direction,"상행") or eq(direction,"내선"):
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json') as f:
         subwaylinemap = json.load(f)
+    subwaylinemap = subwaylinemap[str(current_laneID)]
     print("subwaylinemap : "+str(subwaylinemap))
-    current_subwaylinemap = getLineMap(current_laneID,stationName,subwaylinemap[str(current_laneID)])
+    #current_subwaylinemap = getLineMap(stationName,subwaylinemap)
+    current_subwaylinemap = subwaylinemap[stationName]
     print("current_subwaylinemap : "+str(current_subwaylinemap))
+
+    for key, value in current_subwaylinemap.items():
+        print(key)
 
     text = "aaa"
 
@@ -214,10 +219,11 @@ def get_subway_station_and_number_information(subwayData):
     print(text)
     return text
 
-def getLineMap(current_laneID, stationName, subwaylinemap):
-    for key, value in subwaylinemap.items():
-        if eq(key, stationName):
-            return value
+def getLineMap(stationName, subwaylinemap):
+    return subwaylinemap[stationName]
+    # for key, value in subwaylinemap.items():
+    #     if eq(key, stationName):
+    #         return value
 
 def getLaneID(laneName):
     for (first, last) in subwayID:
