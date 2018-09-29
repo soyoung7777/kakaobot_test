@@ -113,105 +113,115 @@ def get_subway_station_and_number_information(subwayData):
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json') as f:
         subwaylinemap = json.load(f)
 
-    subwaylinemap = subwaylinemap[str(current_laneID)]
-    print("=====subway노선도=====\n"+str(subwaylinemap))
+    current_subwaylinemap = getLineMap(current_laneID,stationName,subwaylinemap[str(current_laneID)])
+    print("current_subwaylinemap : "+current_subwaylinemap.items())
 
-    text=""
-    StationNameList=[]
-    StationExistNameList = []
-    #상행일 때(direction:1)
-    for key, value in subwaylinemap.items():
-        if eq(value, subwayData[0]):
-            current_stationID = key
-    if current_stationID =="1":
-        text+="종점인데 어딜가시려구요?👀\n"
-    else:
-        current_stationID = int(current_stationID)
-        #stationID = [current_stationID,current_stationID-2, current_stationID-4]
-        stationID = [current_stationID,current_stationID+2, current_stationID+4]
-        for idx, e in enumerate(stationID):
-            new_stationName = getStationName(e,subwaylinemap)
-            print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
-            StationExistName = getStationExist(new_stationName, current_laneID, 1)
-            print("StationExistName : "+StationExistName)
-            if not eq(StationExistName,"error" or "none"):
-                StationExistNameList.append(StationExistName)
-        print("station Exist Name List : "+str(StationExistNameList))
+    text = "aaa"
 
-        StationIDList = [current_stationID,current_stationID+1,current_stationID+2,current_stationID+3,current_stationID+4, current_stationID+5,current_stationID+6]
-        for id in StationIDList:
-            StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
-
-        print("station Name List : "+str(StationNameList))
-
-        text +="💌["+stationName+" "+current_laneName+" 상행선 정보입니다]💌\n"
-        for total in StationNameList:
-            exist = False
-            for element in StationExistNameList:
-                if eq(element,total):
-                    if eq(total,StationNameList[6]):
-                        text+=total+"🚋\n"
-                    else:
-                        text+=total+"🚋\n   ↑↑↑   \n"
-                    exist = True
-            if exist==False:
-                # if eq(total,"none"):
-                #     count_end = count_end+1
-                #     continue
-                if eq(total,StationNameList[6]):
-                    text +=total+"\n"
-                else:
-                    text+=total+"\n   ↑↑↑   \n"
-    #하행일 때(direction:2)
-    StationNameList=[]
-    StationExistNameList = []
-    for key, value in subwaylinemap.items():
-        if eq(value, subwayData[0]):
-            current_stationID = key
-    if str(int(current_stationID)+1) not in subwaylinemap:
-        text+="종점인데 어딜가시려구요?👀\n"
-    else:
-        current_stationID = int(current_stationID)
-        stationID = [current_stationID,current_stationID-2, current_stationID-4]
-        for idx, e in enumerate(stationID):
-            new_stationName = getStationName(e,subwaylinemap)
-            print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
-            StationExistName = getStationExist(new_stationName, current_laneID, 2)
-            if not eq(StationExistName,"error"):
-                StationExistNameList.append(StationExistName)
-        print("station Exist Name List : "+str(StationExistNameList))
-
-        StationIDList = [current_stationID-6,current_stationID-5,current_stationID-4,current_stationID-3,current_stationID-2, current_stationID-1,current_stationID]
-        for id in StationIDList:
-            StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
-
-        print("station Name List : "+str(StationNameList))
-
-        text +="\n💌["+stationName+" "+current_laneName+" 하행선 정보입니다]💌\n"
-        for total in StationNameList:
-            exist = False
-            for element in StationExistNameList:
-                if eq(element,total):
-                    if eq(total,StationNameList[6]):
-                        text+=total+"🚋\n"
-                    else:
-                        text+=total+"🚋\n   ↓↓↓   \n"
-                    exist = True
-            if exist==False:
-                # if eq(total,"none"):
-                #     count_end = count_end+1
-                #     continue
-                if eq(total,StationNameList[6]):
-                    text +=total+"\n"
-                else:
-                    text+=total+"\n   ↓↓↓   \n"
+    # subwaylinemap = subwaylinemap[str(current_laneID)]
+    # print("=====subway노선도=====\n"+str(subwaylinemap))
+    #
+    # text=""
+    # StationNameList=[]
+    # StationExistNameList = []
+    # #상행일 때(direction:1)
+    # for key, value in subwaylinemap.items():
+    #     if eq(value, subwayData[0]):
+    #         current_stationID = key
+    # if current_stationID =="1":
+    #     text+="종점인데 어딜가시려구요?👀\n"
+    # else:
+    #     current_stationID = int(current_stationID)
+    #     #stationID = [current_stationID,current_stationID-2, current_stationID-4]
+    #     stationID = [current_stationID,current_stationID+2, current_stationID+4]
+    #     for idx, e in enumerate(stationID):
+    #         new_stationName = getStationName(e,subwaylinemap)
+    #         print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
+    #         StationExistName = getStationExist(new_stationName, current_laneID, 1)
+    #         print("StationExistName : "+StationExistName)
+    #         if not eq(StationExistName,"error" or "none"):
+    #             StationExistNameList.append(StationExistName)
+    #     print("station Exist Name List : "+str(StationExistNameList))
+    #
+    #     StationIDList = [current_stationID,current_stationID+1,current_stationID+2,current_stationID+3,current_stationID+4, current_stationID+5,current_stationID+6]
+    #     for id in StationIDList:
+    #         StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
+    #
+    #     print("station Name List : "+str(StationNameList))
+    #
+    #     text +="💌["+stationName+" "+current_laneName+" 상행선 정보입니다]💌\n"
+    #     for total in StationNameList:
+    #         exist = False
+    #         for element in StationExistNameList:
+    #             if eq(element,total):
+    #                 if eq(total,StationNameList[6]):
+    #                     text+=total+"🚋\n"
+    #                 else:
+    #                     text+=total+"🚋\n   ↑↑↑   \n"
+    #                 exist = True
+    #         if exist==False:
+    #             # if eq(total,"none"):
+    #             #     count_end = count_end+1
+    #             #     continue
+    #             if eq(total,StationNameList[6]):
+    #                 text +=total+"\n"
+    #             else:
+    #                 text+=total+"\n   ↑↑↑   \n"
+    # #하행일 때(direction:2)
+    # StationNameList=[]
+    # StationExistNameList = []
+    # for key, value in subwaylinemap.items():
+    #     if eq(value, subwayData[0]):
+    #         current_stationID = key
+    # if str(int(current_stationID)+1) not in subwaylinemap:
+    #     text+="종점인데 어딜가시려구요?👀\n"
+    # else:
+    #     current_stationID = int(current_stationID)
+    #     stationID = [current_stationID,current_stationID-2, current_stationID-4]
+    #     for idx, e in enumerate(stationID):
+    #         new_stationName = getStationName(e,subwaylinemap)
+    #         print("====>"+new_stationName+"역의 지하철 실시간 도착정보를 알아보자")
+    #         StationExistName = getStationExist(new_stationName, current_laneID, 2)
+    #         if not eq(StationExistName,"error"):
+    #             StationExistNameList.append(StationExistName)
+    #     print("station Exist Name List : "+str(StationExistNameList))
+    #
+    #     StationIDList = [current_stationID-6,current_stationID-5,current_stationID-4,current_stationID-3,current_stationID-2, current_stationID-1,current_stationID]
+    #     for id in StationIDList:
+    #         StationNameList.append(getStationName(id, subwaylinemap))#뒤로 -5정거장까지 전체 노선 정보
+    #
+    #     print("station Name List : "+str(StationNameList))
+    #
+    #     text +="\n💌["+stationName+" "+current_laneName+" 하행선 정보입니다]💌\n"
+    #     for total in StationNameList:
+    #         exist = False
+    #         for element in StationExistNameList:
+    #             if eq(element,total):
+    #                 if eq(total,StationNameList[6]):
+    #                     text+=total+"🚋\n"
+    #                 else:
+    #                     text+=total+"🚋\n   ↓↓↓   \n"
+    #                 exist = True
+    #         if exist==False:
+    #             # if eq(total,"none"):
+    #             #     count_end = count_end+1
+    #             #     continue
+    #             if eq(total,StationNameList[6]):
+    #                 text +=total+"\n"
+    #             else:
+    #                 text+=total+"\n   ↓↓↓   \n"
 
     print(text)
     return text
 
+def getLineMap(current_laneID, stationName, subwaylinemap):
+    for key, value in subwaylinemap.items():
+        if eq(key, stationName):
+            return value
+
 def getLaneID(laneName):
     for (first, last) in subwayID:
-        if laneName == last:
+        if eq(laneName,last):
             open_data_subwayID = first #예:수도권 4호선인 경우 open_data_subwayID = 1004
     return open_data_subwayID
 
@@ -247,6 +257,7 @@ def getStationName(stationID, subwaylinemap):
     for key, value in subwaylinemap.items():
         if eq(str(stationID), key):
             return value
+
 
 # def getStationResult(cID, stationID, stationName, idx, current_laneName,direction,line_number): #예:서울역 수도권 4호선 426
 #     for (first, last) in subwayID:
