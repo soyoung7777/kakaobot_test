@@ -121,6 +121,8 @@ def get_subway_station_and_number_information(subwayData):
     text=""
     direction = []
     direction_stationlist = []
+    StationExistNameList = []
+    
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
