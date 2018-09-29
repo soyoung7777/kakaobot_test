@@ -118,8 +118,9 @@ def get_subway_station_and_number_information(subwayData):
     current_subwaylinemap = subwaylinemap[stationName]
     print("current_subwaylinemap : "+str(current_subwaylinemap))
 
-    for key, value in current_subwaylinemap.items():
-        print(key)
+    for item in current_subwaylinemap:
+        for key, value in item.items():
+            print(key)
 
     text = "aaa"
 
