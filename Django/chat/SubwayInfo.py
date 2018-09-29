@@ -149,6 +149,9 @@ def get_subway_station_and_number_information(subwayData):
                     StationExistNameList.append(StationExistName)
         print("station Exist Name List : "+str(StationExistNameList))
 
+        StationExistNameList = list(set(StationExistNameList))
+        print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
+
         for total in full_list:
             exist = False
             for element in StationExistNameList:
