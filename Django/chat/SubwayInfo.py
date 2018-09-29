@@ -134,7 +134,9 @@ def get_subway_station_and_number_information(subwayData):
         for s in full_list:
             print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
+                start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 1)
+                print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
                 if not eq(StationExistName,"error" or "none"):#시간표정보
                 #else:
@@ -142,7 +144,9 @@ def get_subway_station_and_number_information(subwayData):
                     #print("station Exist Name List : "+str(StationExistNameList))
 
             else:
+                start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 2)
+                print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
                 if not eq(StationExistName,"error" or "none"):#시간표정보
                 #else:
