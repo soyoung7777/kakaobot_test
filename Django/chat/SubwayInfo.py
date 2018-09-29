@@ -118,12 +118,51 @@ def get_subway_station_and_number_information(subwayData):
     current_subwaylinemap = subwaylinemap[stationName]
     print("current_subwaylinemap : "+str(current_subwaylinemap))
 
+    text=""
+    direction = []
+    direction_stationlist = []
     for item in current_subwaylinemap:
         for key, value in item.items():
-            print(key)
+            direction.append(key)
+            direction_stationlist.append(value)
 
-    text = "aaa"
+    for idx, full_list in enumerate(direction_stationlist):
+        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]"]💌\n"
+        for s in full_list:
+            print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
+            if "상행" in direction[idx]:
+                StationExistName = getStationExist(s, current_laneID, 1)
+                print("StationExistName : "+StationExistName)
+                if not eq(StationExistName,"error" or "none"):#시간표정보
+                #else:
+                    StationExistNameList.append(StationExistName)
+                    print("station Exist Name List : "+str(StationExistNameList))
 
+            else:
+                StationExistName = getStationExist(s, current_laneID, 2)
+                print("StationExistName : "+StationExistName)
+                if not eq(StationExistName,"error" or "none"):#시간표정보
+                #else:
+                    StationExistNameList.append(StationExistName)
+                    print("station Exist Name List : "+str(StationExistNameList))
+
+        for total in full_list:
+            exist = False
+            for element in StationExistNameList:
+                if eq(element,total):
+                    if eq(total,full_list[6]):
+                        text+=total+"🚋\n"
+                    else:
+                        text+=total+"🚋\n   ↓↓↓   \n"
+                    exist = True
+            if exist==False:
+                # if eq(total,"none"):
+                #     count_end = count_end+1
+                #     continue
+                if eq(total,full_list[6]):
+                    text +=total+"\n"
+                else:
+                    text+=total+"\n   ↓↓↓   \n"
     # subwaylinemap = subwaylinemap[str(current_laneID)]
     # print("=====subway노선도=====\n"+str(subwaylinemap))
     #
