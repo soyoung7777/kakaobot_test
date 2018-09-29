@@ -127,7 +127,7 @@ def get_subway_station_and_number_information(subwayData):
             direction_stationlist.append(value)
 
     for idx, full_list in enumerate(direction_stationlist):
-        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]"]💌\n"
+        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌\n"
         for s in full_list:
             print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
