@@ -498,5 +498,7 @@ def message(request):
     })
 
 def index(request):
+    print("===call index function===")
+    print("request : "+request)
     return render(request, 'index.html', {'message': request})
     #return render(request, 'chat/index.html')
