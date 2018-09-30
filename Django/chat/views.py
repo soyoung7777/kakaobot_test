@@ -502,6 +502,6 @@ def message(request):
 def index(request):
     print("===call index function===")
     print("request : "+str(request))
-    msg = str(request)
+    msg = request.GET
     return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')
