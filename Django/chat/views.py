@@ -359,7 +359,7 @@ def message(request):
             data['result']['parameters']['subway_number']])
             return JsonResponse({
             'message': {'text': res},
-            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
+            'message_button': {'label':"자세히 보기",'url':url_str+"_fyjPC"}
             })
         else:
             return JsonResponse({
