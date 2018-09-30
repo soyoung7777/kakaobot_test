@@ -130,14 +130,15 @@ def get_subway_station_and_number_information(subwayData):
             direction.append(key)
             direction_stationlist.append(value)
     print("direction : "+str(direction))
-    text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
-    if "상행" in direction[-1]:
-        StationExistName = getStationExist(stationName, current_laneID, 1)
-        text +=StationExistName+"\n\n"
-    else:
-    #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
-        StationExistName = getStationExist(stationName, current_laneID, 2)
-        text +=StationExistName+"\n\n"
+    for d in direction:
+        text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
+        if "상행" in d:
+            StationExistName = getStationExist(stationName, current_laneID, 1)
+            text +=StationExistName+"\n\n"
+        else:
+        #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
+            StationExistName = getStationExist(stationName, current_laneID, 2)
+            text +=StationExistName+"\n\n"
 
     # for idx, full_list in enumerate(direction_stationlist):
     #     text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌\n"
