@@ -504,7 +504,7 @@ def getStationExistSimple(stationName, laneID, direction):
         print(str(arrivalData))
         if arrivalData == {}:
             return "none"
-        print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
+        print("지하철이 어디에 있을까???\n"+arrivalData['arvlMsg2'])
         return arrivalData['arvlMsg2']
     except urllib.error.HTTPError:
         return "error"
