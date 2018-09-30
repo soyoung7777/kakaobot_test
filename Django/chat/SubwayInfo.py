@@ -129,6 +129,7 @@ def get_subway_station_and_number_information(subwayData):
         for key, value in item.items():
             direction.append(key)
             direction_stationlist.append(value)
+    direction = list(set(direction))
     print("direction : "+str(direction))
     for d in direction:
         if "상행" in d:
