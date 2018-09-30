@@ -109,11 +109,11 @@ def get_subway_station_and_number_information(subwayData):
     print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
-    with open('/home/ubuntu/Django/chat/SubwayStationID.json') as f:
-        subwaystationid = json.loads(f,encoding='utf-8')
+    with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
+        subwaystationid = json.load(f)
     subwaystationid = subwaystationid[str(current_laneID)]
-    with open('/home/ubuntu/Django/chat/SubwayLineMap.json') as f:
-        subwaylinemap = json.loads(f,encoding='utf-8')
+    with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
+        subwaylinemap = json.load(f)
     subwaylinemap = subwaylinemap[str(current_laneID)]
     print("subwaylinemap : "+str(subwaylinemap))
     #current_subwaylinemap = getLineMap(stationName,subwaylinemap)
