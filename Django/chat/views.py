@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -502,5 +503,5 @@ def index(request):
     print("===call index function===")
     print("request : "+str(request))
     msg = "abc"
-    return render(request, 'index.html', {'message': msg})
+    return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')
