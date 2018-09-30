@@ -365,6 +365,7 @@ def message(request):
                 'message': {'text': res},
                 })
             else:
+                print("========before call index function=======")
                 index(res)
                 return JsonResponse({
                 'message': {'text': res,
