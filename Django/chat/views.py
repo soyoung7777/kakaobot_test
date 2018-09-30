@@ -360,7 +360,7 @@ def message(request):
             res = SubwayInfo.get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
             return JsonResponse({
-            'message': {'text': text,
+            'message': {'text': res,
                         'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
                         },
         })
