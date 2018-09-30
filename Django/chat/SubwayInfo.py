@@ -131,14 +131,17 @@ def get_subway_station_and_number_information(subwayData):
             direction_stationlist.append(value)
     print("direction : "+str(direction))
     for d in direction:
-        text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
         if "상행" in d:
-            StationExistName = getStationExist(stationName, current_laneID, 1)
-            text +=StationExistName+"\n\n"
+            StationExistName = getStationExistSimple(stationName, current_laneID, 1)
+            if not eq(StationExistName,"none"):
+                text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
+                text +=StationExistName+"\n\n"
         else:
         #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
-            StationExistName = getStationExist(stationName, current_laneID, 2)
-            text +=StationExistName+"\n\n"
+            StationExistName = getStationExistSimple(stationName, current_laneID, 2)
+            if not eq(StationExistName,"none"):
+                text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
+                text +=StationExistName+"\n\n"
 
     # for idx, full_list in enumerate(direction_stationlist):
     #     text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌\n"
@@ -460,6 +463,48 @@ def getStationExist(stationName, laneID, direction):
             return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
+    except urllib.error.HTTPError:
+        return "error"
+
+def getStationExistSimple(stationName, laneID, direction):
+    open_data_key = "714d78526b7369683130356e4d455357"
+    enckey = urllib.parse.quote_plus(open_data_key)
+
+    stationName = re.sub("[역]$","", stationName)
+
+    encStationname = urllib.parse.quote_plus(stationName)
+    open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
+    print("laneID : "+str(laneID))
+    print("direction : "+str(direction))
+    arrivalData={}
+    try:
+        request = urllib.request.Request(open_data_url)
+        response = urllib.request.urlopen(request)
+
+        real_json = response.read().decode('utf-8')
+        real_data = json.loads(real_json)
+        realtimeList = real_data['realtimeArrivalList']
+        #print("======realtimeList======")
+        #print(str(realtimeList))
+        for list in realtimeList:
+            #print("========list========\n"+str(list))
+            if eq(list['subwayId'],str(laneID)):
+                print("subwayID 일치")
+                if direction == 1:#상행 or 외선인 경우
+                    print("상행")
+                    if eq(list['updnLine'],'상행') or eq(list['updnLine'],'외선'):
+                        arrivalData = list
+                        break
+                else:
+                    print("하행")
+                    if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
+                        arrivalData = list
+                        break
+        print(str(arrivalData))
+        if arrivalData == {}:
+            return "none"
+        print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
+        return arrivalData['arvlMsg2']
     except urllib.error.HTTPError:
         return "error"
     #
