@@ -365,6 +365,7 @@ def message(request):
                 'message': {'text': res},
                 })
             else:
+                index(res)
                 return JsonResponse({
                 'message': {'text': res,
                             'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
@@ -497,4 +498,5 @@ def message(request):
     })
 
 def index(request):
-    return render(request, 'chat/index.html')
+    return render(request, 'index.html', {'message': request})
+    #return render(request, 'chat/index.html')
