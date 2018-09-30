@@ -359,10 +359,15 @@ def message(request):
         if Exist:
             res = SubwayInfo.get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
-            return JsonResponse({
-            'message': {'text': res,
-                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
-                        },
+
+            if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
+                return JsonResponse({
+                'message': {'text': res},
+            else:
+                return JsonResponse({
+                'message': {'text': res,
+                            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
+                            },
         })
         else:
             return JsonResponse({
