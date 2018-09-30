@@ -500,6 +500,7 @@ def message(request):
 
 def index(request):
     print("===call index function===")
-    print("request : "+request)
-    return render(request, 'index.html', {'message': request})
+    print("request : "+str(request))
+    msg = "abc"
+    return render(request, 'index.html', {'message': msg})
     #return render(request, 'chat/index.html')
