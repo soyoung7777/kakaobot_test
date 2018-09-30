@@ -354,12 +354,13 @@ def message(request):
         print("Intent : Subway_station_and_number")
         Exist = SubwayInfo.config_exist_subway_station_and_number([data['result']['parameters']['subway_station'],
         data['result']['parameters']['subway_number']])
-
+        url_str = "http://pf.kakao.com/"
         if Exist:
             res = SubwayInfo.get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
             return JsonResponse({
             'message': {'text': res},
+            'message_button': {'label':"자세히 보기",'url':url_str+"_fyjPC"}
             })
         else:
             return JsonResponse({

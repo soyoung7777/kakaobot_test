@@ -138,7 +138,7 @@ def get_subway_station_and_number_information(subwayData):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
             if not eq(StationExistName,"none"):
-                text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
+                text +="💌["+d+"]💌\n"
                 text +=StationExistName+"\n\n"
         else:
         #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
@@ -147,7 +147,7 @@ def get_subway_station_and_number_information(subwayData):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
             if not eq(StationExistName,"none"):
-                text +="💌["+stationName+" "+current_laneName+" "+d+"]💌\n"
+                text +="💌["+d+"]💌\n"
                 text +=StationExistName+"\n\n"
 
     # for idx, full_list in enumerate(direction_stationlist):
