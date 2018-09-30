@@ -360,9 +360,10 @@ def message(request):
             res = SubwayInfo.get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
             return JsonResponse({
-            'message': {'text': res},
-            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"},
-            })
+            'message': {'text': text,
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
+                        },
+        })
         else:
             return JsonResponse({
             'message': {'text': "정확한 지하철 역명과 호선을 입력해주세요😂"},
