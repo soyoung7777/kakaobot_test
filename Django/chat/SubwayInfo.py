@@ -81,7 +81,7 @@ def config_exist_subway_station_and_number(subwayData):
             Exist = True
     return Exist
 
-def get_subway_station_and_number_information(subwayData):
+def simple_get_subway_station_and_number_information(subwayData):
 
     day = getDayType()
     stationName = subwayData[0]
@@ -293,6 +293,123 @@ def get_subway_station_and_number_information(subwayData):
 
     print(text)
     return text
+
+def detail_get_subway_station_and_number_information(subwayData):
+
+    day = getDayType()
+    stationName = subwayData[0]
+    #subwayData[1] = re.sub('\'',"",subwayData[1])
+    #subwayData[1] = re.sub('수도권 ',"",subwayData[1])
+    print("stationName : "+subwayData[0])
+    print("lineNumber : "+subwayData[1])
+
+    data = getStationInfo(stationName)
+
+    station_info = data['result']['station']
+    #current_stationID = 0
+
+    print(json.loads(json.dumps(data)))
+    # print("station Dictionary : "+str(subwayData[1]))
+    # print("station Dictionary type: "+str(type(subwayData[1])))
+    # print("station ID : "+str(subwayData[1][subwayData[0]]))
+    for idx, info in enumerate(station_info):
+        if subwayData[1] in info['laneName']:
+            #current_stationID = int(data['result']['station'][idx]['stationID'])
+            current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
+            break
+    current_laneID = getLaneID(current_laneName)
+    print("current_laneName : "+current_laneName)
+    print("current_laneID : "+str(current_laneID))
+    #line_number = subwayData[1]
+    #if eq(direction,"상행") or eq(direction,"내선"):
+    with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
+        subwaystationid = json.load(f)
+    subwaystationid = subwaystationid[str(current_laneID)]
+    with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
+        subwaylinemap = json.load(f)
+    subwaylinemap = subwaylinemap[str(current_laneID)]
+    print("subwaylinemap : "+str(subwaylinemap))
+    #current_subwaylinemap = getLineMap(stationName,subwaylinemap)
+    current_subwaylinemap = subwaylinemap[stationName]
+    print("current_subwaylinemap : "+str(current_subwaylinemap))
+
+    text=""
+    direction = []
+    direction_stationlist = []
+    StationExistNameList = []
+
+    for item in current_subwaylinemap:
+        for key, value in item.items():
+            direction.append(key)
+            direction_stationlist.append(value)
+    direction = list(set(direction))
+    print("direction : "+str(direction))
+    # for d in direction:
+    #     if "상행" in d:
+    #         StationExistName = getStationExistSimple(stationName, current_laneID, 1)
+    #         if eq(StationExistName, "error"):
+    #             text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+    #             return text
+    #         if not eq(StationExistName,"none"):
+    #             text +="💌["+d+"]💌\n"
+    #             text +=StationExistName+"\n\n"
+    #     else:
+    #     #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
+    #         StationExistName = getStationExistSimple(stationName, current_laneID, 2)
+    #         if eq(StationExistName, "error"):
+    #             text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+    #             return text
+    #         if not eq(StationExistName,"none"):
+    #             text +="💌["+d+"]💌\n"
+    #             text +=StationExistName+"\n\n"
+
+    for idx, full_list in enumerate(direction_stationlist):
+        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌\n"
+        for s in full_list:
+            print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
+            if "상행" in direction[idx]:
+                #start_time = time.time()
+                StationExistName = getStationExist(s, current_laneID, 1)
+                #print("--- %s seconds ---" %(time.time() - start_time))
+                print("StationExistName : "+StationExistName)
+                if not eq(StationExistName,"error" or "none"):#시간표정보
+                    #getSchedule(subwaystationid[s],1,day)
+                #else:
+                    StationExistNameList.append(StationExistName)
+                    #print("station Exist Name List : "+str(StationExistNameList))
+
+            else:
+                #start_time = time.time()
+                StationExistName = getStationExist(s, current_laneID, 2)
+                #print("--- %s seconds ---" %(time.time() - start_time))
+                print("StationExistName : "+StationExistName)
+                if not eq(StationExistName,"error" or "none"):#시간표정보
+                #else:
+                    StationExistNameList.append(StationExistName)
+        print("station Exist Name List : "+str(StationExistNameList))
+
+        StationExistNameList = list(set(StationExistNameList))
+        print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
+
+        for total in full_list:
+            exist = False
+            for element in StationExistNameList:
+                if eq(element,total):
+                    if eq(total,full_list[6]):
+                        text+=total+"🚋\n"
+                    else:
+                        text+=total+"🚋\n   ↓↓↓   \n"
+                    exist = True
+            if exist==False:
+                # if eq(total,"none"):
+                #     count_end = count_end+1
+                #     continue
+                if eq(total,full_list[6]):
+                    text +=total+"\n"
+                else:
+                    text+=total+"\n   ↓↓↓   \n"
+        text+="\n\n"
+        StationExistNameList.clear()
 
 def getDayType():
     now = time.localtime()

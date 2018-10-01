@@ -358,7 +358,7 @@ def message(request):
         Exist = SubwayInfo.config_exist_subway_station_and_number([data['result']['parameters']['subway_station'],
         data['result']['parameters']['subway_number']])
         if Exist:
-            res = SubwayInfo.get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+            res = SubwayInfo.simple_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
 
             if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
@@ -367,7 +367,9 @@ def message(request):
                 })
             else:
                 print("========before call index function=======")
-                index(res)
+                detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+                data['result']['parameters']['subway_number']])
+                index(detail_res)
                 return JsonResponse({
                 'message': {'text': res,
                             'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
@@ -480,7 +482,7 @@ def message(request):
 
         #if Exist:
         subway_number = DB.subway_selected
-        res = SubwayInfo.get_subway_station_and_number_information([DB.subway_station_name,
+        res = SubwayInfo.simple_get_subway_station_and_number_information([DB.subway_station_name,
         DB.subway_selected])
 
         DB.dialogflow_action = 0
