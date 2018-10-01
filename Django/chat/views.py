@@ -371,6 +371,7 @@ def message(request):
                 data['result']['parameters']['subway_number']])
                 print("=========detail_res=======")
                 print(str(detail_res))
+                request=WSGIRequest
                 index(detail_res)
                 return JsonResponse({
                 'message': {'text': res,
@@ -507,6 +508,6 @@ def index(request):
     print("===call index function===")
     print("request : "+str(request))
     print("request type : "+str(type(request)))
-    msg = "abc"
+    msg = HttpResponse(request)
     return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')
