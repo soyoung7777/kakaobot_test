@@ -371,7 +371,6 @@ def message(request):
                 data['result']['parameters']['subway_number']])
                 print("=========detail_res=======")
                 print(str(detail_res))
-                request=WSGIRequest
                 index(detail_res)
                 return JsonResponse({
                 'message': {'text': res,
