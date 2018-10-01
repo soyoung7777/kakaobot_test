@@ -18,6 +18,5 @@ class allData(models.Model):
 	limit_time = models.TextField(default="")
     detail_message = models.TextField(default="")
 
-
 	def __str__(self):
 		return self.data
