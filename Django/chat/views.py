@@ -76,7 +76,7 @@ def message(request):
     print("DB check : " + str(DB.session_id))
     # DB.dialogflow_action = 0
     # DB.subway_action=0
-
+    DB.detail_message=""
     #다른경로
     if DB.diff_path is not 0:
         cur_time = str(time.time())
@@ -371,7 +371,9 @@ def message(request):
                 data['result']['parameters']['subway_number']])
                 print("=========detail_res=======")
                 print(str(detail_res))
-                index(detail_res)
+                DB.detail_message=str(detail_res)
+                DB.save()
+                #index(detail_res)
                 return JsonResponse({
                 'message': {'text': res,
                             'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
@@ -505,8 +507,12 @@ def message(request):
 
 def index(request):
     print("===call index function===")
-    print("request : "+str(request))
-    print("request type : "+str(type(request)))
-    msg = HttpResponse(request)
+    DB = allData.objects.get(pk=user_id)
+    user_id = msg['user_key']
+
+    msg = DB.detail_message
+    print("detail_message : "+msg)
+    print("detail_message : "+str(type(msg)))
+
     return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')
