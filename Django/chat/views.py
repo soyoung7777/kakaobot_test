@@ -371,9 +371,9 @@ def message(request):
                 data['result']['parameters']['subway_number']])
                 print("=========detail_res=======")
                 print(str(detail_res))
-                #index(detail_res)
+                index(detail_res)
                 return JsonResponse({
-                'message': {'text': detail_res,
+                'message': {'text': res,
                             'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
                             },
                 })
