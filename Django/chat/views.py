@@ -369,6 +369,8 @@ def message(request):
                 print("========before call index function=======")
                 detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
                 data['result']['parameters']['subway_number']])
+                print("=========detail_res=======")
+                print(str(detail_res))
                 #index(detail_res)
                 return JsonResponse({
                 'message': {'text': detail_res,
