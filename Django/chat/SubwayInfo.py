@@ -364,7 +364,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     #             text +=StationExistName+"\n\n"
 
     for idx, full_list in enumerate(direction_stationlist):
-        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌"+BR()
+        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌\n"
         for s in full_list:
             print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
@@ -396,19 +396,20 @@ def detail_get_subway_station_and_number_information(subwayData):
             for element in StationExistNameList:
                 if eq(element,total):
                     if eq(total,full_list[6]):
-                        text+=total+"🚋<br />"
+                        text+=total+"🚋\n"
                     else:
-                        text+=total+"🚋<br />   ↓↓↓   <br />"
+                        text+=total+"🚋\n   ↓↓↓   \n"
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
                 #     count_end = count_end+1
                 #     continue
                 if eq(total,full_list[6]):
-                    text +=total+"<br />"
+                    text +=total+"\n"
                 else:
-                    text+=total+"<br />   ↓↓↓   <br />"
-        text+="<br /><br />"
+                    text+=total+"\n   ↓↓↓   \n"
+        text+="\n\n"
+        text = text.replaceAll("\r\n","<br/>")
         StationExistNameList.clear()
     print(text)
     return text
