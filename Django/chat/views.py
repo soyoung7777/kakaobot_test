@@ -78,6 +78,8 @@ def message(request):
     # DB.dialogflow_action = 0
     # DB.subway_action=0
     DB.detail_message=""
+    DB.title=""
+    DB.save()
     #DB.user_id=user_id
     #DB.save()
     #다른경로
