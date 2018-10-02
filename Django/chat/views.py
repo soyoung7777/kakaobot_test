@@ -356,7 +356,7 @@ def message(request):
 
     if eq(str(data['result']['metadata']['intentName']),"Subway_station_and_number"):
         print("Intent : Subway_station_and_number")
-        url_str = "http://pf.kakao.com/"
+        #url_str = "http://pf.kakao.com/"
 
         Exist = SubwayInfo.config_exist_subway_station_and_number([data['result']['parameters']['subway_station'],
         data['result']['parameters']['subway_number']])

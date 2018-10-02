@@ -291,7 +291,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     #             else:
     #                 text+=total+"\n   ↓↓↓   \n"
 
-    print(text)
+    print("======simple========\n"+text)
     return text
 
 def detail_get_subway_station_and_number_information(subwayData):
