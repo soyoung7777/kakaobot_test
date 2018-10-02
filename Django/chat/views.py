@@ -14,6 +14,7 @@ import time
 from operator import eq
 from random import *
 import ast
+from django.utils.safestring import mark_safe
 
 from . import pathPrint
 from . import anotherPathPrint
@@ -517,5 +518,6 @@ def index(request, pk):
     msg = DB.detail_message
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
+    msg = mark_safe(msg)
     return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')
