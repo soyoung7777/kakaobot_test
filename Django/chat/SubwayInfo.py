@@ -256,18 +256,18 @@ def detail_get_subway_station_and_number_information(subwayData):
             for element in StationExistNameList:
                 if eq(element,total):
                     if eq(total,full_list[6]):
-                        text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>"
+                        text+="<font color='#DC6D73'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>"
                     else:
-                        text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>   ↓↓↓   <br/><br/>"
+                        text+="<font color='#DC6D73'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>   ↓↓↓   <br/><br/>"
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
                 #     count_end = count_end+1
                 #     continue
                 if eq(total,full_list[6]):
-                    text +="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font><br/><br/>"
+                    text +=total+"<br/><br/>"
                 else:
-                    text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font><br/><br/>   ↓↓↓   <br/><br/>"
+                    text+=total+"<br/><br/>   ↓↓↓   <br/><br/>"
         text+="<br/><br/><br/><br/>"
         #text = text.replace("\r\n","<br/>")
         StationExistNameList.clear()
