@@ -409,7 +409,7 @@ def detail_get_subway_station_and_number_information(subwayData):
                 else:
                     text+=total+"\n   ↓↓↓   \n"
         text+="\n\n"
-        text = text.replaceAll("\r\n","<br/>")
+        text = text.replace("\r\n","<br/>")
         StationExistNameList.clear()
     print(text)
     return text
