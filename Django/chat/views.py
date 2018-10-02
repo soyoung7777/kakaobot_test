@@ -519,5 +519,5 @@ def index(request, pk):
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
     msg = mark_safe(msg)
-    return render_to_response('index.html', {'message': msg})
+    return render_to_response('web/index.html', {'message': msg})
     #return render(request, 'chat/index.html')
