@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <title>내가 알려줄지도 검색결과</title>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900|Orbitron:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/chat.css">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/chat.css'%}">
 </head>
 <body>
-  <img src="image/magic.png" style="width:30%; height:30% float:left;">
+  {% load static %}
+  <img src="{% static 'image/magic.png'%}" style="width:30%; height:30% float:left;">
   <div class="bubble-speech bubble-left">
 <h2 class="author">
   1호선 창동역 실시간 지하철 정보
