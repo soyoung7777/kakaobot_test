@@ -17,7 +17,7 @@ class allData(models.Model):
 	diff_path = models.IntegerField(default=0)
 	limit_time = models.TextField(default="")
 	detail_message = models.TextField(default="")
-
+	user_id = models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.data

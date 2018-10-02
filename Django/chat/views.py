@@ -77,6 +77,7 @@ def message(request):
     # DB.dialogflow_action = 0
     # DB.subway_action=0
     DB.detail_message=""
+    DB.user_id=user_id
     #다른경로
     if DB.diff_path is not 0:
         cur_time = str(time.time())
@@ -505,14 +506,14 @@ def message(request):
         'keyboard':{'type':'text'}
     })
 
-def index(request):
+def index(request, pk):
     print("===call index function===")
-    DB = allData.objects.get(pk=user_id)
-    user_id = msg['user_key']
+    #user_id = DB.user_id
+    DB = allData.objects.get(pk=pk)
+
 
     msg = DB.detail_message
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
-
     return render_to_response('index.html', {'message': msg})
     #return render(request, 'chat/index.html')

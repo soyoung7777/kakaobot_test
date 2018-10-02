@@ -5,6 +5,7 @@ from django.urls import path
 urlpatterns = [
 	url(r'^keyboard/',views.keyboard),
 	url(r'^message',views.message),
-	url(r'^$',views.index),
+	#url(r'^$',views.index),
+	url(r'^index/(?P<pk>.+)/$',views.index, name='index'),
 	path('',views.index, name='index')
 ]
