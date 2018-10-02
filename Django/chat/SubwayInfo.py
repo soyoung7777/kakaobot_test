@@ -197,7 +197,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     direction = []
     direction_stationlist = []
     StationExistNameList = []
-
+    title=stationName+"역 "+current_laneName+" 실시간 도착정보"
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
@@ -272,7 +272,7 @@ def detail_get_subway_station_and_number_information(subwayData):
         #text = text.replace("\r\n","<br/>")
         StationExistNameList.clear()
     print(text)
-    return text
+    return title,text
 
 def getDayType():
     now = time.localtime()

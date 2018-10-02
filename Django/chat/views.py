@@ -370,11 +370,12 @@ def message(request):
                 })
             else:
                 print("========before call index function=======")
-                detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+                title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
                 data['result']['parameters']['subway_number']])
                 print("=========detail_res=======")
                 print(str(detail_res))
                 DB.detail_message=str(detail_res)
+                DB.title = str(title)
                 DB.save()
                 #index(detail_res)
                 enc_userid = urllib.parse.quote_plus(user_id)
@@ -516,8 +517,9 @@ def index(request, pk):
 
 
     msg = DB.detail_message
+    title = DB.title
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
     msg = mark_safe(msg)
-    return render_to_response('web/index.html', {'message': msg})
+    return render_to_response('web/index.html', {'message': msg, 'title':title})
     #return render(request, 'chat/index.html')
