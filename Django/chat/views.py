@@ -375,9 +375,10 @@ def message(request):
                 DB.detail_message=str(detail_res)
                 DB.save()
                 #index(detail_res)
+                enc_userid = urllib.parse.quote_plus(user_id)
                 return JsonResponse({
                 'message': {'text': res,
-                            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/"}
+                            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
                             },
                 })
         else:
