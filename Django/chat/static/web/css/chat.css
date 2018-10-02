@@ -12,9 +12,9 @@ body {
   margin: auto;
   line-height: 22px;
   letter-spacing: 1px;
-  margin-top: 16px;
+  margin-top: 20px;
   margin-bottom: 48px;
-  width: 600px;
+  width: 700px;
   background-color: #efefef;
   padding: 16px;
   float:right;
@@ -42,13 +42,20 @@ body {
 }
 
 .bubble-speech .title {
-  max-width: 500px;
+  max-width: 700px;
   font-weight: bold;
-  font-size:20px;
+  font-size:30px;
   margin: 0;
+  margin-left: 20px;
   padding: 0 12px 2px 0;
 }
 
 .bubble-speech .message {
-  font-size:15px;
+  font-size:25px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+#magic{
+  margin:20px;
 }
