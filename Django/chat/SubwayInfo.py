@@ -396,23 +396,23 @@ def detail_get_subway_station_and_number_information(subwayData):
             for element in StationExistNameList:
                 if eq(element,total):
                     if eq(total,full_list[6]):
-                        text+=total+"🚋\n"
+                        text+=total+"🚋<br>"
                     else:
-                        text+=total+"🚋\n   ↓↓↓   \n"
+                        text+=total+"🚋<br>   ↓↓↓   <br>"
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
                 #     count_end = count_end+1
                 #     continue
                 if eq(total,full_list[6]):
-                    text +=total+"\n"
+                    text +=total+"<br>"
                 else:
-                    text+=total+"\n   ↓↓↓   \n"
-        text+="\n\n"
+                    text+=total+"<br>   ↓↓↓   <br>"
+        text+="<br><br>"
         StationExistNameList.clear()
     print(text)
     return text
-    
+
 def getDayType():
     now = time.localtime()
     if 0<=now.tm_wday<=4:#월,화,수,목,금
