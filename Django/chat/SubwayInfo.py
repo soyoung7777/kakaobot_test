@@ -258,7 +258,7 @@ def detail_get_subway_station_and_number_information(subwayData):
                     if eq(total,full_list[6]):
                         text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>"
                     else:
-                        text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font>+"🚋<br/><br/>   ↓↓↓   <br/><br/>"
+                        text+="<font color='#50ABBF'style='font-weight: bold;'>"+total+"</font>🚋<br/><br/>   ↓↓↓   <br/><br/>"
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
