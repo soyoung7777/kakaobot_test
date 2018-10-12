@@ -17,38 +17,32 @@ body {
  letter-spacing: 1px;
  margin-top: 20px;
  margin-bottom: 48px;
- width: 700px;
- background-color: #efefef;
- padding: 16px;
+ width: 90%;
+ height: 60%;
+ margin-left: 5%;
+ margin-right: 5%;
+ background-color: #EFEFEF;
  float:right;
- margin-right: 40px;
 }
 
 .bubble-speech.bubble-bottom:after {
- z-index: 3;
+ z-index: 2;
  content: "";
  position: absolute;
  width:0;
  height:0;
- left: -25px;
- bottom: -31px;
- border:10px transparent solid;
- border-top:32px #efefef solid;
+ left: 40px;
+ bottom: -80px;
+ border:30px transparent solid;
+ border-top:50px #efefef solid;
 }
-
-.bubble-square {
- width: 33px;
- height: 25px;
- text-align: center;
-}
-
 .bubble-speech .title {
  max-width: 700px;
-font-family: 'Jeju Gothic', serif;
+ font-family: 'Jeju Gothic', serif;
  font-size:38px;
  margin: 0;
  margin-left: 20px;
- padding: 0 12px 2px 0;
+ padding: 30px 12px 2px 30px;
 }
 
 .bubble-speech .message {
@@ -58,6 +52,11 @@ font-family: 'Jeju Gothic', serif;
  font-family: 'Noto Sans KR', sans-serif;
 }
 
+.footer{
+  bottom: 15%;
+  width: 100%;
+  position:fixed;
+}
 #magic{
  margin:20px;
 }

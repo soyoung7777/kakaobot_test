@@ -258,9 +258,9 @@ def detail_get_subway_station_and_number_information(subwayData):
             for element in StationExistNameList:
                 if eq(element,total):
                     if eq(total,full_list[-1]):
-                        text+="<font color='#50ABBF'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋        "
+                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋        "
                     else:
-                        text+="<font color='#50ABBF'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋   〰   "
+                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋   〰   "
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
