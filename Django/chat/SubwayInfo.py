@@ -226,7 +226,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     #             text +=StationExistName+"\n\n"
 
     for idx, full_list in enumerate(direction_stationlist):
-        text +="💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌<br/><br/><br/>"
+        text +="<font color='#FF4D45' style='font-size:1.5em;'>"+"💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌+"</font><br/><br/><br/>"
         for s in full_list:
             print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
@@ -258,9 +258,9 @@ def detail_get_subway_station_and_number_information(subwayData):
             for element in StationExistNameList:
                 if eq(element,total):
                     if eq(total,full_list[-1]):
-                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋        "
+                        text+="<font color='#FF4D45'style='font-weight: bold;font-size:1.5em;line-height:1.5em;'>"+total+"</font>🚋        "
                     else:
-                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋   〰   "
+                        text+="<font color='#FF4D45'style='font-weight: bold;font-size:1.5em;line-height:1.5em;'>"+total+"</font>🚋   〰   "
                     exist = True
             if exist==False:
                 # if eq(total,"none"):
