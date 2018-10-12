@@ -133,21 +133,23 @@ def simple_get_subway_station_and_number_information(subwayData):
     print("direction : "+str(direction))
     for d in direction:
         if "상행" in d:
-            StationExistName = getStationExistSimple(stationName, current_laneID, 1)
+            StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
             if eq(StationExistName, "error"):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
             if not eq(StationExistName,"none"):
                 text +="💌["+d+"]💌\n"
+                text +=TrainDirection+"\n"
                 text +=StationExistName+"\n\n"
         else:
         #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
-            StationExistName = getStationExistSimple(stationName, current_laneID, 2)
+            StationExistName, TrainDirection = getStationExistSimple(stationName, current_laneID, 2)
             if eq(StationExistName, "error"):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
             if not eq(StationExistName,"none"):
                 text +="💌["+d+"]💌\n"
+                text +=TrainDirection+"\n"
                 text +=StationExistName+"\n\n"
 
 
@@ -491,7 +493,7 @@ def getStationExistSimple(stationName, laneID, direction):
         if arrivalData == {}:
             return "none"
         print("지하철이 어디에 있을까???\n"+arrivalData['arvlMsg2'])
-        return arrivalData['arvlMsg2']
+        return arrivalData['arvlMsg2'],arrivalData['trainLineNm']
     except urllib.error.HTTPError:
         return "error"
     #

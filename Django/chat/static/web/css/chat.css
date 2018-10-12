@@ -24,18 +24,16 @@ body {
  margin-right: 40px;
 }
 
-.bubble-speech.bubble-left:after {
- z-index: 9002;
- display: block;
+.bubble-speech.bubble-bottom:after {
+ z-index: 3;
  content: "";
  position: absolute;
  width:0;
  height:0;
- bottom: -11px;
- left: -42px;
- top:17px;
+ left: -25px;
+ bottom: -31px;
  border:10px transparent solid;
- border-right:32px #efefef solid;
+ border-top:32px #efefef solid;
 }
 
 .bubble-square {
