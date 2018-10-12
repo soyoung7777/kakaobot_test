@@ -109,9 +109,9 @@ def simple_get_subway_station_and_number_information(subwayData):
     print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
-    with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
-        subwaystationid = json.load(f)
-    subwaystationid = subwaystationid[str(current_laneID)]
+    # with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
+    #     subwaystationid = json.load(f)
+    # subwaystationid = subwaystationid[str(current_laneID)]
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
         subwaylinemap = json.load(f)
     subwaylinemap = subwaylinemap[str(current_laneID)]
@@ -166,8 +166,8 @@ def detail_get_subway_station_and_number_information(subwayData):
     data = getStationInfo(stationName)
 
     station_info = data['result']['station']
-    #current_stationID = 0
 
+    #current_stationID = 0
     print(json.loads(json.dumps(data)))
     # print("station Dictionary : "+str(subwayData[1]))
     # print("station Dictionary type: "+str(type(subwayData[1])))
@@ -182,9 +182,9 @@ def detail_get_subway_station_and_number_information(subwayData):
     print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
-    with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
-        subwaystationid = json.load(f)
-    subwaystationid = subwaystationid[str(current_laneID)]
+    # with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
+    #     subwaystationid = json.load(f)
+    # subwaystationid = subwaystationid[str(current_laneID)]
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
         subwaylinemap = json.load(f)
     subwaylinemap = subwaylinemap[str(current_laneID)]
