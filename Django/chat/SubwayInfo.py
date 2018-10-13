@@ -462,7 +462,7 @@ def getStationExist(stationName, laneID, direction):
                     if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
                         break
-        print(str(arrivalData))
+        print("arrival Data : "+str(arrivalData))
         if eq(arrivalData,"{}"):
             print("none!!")
             return "none"
