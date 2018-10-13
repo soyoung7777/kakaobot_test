@@ -409,7 +409,7 @@ def message(request):
         print("Intent : Subway_station")
         print("subway action : "+str(DB.subway_action))
         if eq((data['result']['actionIncomplete']),"True") :
-            text = str(dialog_data['result']['fulfillment']['speech'])
+            text = str(data['result']['fulfillment']['speech'])
             DB.dialogflow_action = 0
             DB.subway_action = 0
             DB.subway_selected = ""
