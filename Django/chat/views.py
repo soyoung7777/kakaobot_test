@@ -502,8 +502,19 @@ def message(request):
         DB.subway_station_name=""
         DB.save()
 
+        title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+        data['result']['parameters']['subway_number']])
+        print("=========detail_res=======")
+        print(str(detail_res))
+        DB.detail_message=str(detail_res)
+        DB.title = str(title)
+        DB.save()
+        #index(detail_res)
+        enc_userid = urllib.parse.quote_plus(user_id)
         return JsonResponse({
-        'message': {'text': res},
+        'message': {'text': res,
+                    'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
+                    },
         })
 
 
