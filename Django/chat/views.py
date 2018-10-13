@@ -367,6 +367,11 @@ def message(request):
             data['result']['parameters']['subway_number']])
 
             if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
+                DB.dialogflow_action = 0
+                DB.subway_action = 0
+                DB.subway_selected = ""
+                DB.subway_station_name=""
+                DB.save()
                 return JsonResponse({
                 'message': {'text': res},
                 })
@@ -496,6 +501,11 @@ def message(request):
         res = SubwayInfo.simple_get_subway_station_and_number_information([DB.subway_station_name,
         DB.subway_selected])
         if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
+            DB.dialogflow_action = 0
+            DB.subway_action = 0
+            DB.subway_selected = ""
+            DB.subway_station_name=""
+            DB.save()
             return JsonResponse({
             'message': {'text': res},
             })
