@@ -223,7 +223,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     direction_stationlist = []
     StationExistNameList = []
     if eq(stationName,"서울역"):
-        title=stationName+current_laneName+" 실시간 도착정보"
+        title=stationName+" "+current_laneName+" 실시간 도착정보"
     else:
         title=stationName+"역 "+current_laneName+" 실시간 도착정보"
     for item in current_subwaylinemap:
