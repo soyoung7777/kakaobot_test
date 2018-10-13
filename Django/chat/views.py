@@ -544,6 +544,8 @@ def index(request, pk):
 
     msg = DB.detail_message
     title = DB.title
+    if eq(title,"서울역"):
+        title="서울"
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
     msg = mark_safe(msg)
