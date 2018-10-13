@@ -148,7 +148,7 @@ def simple_get_subway_station_and_number_information(subwayData):
         else:
         #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
             try:
-                StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
+                StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 2)
             except:
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
