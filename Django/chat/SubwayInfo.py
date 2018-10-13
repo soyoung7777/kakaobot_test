@@ -469,6 +469,7 @@ def getStationExist(stationName, laneID, direction):
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
+        print("error!!")
         return "error"
 
 def getStationExistSimple(stationName, laneID, direction):
