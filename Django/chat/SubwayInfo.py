@@ -463,7 +463,7 @@ def getStationExist(stationName, laneID, direction):
                         arrivalData = list
                         break
         print(str(arrivalData))
-        if arrivalData == {}:
+        if eq(arrivalData,"{}"):
             print("none!!")
             return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
