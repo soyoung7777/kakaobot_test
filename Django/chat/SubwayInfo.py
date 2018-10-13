@@ -463,6 +463,8 @@ def getStationExist(stationName, laneID, direction):
                         arrivalData = list
                         break
         print("arrival Data : "+str(arrivalData))
+        print("arrival Data type : "+str(type(arrivalData)))
+
         if eq(arrivalData,"{}"):
             print("none!!")
             return "none"
@@ -507,6 +509,7 @@ def getStationExistSimple(stationName, laneID, direction):
                         arrivalData = list
                         break
         print("arrival Data : "+str(arrivalData))
+        print("arrival Data type : "+str(type(arrivalData)))
         if eq(arrivalData,"{}"):
             print("none!!")
             return "none"
