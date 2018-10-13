@@ -234,7 +234,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     #     #text +="💌["+stationName+" "+current_laneName+" "+direction[-1]+"]💌\n"
     #         StationExistName = getStationExistSimple(stationName, current_laneID, 2)
     #         if eq(StationExistName, "error"):
-    #             text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+    #             text +="공공데이터에 문제가 녀\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
     #             return text
     #         if not eq(StationExistName,"none"):
     #             text +="💌["+d+"]💌\n"
@@ -464,6 +464,7 @@ def getStationExist(stationName, laneID, direction):
                         break
         print(str(arrivalData))
         if arrivalData == {}:
+            print("none!!")
             return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
         return arrivalData['arvlMsg3']
