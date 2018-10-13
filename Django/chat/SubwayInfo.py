@@ -473,8 +473,8 @@ def getStationExistSimple(stationName, laneID, direction):
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
         realtimeList = real_data['realtimeArrivalList']
-        #print("======realtimeList======")
-        #print(str(realtimeList))
+        print("======realtimeList======")
+        print(str(realtimeList))
         for list in realtimeList:
             #print("========list========\n"+str(list))
             if eq(list['subwayId'],str(laneID)):
