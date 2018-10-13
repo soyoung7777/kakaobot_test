@@ -475,12 +475,12 @@ def getStationExist(stationName, laneID, direction):
 
         if not arrivalData:
             print("none!!")
-            return "none"
+            return "none","none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
-        return arrivalData['arvlMsg3']
+        return arrivalData['arvlMsg3'],arrivalData['trainLineNm']
     except urllib.error.HTTPError:
         print("error!!")
-        return "error"
+        return "error","error"
 
 def getStationExistSimple(stationName, laneID, direction):
     open_data_key = "714d78526b7369683130356e4d455357"
@@ -520,12 +520,12 @@ def getStationExistSimple(stationName, laneID, direction):
         print("arrival Data type : "+str(type(arrivalData)))
         if not arrivalData:
             print("none!!")
-            return "none"
+            return "none","none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
-        return arrivalData['arvlMsg3']
+        return arrivalData['arvlMsg3'],arrivalData['trainLineNm']
     except urllib.error.HTTPError:
         print("error!!")
-        return "error"
+        return "error","error"
     #
     #         if eq(list['subwayId'], laneID) and list['updnLine']==direction:
     #             if list['arvlMsg2'] == "전역 도착" or list['arvlMsg2'] == "전역 출발":
