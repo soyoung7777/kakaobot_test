@@ -496,18 +496,17 @@ def message(request):
         res = SubwayInfo.simple_get_subway_station_and_number_information([DB.subway_station_name,
         DB.subway_selected])
 
-        DB.dialogflow_action = 0
-        DB.subway_action = 0
-        DB.subway_selected = ""
-        DB.subway_station_name=""
-        DB.save()
-
-        title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
-        data['result']['parameters']['subway_number']])
+        title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([DB.subway_station_name,
+        DB.subway_selected])
         print("=========detail_res=======")
         print(str(detail_res))
         DB.detail_message=str(detail_res)
         DB.title = str(title)
+
+        DB.dialogflow_action = 0
+        DB.subway_action = 0
+        DB.subway_selected = ""
+        DB.subway_station_name=""
         DB.save()
         #index(detail_res)
         enc_userid = urllib.parse.quote_plus(user_id)
