@@ -396,7 +396,7 @@ def message(request):
         print("subway action : "+str(DB.subway_action))
         if DB.subway_action == 0 :
             print("action 0")
-            subway_return = SubwayInfo.get_subway_station(data)
+            subway_return = SubwayInfo.simple_get_subway_station(data)
 
             if subway_return[0] == 1 :#해당 역에 호선이 1개만 있는 경우
                 print("subway action2")
@@ -415,8 +415,19 @@ def message(request):
                 DB.dialogflow_action = 1
                 DB.save()
 
+                title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+                data['result']['parameters']['subway_number']])
+                print("=========detail_res=======")
+                print(str(detail_res))
+                DB.detail_message=str(detail_res)
+                DB.title = str(title)
+                DB.save()
+                #index(detail_res)
+                enc_userid = urllib.parse.quote_plus(user_id)
                 return JsonResponse({
-                'message': {'text': text},
+                'message': {'text': text,
+                            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
+                            },
                 })
 
     # if eq(str(data['result']['metadata']['intentName']),"Help"):
