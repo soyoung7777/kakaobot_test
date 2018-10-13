@@ -465,7 +465,7 @@ def getStationExist(stationName, laneID, direction):
         print("arrival Data : "+str(arrivalData))
         print("arrival Data type : "+str(type(arrivalData)))
 
-        if eq(arrivalData,"{}"):
+        if not arrivalData:
             print("none!!")
             return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
@@ -510,7 +510,7 @@ def getStationExistSimple(stationName, laneID, direction):
                         break
         print("arrival Data : "+str(arrivalData))
         print("arrival Data type : "+str(type(arrivalData)))
-        if eq(arrivalData,"{}"):
+        if not arrivalData:
             print("none!!")
             return "none"
         print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
