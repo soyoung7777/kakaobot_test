@@ -142,7 +142,9 @@ def simple_get_subway_station_and_number_information(subwayData):
             if eq(StationExistName, "error"):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
-            if not eq(StationExistName,"none"):
+            elif eq(StationExistName, "none"):
+                text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
+            else:
                 text +="💌["+d+"]💌\n\n"
                 text +=TrainDirection+"\n"
                 text +=StationExistName+"\n\n"
@@ -156,7 +158,9 @@ def simple_get_subway_station_and_number_information(subwayData):
             if eq(StationExistName, "error"):
                 text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
-            if not eq(StationExistName,"none"):
+            elif eq(StationExistName, "none"):
+                text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
+            else:
                 text +="💌["+d+"]💌\n\n"
                 text +=TrainDirection+"\n"
                 text +=StationExistName+"\n\n"
