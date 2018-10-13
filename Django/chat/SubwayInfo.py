@@ -506,12 +506,14 @@ def getStationExistSimple(stationName, laneID, direction):
                     if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
                         break
-        print(str(arrivalData))
-        if arrivalData == {}:
+        print("arrival Data : "+str(arrivalData))
+        if eq(arrivalData,"{}"):
+            print("none!!")
             return "none"
-        print("지하철이 어디에 있을까???\n"+arrivalData['arvlMsg2'])
-        return arrivalData['arvlMsg2'],arrivalData['trainLineNm']
+        print("지하철이 어디에 있을까???"+arrivalData['arvlMsg3'])
+        return arrivalData['arvlMsg3']
     except urllib.error.HTTPError:
+        print("error!!")
         return "error"
     #
     #         if eq(list['subwayId'], laneID) and list['updnLine']==direction:
