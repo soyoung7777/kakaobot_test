@@ -359,8 +359,8 @@ def message(request):
     if eq(str(data['result']['metadata']['intentName']),"Subway_station_and_number"):
         print("Intent : Subway_station_and_number")
         #url_str = "http://pf.kakao.com/"
-        if eq([data['result']['parameters']['subway_station']],"") or eq([data['result']['parameters']['subway_number']],""):
-            text = str(data['result']['fulfillmentText'])
+        if eq((data['result']['actionIncomplete']),"True") :
+            text = str(dialog_data['result']['fulfillment']['speech'])
             DB.dialogflow_action = 0
             DB.subway_action = 0
             DB.subway_selected = ""
@@ -408,8 +408,8 @@ def message(request):
     if eq(str(data['result']['metadata']['intentName']),"Subway_station"):
         print("Intent : Subway_station")
         print("subway action : "+str(DB.subway_action))
-        if eq([data['result']['parameters']['subway_station']],""):
-            text = str(data['result']['fulfillmentText'])
+        if eq((data['result']['actionIncomplete']),"True") :
+            text = str(dialog_data['result']['fulfillment']['speech'])
             DB.dialogflow_action = 0
             DB.subway_action = 0
             DB.subway_selected = ""
