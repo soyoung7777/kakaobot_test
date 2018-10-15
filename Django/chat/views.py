@@ -272,7 +272,9 @@ def message(request):
         DB.diff_path = 0
         start = str(data['result']['parameters']['all_from'])
         end = str(data['result']['parameters']['all_to'])
-        text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+        all_res = pathPrint.get_result(start, end, '', DB.diff_path)
+        text = all_res[0]
+        detail_res = all_res[1]
         enc_userid = urllib.parse.quote_plus(user_id)
         DB.detail_message = str(detail_res)
         DB.save()
