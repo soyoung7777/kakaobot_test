@@ -2,6 +2,7 @@
 import urllib.request
 import urllib.parse
 from operator import eq
+import ast
 
 def subway(swPath):
 	sText = ""
