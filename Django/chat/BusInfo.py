@@ -43,6 +43,10 @@ def get_bus_station(json_Data):
         return [2,res,list(bus_station_dic.keys()),bus_station_dic]
 
 
+def get_bus_pos(busnumber):
+    print("ttttherererere")
+
+
 def get_bus_direction(stationName):
     global bus_ars_id
     print("stationName : " + stationName)

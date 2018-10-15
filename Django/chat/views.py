@@ -308,6 +308,10 @@ def message(request):
                         },
         })
 
+    if ea(str(data['result']['metadata']['intentName']), "Bus_number"):
+        bus_N = data['result']['parameters']['bus_number']
+        res = Bus_Info.get_bus_pos(bus_N)
+
     if eq(str(data['result']['metadata']['intentName']),"Bus_station"):
         if DB.bus_action == 0 :
             print("action 0")
