@@ -6,11 +6,10 @@ from operator import eq
 def subway(swPath):
 	sText = ""
 	sText += "💜"+swPath['startName']+"역에서\n"
-	sText += swPath['passStopList']['stations'][1]['stationName']+"방면으로 "
-	sText += swPath['lane'][0]['name']+"을 탑승합니다\n"
-	sText += "💜"+str(swPath['stationCount'])+"개 정류장을 이동합니다\n"
-	sText += "💜"+swPath['endName']+"역에서 하차합니다\n"
-	sText += "💜"+"지하철로 이동 끝!\n"
+	sText += swPath['lane'][0]['name']+"을 탑승\n"
+	sText += "("+swPath['passStopList']['stations'][1]['stationName']+"방면)\n"
+	sText += "💜"+swPath['endName']+"역에서 하차\n"
+	sText += "("+str(swPath['stationCount'])+"개 정류장 이동)\n"
 
 	return sText
 
@@ -18,10 +17,9 @@ def subway(swPath):
 def bus(busPath):
 	bText = ""
 	bText += "💛"+busPath['startName']+"정류장에서\n"
-	bText += busPath['lane'][0]['busNo']+"번 버스를 탑승합니다\n"
-	bText += "💛"+str(busPath['stationCount'])+"개 정류장을 이동합니다\n"
-	bText += "💛"+busPath['endName']+"정류장에서 하차합니다\n"
-	bText += "💛"+"버스로 이동 끝!\n"
+	bText += busPath['lane'][0]['busNo']+"번 버스 탑승\n"
+	bText += "💛"+busPath['endName']+"정류장에서 하차\n"
+	bText += "("+str(busPath['stationCount'])+"개 정류장 이동)\n"
 
 	return bText
 
@@ -70,6 +68,7 @@ def get_result(start, end, tsType, pNum):
 
 		try:
 			path_data = data['result']['path']
+			txt = start+"에서 "+end+"까지 가는 길 알려드릴게요!\n\n\n"
 		except KeyError:
 			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 		path_len = len(path_data)
@@ -81,19 +80,19 @@ def get_result(start, end, tsType, pNum):
 			count = len(subPath)
 
 			if pType == 1:
-				txt = "[지하철로 이동 🚋🚋]\n"
+				txt += "[지하철로 이동 🚋🚋]\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 1:
 						txt += subway(subPath[i])
 			elif pType == 2:
-				txt = "[버스로 이동 🚌🚌]\n"
+				txt += "[버스로 이동 🚌🚌]\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 2:
 						txt += bus(subPath[i])
 			else:
-				txt = "💌[지하철+버스로 이동하세요]💌\n"
+				txt += "💌[지하철+버스로 이동하세요]💌\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 1 :
@@ -104,8 +103,10 @@ def get_result(start, end, tsType, pNum):
 						txt += bus(subPath[i])
 
 			txt +=  "\n\n다른경로를 원하시나용?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
+			detail_txt = detail_get_pathFind(path_data)
 		else:
 			txt = "더 이상 경로가 없어요!!\n"
+			detail_txt = ""
 
 	elif eq(s_status,"ZERO_RESULTS"):
 		txt = "존재하지 않는 주소입니다"
@@ -118,4 +119,36 @@ def get_result(start, end, tsType, pNum):
 	elif eq(s_status,"UNKNOWN_ERROR"):
 		txt = "서버오류"
 
-	return txt
+	return txt, detail_txt
+
+
+def detail_get_pathFind(path_data):
+	detail_text = ""
+
+	detail_text = path_data['result']['path']
+
+# 	<!DOCTYPE html>
+# <html>
+# <head>
+#     <meta charset="UTF-8">
+#     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+#     <title>간단한 지도 표시하기</title>
+#     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=YOUR_CLIENT_ID"></script>
+# </head>
+# <body>
+# <div id="map" style="width:100%;height:400px;"></div>
+#
+# <script>
+# var mapOptions = {
+#     center: new naver.maps.LatLng(37.3595704, 127.105399),
+#     zoom: 10
+# };
+#
+# var map = new naver.maps.Map('map', mapOptions);
+# </script>
+# </body>
+# </html
+
+
+	return detail_text

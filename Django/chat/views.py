@@ -272,9 +272,10 @@ def message(request):
         DB.diff_path = 0
         start = str(data['result']['parameters']['all_from'])
         end = str(data['result']['parameters']['all_to'])
-        text = start+"에서 "+end+"까지 가는 길 알려드릴게요!\n\n\n"
-        text += pathPrint.get_result(start, end, '', DB.diff_path)
-        url_str = "http://pf.kakao.com/"
+        text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+        enc_userid = urllib.parse.quote_plus(user_id)
+        DB.detail_message = str(detail_res)
+        DB.save()
 
         if not eq(text[0],"더"):
             DB.diff_path += 1
@@ -283,7 +284,7 @@ def message(request):
 
         return JsonResponse({
             'message': {'text': text,
-                        'message_button': {'label':"자세히 보기",'url':url_str+"_fyjPC"}
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
                         },
         })
 
