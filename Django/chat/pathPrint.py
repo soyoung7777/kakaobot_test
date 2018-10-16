@@ -120,7 +120,8 @@ def get_result(start, end, tsType, pNum):
 	elif eq(s_status,"UNKNOWN_ERROR"):
 		txt = "서버오류"
 
-	return txt, detail_txt
+	return txt
+	#, detail_txt
 
 
 def detail_get_pathFind(data):
