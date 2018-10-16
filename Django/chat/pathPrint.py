@@ -152,4 +152,4 @@ def detail_get_pathFind(data):
 # </html
 
 
-	return detail_text
+	return detail
