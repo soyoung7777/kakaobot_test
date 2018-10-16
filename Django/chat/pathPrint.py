@@ -126,7 +126,7 @@ def get_result(start, end, tsType, pNum):
 def detail_get_pathFind(data):
 	detail = ""
 
-	detail = data
+	detail = data[0]
 
 # 	<!DOCTYPE html>
 # <html>
