@@ -70,6 +70,7 @@ def get_result(start, end, tsType, pNum):
 		try:
 			path_data = data['result']['path']
 			txt = start+"에서 "+end+"까지 가는 길 알려드릴게요!\n\n\n"
+			detail_txt = detail_get_pathFind(path_data)
 		except KeyError:
 			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 		path_len = len(path_data)
@@ -104,7 +105,6 @@ def get_result(start, end, tsType, pNum):
 						txt += bus(subPath[i])
 
 			txt +=  "\n\n다른경로를 원하시나용?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
-			detail_txt = detail_get_pathFind(path_data)
 		else:
 			txt = "더 이상 경로가 없어요!!\n"
 			detail_txt = ""
@@ -123,10 +123,10 @@ def get_result(start, end, tsType, pNum):
 	return [txt, detail_txt]
 
 
-def detail_get_pathFind(path_data):
-	detail_text = ""
+def detail_get_pathFind(data):
+	detail = ""
 
-	detail_text = path_data['result']['path']
+	detail = data
 
 # 	<!DOCTYPE html>
 # <html>

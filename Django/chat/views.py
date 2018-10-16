@@ -285,7 +285,7 @@ def message(request):
             DB.save()
 
         return JsonResponse({
-            'message': {'text': text,
+            'message': {'text': text+"\n\n\n\n\n"+detail_res,
                         'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
                         },
         })
