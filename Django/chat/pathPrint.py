@@ -124,9 +124,7 @@ def get_result(start, end, tsType, pNum):
 
 
 def detail_get_pathFind(data):
-	detail = ""
-
-	detail = data[0]
+	detail = "가나다라마바사"
 
 # 	<!DOCTYPE html>
 # <html>
