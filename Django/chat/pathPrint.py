@@ -82,29 +82,31 @@ def get_result(start, end, tsType, pNum):
 			count = len(subPath)
 
 			if pType == 1:
-				txt += "[지하철로 이동 🚋🚋]\n"
+				# txt += "[지하철로 이동 🚋🚋]\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 1:
 						txt += subway(subPath[i])
 			elif pType == 2:
-				txt += "[버스로 이동 🚌🚌]\n"
+				# txt += "[버스로 이동 🚌🚌]\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 2:
 						txt += bus(subPath[i])
 			else:
-				txt += "💌[지하철+버스로 이동하세요]💌\n"
+				# txt += "💌[지하철+버스로 이동하세요]💌\n"
 				for i in range(0, count):
 					tType = subPath[i]['trafficType']
 					if tType == 1 :
-						txt += "\n[지하철로 이동 🚋🚋]\n"
+						# txt += "\n[지하철로 이동 🚋🚋]\n"
 						txt += subway(subPath[i])
 					elif tType == 2:
-						txt += "\n[버스로 이동 🚌🚌]\n"
+						# txt += "\n[버스로 이동 🚌🚌]\n"
 						txt += bus(subPath[i])
+					if i not count:
+						txt += "\n⬇\n"
 
-			txt +=  "\n\n다른경로를 원하시나용?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
+			txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
 		else:
 			txt = "더 이상 경로가 없어요!!\n"
 			detail_txt = ""
