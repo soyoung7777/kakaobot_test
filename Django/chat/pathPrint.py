@@ -101,11 +101,14 @@ def get_result(start, end, tsType, pNum):
 					if tType == 1 :
 						# txt += "\n[지하철로 이동 🚋🚋]\n"
 						txt += subway(subPath[i])
+						if i < count:
+							txt += "\n⬇\n"
 					elif tType == 2:
 						# txt += "\n[버스로 이동 🚌🚌]\n"
 						txt += bus(subPath[i])
-					if i < count:
-						txt += "\n⬇\n"
+						if i < count:
+							txt += "\n⬇\n"
+
 
 			txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
 		else:
