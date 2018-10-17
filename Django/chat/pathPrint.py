@@ -80,6 +80,7 @@ def get_result(start, end, tsType, pNum):
 			subPath = path_data[pNum]['subPath']
 
 			count = len(subPath)
+			print(count)
 
 			if pType == 1:
 				# txt += "[지하철로 이동 🚋🚋]\n"
@@ -103,7 +104,7 @@ def get_result(start, end, tsType, pNum):
 					elif tType == 2:
 						# txt += "\n[버스로 이동 🚌🚌]\n"
 						txt += bus(subPath[i])
-					if i not count:
+					if i < count:
 						txt += "\n⬇\n"
 
 			txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
