@@ -45,6 +45,21 @@ def get_bus_station(json_Data):
 
 def get_bus_pos(busnumber):
 
+    res = ""
+    ACCESS = "rxJqZMHh6oQDUSfc7Kh42uCXZuHEhmj7dY7VWber2ryr9L5t2CFRy3z834JMR7RygMzaVby7ZQ3sW%2ByCZZn0Ig%3D%3D"
+    my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
+    encMy = urllib.parse.quote_plus(my)
+    encNo = urllib.parse.quote_plus(busnumber)
+
+    odUrl = "https://api.odsay.com/v1/api/searchBusLane?lang=0&busNo="+encNo+"&CID=1000&apiKey="+encMy
+
+    request = urllib.request.Request(odUrl)
+    response = urllib.request.urlopen(request)
+
+    json_rt = response.read().decode('utf-8')
+    st = json.loads(json_rt)
+
+    print(json_rt)
     print("busnumber : " + busnumber)
 
 
