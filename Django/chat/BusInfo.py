@@ -77,7 +77,7 @@ def get_bus_pos(busnumber):
     find = False
     for i in st['result']['station']:
         local_id_dic[i['localStationID']] = i['stationName']
-        if st['result']['station']['stationDirection'] == 2 and find == False:
+        if i['stationDirection'] == 2 and find == False:
             last_station = i['stationName']
             last_station_idx = i['idx']
             find = True
