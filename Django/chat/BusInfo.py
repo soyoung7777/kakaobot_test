@@ -71,7 +71,7 @@ def get_bus_pos(busnumber):
     json_rt = response.read().decode('utf-8')
     st = json.loads(json_rt)
 
-    print(st)
+    print(st['result']['station'][0])
 
 
 
