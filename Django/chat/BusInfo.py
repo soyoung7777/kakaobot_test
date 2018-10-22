@@ -106,7 +106,7 @@ def get_bus_pos(busnumber):
     res += "💌 "+busnumber + "의 위치 정보 💌" + "\n\n"
     res += "🚌 " + last_station + " 방향 🚌" + "\n"
     for i in bus_list:
-        if int(tmp[0]) > last_station_idx and reverse == False:
+        if int(i[0]) > last_station_idx and reverse == False:
             reverse = True
             res += "🚌 " + st['result']['station'][0]['stationName'] + " 방향 🚌" + "\n"
 
