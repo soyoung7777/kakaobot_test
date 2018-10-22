@@ -59,8 +59,12 @@ def get_bus_pos(busnumber):
     json_rt = response.read().decode('utf-8')
     st = json.loads(json_rt)
 
-    print(json_rt)
+    odsay_bus_id = st['result']['lane'][0]['busID']
+    local_bus_id = st['result']['lane'][0]['localBusID']
+    
     print("busnumber : " + busnumber)
+    print(odsay_bus_id + " " + local_bus_id)
+   
 
 
 def get_bus_direction(stationName):
