@@ -75,7 +75,7 @@ def get_bus_pos(busnumber):
 
     local_id_dic = {}
     for i in st['result']['station']:
-        dic['localStationID'] = i['localStationID']
+        local_id_dic['localStationID'] = i['localStationID']
 
     ACCESS = "3wHizUCNd7ZmuKOs9bo3k%2FYfetwb18DzZH2xGCF6njHOYeKe5pB4RoO6AKAz3xKdeFUAVYFsf2yWa%2BhntbQJHw%3D%3D"
     oAPI = "http://ws.bus.go.kr/api/rest/buspos/getLowBusPosByRtid?serviceKey="+ACCESS+"&busRouteId="+str(local_bus_id)
