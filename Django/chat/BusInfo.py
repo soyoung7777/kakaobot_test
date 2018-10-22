@@ -95,7 +95,7 @@ def get_bus_pos(busnumber):
 
         bus_list.append(tmp)
     
-    res += "🚌 "+busnumber + "의 위치 정보 🚌" + "\n"
+    res += "🚌 "+busnumber + "의 위치 정보 🚌" + "\n\n"
     for i in bus_list:
         res += "👉🏿 방향 : " + local_id_dic[i[2]]+"\n"
         res += "👉 현재위치 : " + st['result']['station'][int(i[0])]['stationName']+"\n"
@@ -104,6 +104,8 @@ def get_bus_pos(busnumber):
         res += "\n"
 
     print(res)
+    return res
+    
 
 
 

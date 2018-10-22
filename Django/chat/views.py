@@ -322,6 +322,8 @@ def message(request):
         DB.jsondata = ""
         DB.save()
 
+        print("finish")
+        
         return JsonResponse({
         'message': {'text': res},
         })
