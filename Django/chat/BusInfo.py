@@ -74,7 +74,7 @@ def get_bus_pos(busnumber):
     print(st['result']['station'][0])
 
     local_id_dic = {}
-    bool find = False
+    find = False
     for i in st['result']['station']:
         local_id_dic[i['localStationID']] = i['stationName']
         if st['result']['station']['stationDirection'] == 2 and find == False:
@@ -101,7 +101,7 @@ def get_bus_pos(busnumber):
 
         bus_list.append(tmp)
     
-    bool reverse = False
+    reverse = False
 
     res += "💌 "+busnumber + "의 위치 정보 💌" + "\n\n"
     res += "🚌 " + last_station + " 방향 🚌" + "\n"
