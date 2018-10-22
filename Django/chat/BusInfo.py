@@ -82,6 +82,7 @@ def get_bus_pos(busnumber):
     mbody = root.find("msgBody")
 
     for bus in mbody.iter("itemList"):
+        print("tttt")
         test = bus.find("plainNo").text
         print(test)
 
