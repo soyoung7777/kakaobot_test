@@ -61,9 +61,9 @@ def get_bus_pos(busnumber):
 
     odsay_bus_id = st['result']['lane'][0]['busID']
     local_bus_id = st['result']['lane'][0]['localBusID']
-    
+
     print("busnumber : " + busnumber)
-    print(odsay_bus_id + " " + local_bus_id)
+    print(str(odsay_bus_id) + " " + str(local_bus_id))
    
 
 
