@@ -81,8 +81,9 @@ def get_bus_pos(busnumber):
     root = tree.getroot()
     mbody = root.find("msgBody")
 
-    print(mbody)
-
+    for bus in mbody.iter("itemList"):
+        test = bus.find("plainNo").text
+        print(test)
 
 
 
