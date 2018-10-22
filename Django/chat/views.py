@@ -311,6 +311,7 @@ def message(request):
 
     if eq(str(data['result']['metadata']['intentName']), "Bus_number"):
         bus_N = data['result']['parameters']['bus_number']
+        print("BUSNUMBERINTENT")
         res = Bus_Info.get_bus_pos(bus_N)
 
     if eq(str(data['result']['metadata']['intentName']),"Bus_station"):
