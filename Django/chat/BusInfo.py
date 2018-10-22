@@ -91,10 +91,19 @@ def get_bus_pos(busnumber):
         tmp.append(bus.find("sectOrd").text)
         tmp.append(bus.find("stopFlag").text)
         tmp.append(bus.find("lastStnId").text)
+        tmp.append(bus.find("islastyn").text)
+
         bus_list.append(tmp)
     
+    res += "🚌 "+busnumber + " 🚌" + "\n"
     for i in bus_list:
-        print(i)
+        res += "👉🏿 방향 : " + local_bus_id[i[1]]+"\n"
+        res += "현재위치 : " + st['result']['station'][int(i[0])]['stationName']+"\n"
+        if int(i[3])==1 :
+            res += "‼️‼막차입니다‼️" + "\n"
+
+    print(res)
+
 
 
 
