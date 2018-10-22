@@ -79,7 +79,7 @@ def get_bus_pos(busnumber):
 
     tree = ET.parse(urllib.request.urlopen(oAPI))
     root = tree.getroot()
-    mbody = root.find("msgBody")
+    mbody = root.find("msgBody").text
 
     print(mbody)
     for bus in mbody.iter("itemList"):
