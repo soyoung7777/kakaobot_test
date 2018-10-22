@@ -74,8 +74,14 @@ def get_bus_pos(busnumber):
     print(st['result']['station'][0])
 
     local_id_dic = {}
+    bool find = False
     for i in st['result']['station']:
         local_id_dic[i['localStationID']] = i['stationName']
+        if st['result']['station']['stationDirection'] == 2 and find == False:
+            last_station = i['stationName']
+            last_station_idx = i['idx']
+            find = True
+
 
     ACCESS = "3wHizUCNd7ZmuKOs9bo3k%2FYfetwb18DzZH2xGCF6njHOYeKe5pB4RoO6AKAz3xKdeFUAVYFsf2yWa%2BhntbQJHw%3D%3D"
     oAPI = "http://ws.bus.go.kr/api/rest/buspos/getLowBusPosByRtid?serviceKey="+ACCESS+"&busRouteId="+str(local_bus_id)
@@ -95,12 +101,19 @@ def get_bus_pos(busnumber):
 
         bus_list.append(tmp)
     
-    res += "🚌 "+busnumber + "의 위치 정보 🚌" + "\n\n"
+    bool reverse = False
+
+    res += "💌 "+busnumber + "의 위치 정보 💌" + "\n\n"
+    res += "🚌 " + last_station + " 방향 🚌" + "\n"
     for i in bus_list:
+        if int(tmp[0]) > last_station_idx and reverse == False:
+            reverse = True
+            res += "🚌 " + st['result']['station'][0]['stationName'] + " 방향 🚌" + "\n"
+
         if int(i[3])==1 :
             res += "‼️막차입니다‼️" + "\n"  
-        res += "👉 현재위치 : " + st['result']['station'][int(i[0])]['stationName']+"\n"
-        res += "👉🏿 종착지 : " + local_id_dic[i[2]]+"\n"
+        res += "👉 현재정류장 : " + st['result']['station'][int(i[0])]['stationName']+"\n"
+        res += "👉🏿 다음정류장 : " + local_id_dic[i[2]]+"\n"
         res += "\n"
 
     print(res)
