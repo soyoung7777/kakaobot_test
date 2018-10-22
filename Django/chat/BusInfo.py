@@ -88,9 +88,9 @@ def get_bus_pos(busnumber):
 
     for bus in mbody.iter("itemList"):
         tmp = []
-        tmp.append(bus.find("sectOrd")).text
-        tmp.append(bus.find("stopFlag")).text
-        tmp.append(bus.find("lastStnId")).text
+        tmp.append(bus.find("sectOrd").text)
+        tmp.append(bus.find("stopFlag").text)
+        tmp.append(bus.find("lastStnId").text)
         bus_list.append(tmp)
     
     for i in bus_list:
