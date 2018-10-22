@@ -62,12 +62,10 @@ def get_bus_pos(busnumber):
     odsay_bus_id = st['result']['lane'][0]['busID']
     local_bus_id = st['result']['lane'][0]['localBusID']
 
-    encODsay = urllib.parse.quote_plus(my)
-
     print("busnumber : " + busnumber)
     print(str(odsay_bus_id) + " " + str(local_bus_id))
 
-    odUrl = "https://api.odsay.com/v1/api/busLaneDetail?lang=0&busNo="+encODsay+"&apiKey="+encMy
+    odUrl = "https://api.odsay.com/v1/api/busLaneDetail?lang=0&busID="+str(odsay_bus_id)+"&apiKey="+encMy
     request = urllib.request.Request(odUrl)
     response = urllib.request.urlopen(request)
     json_rt = response.read().decode('utf-8')
