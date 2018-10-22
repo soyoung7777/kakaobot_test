@@ -314,6 +314,18 @@ def message(request):
         print("BUSNUMBERINTENT")
         res = BusInfo.get_bus_pos(bus_N)
 
+        DB.dialogflow_action = 0
+        DB.bus_action = 0
+        DB.bus_arsid = ""
+        DB.bus_selected = ""
+        DB.bus_station_result = ""
+        DB.jsondata = ""
+        DB.save()
+
+        return JsonResponse({
+        'message': {'text': res},
+        })
+
     if eq(str(data['result']['metadata']['intentName']),"Bus_station"):
         if DB.bus_action == 0 :
             print("action 0")
