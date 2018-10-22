@@ -44,7 +44,8 @@ def get_bus_station(json_Data):
 
 
 def get_bus_pos(busnumber):
-    print("ttttherererere")
+
+    print("busnumber : " + busnumber)
 
 
 def get_bus_direction(stationName):
