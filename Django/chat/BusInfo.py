@@ -98,17 +98,18 @@ def get_bus_pos(busnumber):
         tmp.append(bus.find("stopFlag").text)
         tmp.append(bus.find("lastStnId").text)
         tmp.append(bus.find("islastyn").text)
+        tmp.append(bus.find("lastStTm").text)
 
         bus_list.append(tmp)
     
     reverse = False
 
     res += "💌 "+busnumber + "의 위치 정보 💌" + "\n\n"
-    res += "🚌 " + last_station + " 방향 🚌" + "\n"
+    res += "🚌 " + last_station + " 방향 🚌" + "\n\n"
     for i in bus_list:
         if int(i[0]) > last_station_idx and reverse == False:
             reverse = True
-            res += "🚌 " + st['result']['station'][0]['stationName'] + " 방향 🚌" + "\n"
+            res += "🚌 " + st['result']['station'][0]['stationName'] + " 방향 🚌" + "\n\n"
 
         if int(i[3])==1 :
             res += "‼️막차입니다‼️" + "\n"
