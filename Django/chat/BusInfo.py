@@ -75,7 +75,7 @@ def get_bus_pos(busnumber):
 
     local_id_dic = {}
     for i in st['result']['station']:
-        local_id_dic['localStationID'] = i['localStationID']
+        local_id_dic[i['localStationID']] = i['stationName']
 
     ACCESS = "3wHizUCNd7ZmuKOs9bo3k%2FYfetwb18DzZH2xGCF6njHOYeKe5pB4RoO6AKAz3xKdeFUAVYFsf2yWa%2BhntbQJHw%3D%3D"
     oAPI = "http://ws.bus.go.kr/api/rest/buspos/getLowBusPosByRtid?serviceKey="+ACCESS+"&busRouteId="+str(local_bus_id)
@@ -97,7 +97,7 @@ def get_bus_pos(busnumber):
     
     res += "🚌 "+busnumber + " 🚌" + "\n"
     for i in bus_list:
-        res += "👉🏿 방향 : " + local_bus_id[int(i[2])]+"\n"
+        res += "👉🏿 방향 : " + local_bus_id[i[2]]+"\n"
         res += "현재위치 : " + st['result']['station'][int(i[0])]['stationName']+"\n"
         if int(i[3])==1 :
             res += "‼️‼막차입니다‼️" + "\n"
