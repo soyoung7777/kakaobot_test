@@ -73,6 +73,9 @@ def get_bus_pos(busnumber):
 
     print(st['result']['station'][0])
 
+    local_id_dic = {}
+    for i in st['result']['station']:
+        dic['localStationID'] = i['localStationID']
 
     ACCESS = "3wHizUCNd7ZmuKOs9bo3k%2FYfetwb18DzZH2xGCF6njHOYeKe5pB4RoO6AKAz3xKdeFUAVYFsf2yWa%2BhntbQJHw%3D%3D"
     oAPI = "http://ws.bus.go.kr/api/rest/buspos/getLowBusPosByRtid?serviceKey="+ACCESS+"&busRouteId="+str(local_bus_id)
@@ -81,11 +84,17 @@ def get_bus_pos(busnumber):
     root = tree.getroot()
     mbody = root.find("msgBody")
 
-    print(mbody.text)
+    bus_list = []
+
     for bus in mbody.iter("itemList"):
-        print("tttt")
-        test = bus.find("plainNo").text
-        print(test)
+        tmp = []
+        tmp.append(bus.find("sectOrd")).text
+        tmp.append(bus.find("stopFlag")).text
+        tmp.append(bus.find("lastStnId")).text
+        bus_list.append(tmp)
+    
+    for i in bus_list:
+        print(i)
 
 
 
