@@ -148,7 +148,7 @@ def detail_get_pathFind(data, pNum, start, end):
 
 
 
-	return text, detail_txt
+	return txt, detail_txt
 
 def subway_detail(swPath):
 	sdText = ""
