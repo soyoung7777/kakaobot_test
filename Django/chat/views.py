@@ -606,4 +606,4 @@ def pathFind(request, pk, path_num, sx, sy, ex, ey):
     title = DB.title
 
     msg = mark_safe(msg)
-    return render_to_response('web/pathFind.html', {'message': msg, 'title':title, 'pathNum':path_num, 'geoSX':sx, 'geoSY':sy, "geoEX":ex, "geoEY":ey}))
+    return render_to_response('web/pathFind.html', {'message': msg, 'title':title, 'pathNum':path_num, 'geoSX':sx, 'geoSY':sy, "geoEX":ex, "geoEY":ey})
