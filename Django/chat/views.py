@@ -588,3 +588,16 @@ def index(request, pk):
     msg = mark_safe(msg)
     return render_to_response('web/index.html', {'message': msg, 'title':title})
     #return render(request, 'chat/index.html')
+
+def detail_pathFind(request, pk):
+    print("===call index function===")
+    #user_id = DB.user_id
+    DB = allData.objects.get(pk=pk)
+
+
+    msg = DB.detail_message
+    title = DB.title
+    print("detail_message : "+msg)
+    print("detail_message : "+str(type(msg)))
+    msg = mark_safe(msg)
+    return render_to_response('web/index.html', {'message': msg, 'title':title})
