@@ -48,6 +48,11 @@ def get_result(start, end, tsType, pNum):
 		ex = str(e_json['results'][0]['geometry']['location']['lng'])
 		ey = str(e_json['results'][0]['geometry']['location']['lat'])
 
+		print(sx)
+		print(sy)
+		print(ex)
+		print(ey)
+
 
 		my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
 		encMy = urllib.parse.quote_plus(my)

@@ -18,6 +18,17 @@
       <div class="message">
           {{message}}
       </div>
+      <br><br><br><br><br>
+      <p> path num check!!!!! </p>
+      <br>
+      <div>
+          <script>
+            var x = {{pathNum}};
+            document.write("path num is "+x)
+          </script>
+      </div>
+
+      <br><br><br><br><br>
       <div id="map" style="width:100%;height:600px;"></div>
       <script>
      	var mapOptions = {
@@ -32,8 +43,6 @@
      	var ex = 126.95693;
      	var ey = 37.495148;
 
-        var pNum = {{pNum}};
-
      	function searchPubTransPathAJAX() {
      		var xhr = new XMLHttpRequest();
      		//ODsay apiKey 입력
@@ -44,7 +53,7 @@
      			if (xhr.readyState == 4 && xhr.status == 200) {
      			console.log( JSON.parse(xhr.responseText) ); // <- xhr.responseText 로 결과를 가져올 수 있음
      			//노선그래픽 데이터 호출
-     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][pNum].info.mapObj);
+     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
      			}
      		}
      	}
