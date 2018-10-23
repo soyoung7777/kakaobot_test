@@ -100,7 +100,7 @@ def message(request):
                     end = str(data['result']['parameters']['all_to'])
                     title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
                     enc_userid = urllib.parse.quote_plus(user_id)
-                    path_num = DB.diff_path
+                    path_num = str(DB.diff_path)
                     DB.detail_message = str(detail_res)
                     DB.title = str(title)
                     DB.save()
@@ -281,7 +281,7 @@ def message(request):
         end = str(data['result']['parameters']['all_to'])
         title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
         enc_userid = urllib.parse.quote_plus(user_id)
-        path_num = DB.diff_path
+        path_num = str(DB.diff_path)
         DB.detail_message = str(detail_res)
         DB.title = str(title)
         DB.save()
