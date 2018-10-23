@@ -65,15 +65,15 @@ def get_result(start, end, tsType, pNum):
 		json_rt = response.read().decode('utf-8')
 		data = json.loads(json_rt)
 
-		txt = ""
-		detail_txt = ""
+		text = ""
+		detail_text = ""
 
 		try:
 			path_data = data['result']['path']
-			txt, detail_txt = detail_get_pathFind(path_data, pNum)
+			text, detail_text = detail_get_pathFind(path_data, pNum)
 		except KeyError:
-			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
-			detail_txt = ""
+			text = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
+			detail_text = ""
 
 
 	elif eq(s_status,"ZERO_RESULTS"):
@@ -87,7 +87,7 @@ def get_result(start, end, tsType, pNum):
 	elif eq(s_status,"UNKNOWN_ERROR"):
 		txt = "서버오류"
 
-	return txt, detail_txt
+	return text, detail_text
 
 
 def detail_get_pathFind(data, pNum):
