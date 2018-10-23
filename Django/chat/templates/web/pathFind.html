@@ -18,7 +18,7 @@
       <div class="message">
           {{message}}
       </div>
-      <div id="map" style="width:80%;height:400px;"></div>
+      <div id="map" style="width:100%;height:400px;"></div>
       <script>
      	var mapOptions = {
      		center: new naver.maps.LatLng(37.3595704, 127.105399),
@@ -53,7 +53,7 @@
      	function callMapObjApiAJAX(mabObj){
      		var xhr = new XMLHttpRequest();
      		//ODsay apiKey 입력
-     		var url = "https://api.odsay.com/v1/api/loadLane?mapObject=0:0@"+mabObj+"&apiKey={YOUR_API_KEY}";
+     		var url = "https://api.odsay.com/v1/api/loadLane?mapObject=0:0@"+mabObj+"&apiKey=2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ";
      		xhr.open("GET", url, true);
      		xhr.send();
      		xhr.onreadystatechange = function() {
