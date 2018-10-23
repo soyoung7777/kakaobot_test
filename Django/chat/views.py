@@ -98,7 +98,7 @@ def message(request):
                 if eq(str(data['result']['metadata']['intentName']),"PathFind"):
                     start = str(data['result']['parameters']['all_from'])
                     end = str(data['result']['parameters']['all_to'])
-                    title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+                    geo, title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
                     enc_userid = urllib.parse.quote_plus(user_id)
                     path_num = str(DB.diff_path)
                     DB.detail_message = str(detail_res)
@@ -292,7 +292,7 @@ def message(request):
             DB.save()
 
         return JsonResponse({
-            'message': {'text': text + "\n\n\n" +geo['sx']+"\n"+geo['sy']+"\n"+geo['ex']+"\n"+geo['ey'],
+            'message': {'text': text,
                         'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"+path_num+"/"+geo['sx']+"&"+geo['sy']+"&"+geo['ex']+"&"+geo['ey']+"/"}
                         },
         })
