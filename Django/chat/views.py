@@ -112,7 +112,7 @@ def message(request):
 
                     return JsonResponse({
                         'message': {'text': text,
-                                    'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"+path_num+"/"}
+                                    'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"+path_num+"/"+geo['sx']+"&"+geo['sy']+"&"+geo['ex']+"&"+geo['ey']+"/"}
                                     },
                     })
 
@@ -293,7 +293,7 @@ def message(request):
 
         return JsonResponse({
             'message': {'text': text + "\n\n\n" +geo['sx']+"\n"+geo['sy']+"\n"+geo['ex']+"\n"+geo['ey'],
-                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"+path_num+"/"}
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"+path_num+"/"+geo['sx']+"&"+geo['sy']+"&"+geo['ex']+"&"+geo['ey']+"/"}
                         },
         })
 
@@ -606,4 +606,4 @@ def pathFind(request, pk, path_num, sx, sy, ex, ey):
     title = DB.title
 
     msg = mark_safe(msg)
-    return render_to_response('web/pathFind.html', {'message': msg, 'title':title, 'pathNum':path_num})
+    return render_to_response('web/pathFind.html', {'message': msg, 'title':title, 'pathNum':path_num, 'geoSX':sx, 'geoSY':sy, "geoEX":ex, "geoEY":ey}))

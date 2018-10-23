@@ -8,6 +8,6 @@ urlpatterns = [
 	#url(r'^$',views.index),
 	url(r'^index/(?P<pk>.+)/$',views.index, name='index'),
 	path('',views.index, name='index'),
-	url(r'^pathFind/(?P<pk>.+)/(?P<path_num>\d+)/$',views.pathFind, name='pathFind'),
+	url(r'^pathFind/(?P<pk>.+)/(?P<path_num>\d+)/(?P<sx>.+)&(?P<sy>.+)&(?P<ex>.+)&(?P<ey>.+)/$',views.pathFind, name='pathFind'),
 	path('',views.pathFind, name='pathFind')
 ]
