@@ -5,6 +5,7 @@ from operator import eq
 import ast
 
 def subway(swPath):
+	sText = ""
 	sText = swPath['startName']+"역에서\n"
 	sText += swPath['lane'][0]['name']+"을 탑승\n⬇⬇⬇\n"
 	sText += "("+swPath['passStopList']['stations'][1]['stationName']+"방면)\n"
@@ -15,6 +16,7 @@ def subway(swPath):
 
 
 def bus(busPath):
+	bText = ""
 	bText = busPath['startName']+"정류장에서\n"
 	bText += busPath['lane'][0]['busNo']+"번 버스 탑승\n⬇⬇⬇\n"
 	bText += busPath['endName']+"정류장에서 하차\n"
@@ -77,15 +79,15 @@ def get_result(start, end, tsType, pNum):
 
 
 	elif eq(s_status,"ZERO_RESULTS"):
-		txt = "존재하지 않는 주소입니다"
+		text = "존재하지 않는 주소입니다"
 	elif eq(s_status,"OVER_QUERY_LIMIT") :
-		txt = "할당량 초과"
+		text = "할당량 초과"
 	elif eq(s_status,"REQUEST_DENIED"):
-		txt = "요청거부"
+		text = "요청거부"
 	elif eq(s_status,"INVALID_REQUEST"):
-		txt = "출발지 정보 누락"
+		text = "출발지 정보 누락"
 	elif eq(s_status,"UNKNOWN_ERROR"):
-		txt = "서버오류"
+		text = "서버오류"
 
 	return text, detail_text
 
@@ -93,6 +95,9 @@ def get_result(start, end, tsType, pNum):
 def detail_get_pathFind(data, pNum):
 
 	path_len = len(data)
+
+	txt = ""
+	detail_txt = ""
 
 	if pNum < path_len:
 		pType = data[pNum]['pathType']
@@ -144,37 +149,38 @@ def detail_get_pathFind(data, pNum):
 	return txt, detail_txt
 
 def subway_detail(swPath):
-	sText = swPath['startName']+"역에서\n"
-	sText += swPath['passStopList']['stations'][1]['stationName']+"방면으로\n"
-	sText += swPath['lane'][0]['name']+"을 탑승하세요!\n⬇⬇⬇\n"
+	sdText = ""
+	sdText = swPath['startName']+"역에서\n"
+	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로\n"
+	sdText += swPath['lane'][0]['name']+"을 탑승하세요!\n⬇⬇⬇\n"
 
-	sText += str(swPath['stationCount'])+"개 정류장 이동 후\n"
-	sText += swPath['endName']+"역에서 하차하세요!\n\n"
+	sdText += str(swPath['stationCount'])+"개 정류장 이동 후\n"
+	sdText += swPath['endName']+"역에서 하차하세요!\n\n"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
-		sText += swPath['passStopList']['stations']['stationName']
+		sdText += swPath['passStopList']['stations']['stationName']
 		if i < cnt:
-			sText += "➡"
+			sdText += "➡"
 
-	sText += "\n\n"
+	sdText += "\n\n"
 
-
-	return sText;
+	return sdText;
 
 def bus_detail(busPath):
-	bText = busPath['startName']+"정류장에서\n"
-	bText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요\n⬇⬇⬇\n"
+	bdText = ""
+	bdText = busPath['startName']+"정류장에서\n"
+	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요\n⬇⬇⬇\n"
 
-	bText += str(busPath['stationCount'])+"개 정류장 이동 후\n"
-	bText += busPath['endName']+"정류장에서 하차하세요\n\n"
+	bdText += str(busPath['stationCount'])+"개 정류장 이동 후\n"
+	bdText += busPath['endName']+"정류장에서 하차하세요\n\n"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
-		bText += swPath['passStopList']['stations']['stationName']
+		bdText += swPath['passStopList']['stations']['stationName']
 		if i < cnt:
-			bText += "➡"
+			bdText += "➡"
 
-	bText += "\n\n"
+	bdText += "\n\n"
 
-	return bText
+	return bdText
