@@ -65,13 +65,17 @@ def get_result(start, end, tsType, pNum):
 		json_rt = response.read().decode('utf-8')
 		data = json.loads(json_rt)
 
+		txt = ""
+		detail_txt = ""
+
 		try:
 			path_data = data['result']['path']
+			txt, detail_txt = detail_get_pathFind(path_data)
 		except KeyError:
 			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 			detail_txt = ""
 
-		txt, detail_txt = detail_get_pathFind(path_data)
+
 
 
 	elif eq(s_status,"ZERO_RESULTS"):
