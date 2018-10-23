@@ -3,6 +3,7 @@ import urllib.request
 import urllib.parse
 from operator import eq
 import ast
+from collections import OrderedDict
 
 def subway(swPath):
 	sText = ""
@@ -40,6 +41,8 @@ def get_result(start, end, tsType, pNum):
 	s_json = json.loads(s_response.read().decode('utf-8'))
 	e_json = json.loads(e_response.read().decode('utf-8'))
 
+	geoList = OrderedDict()
+
 	s_status = str(s_json['status'])
 	if eq(s_status,"OK") :
 		#(x, 경도, longtitude) , (y, 위도, latitude)
@@ -48,10 +51,12 @@ def get_result(start, end, tsType, pNum):
 		ex = str(e_json['results'][0]['geometry']['location']['lng'])
 		ey = str(e_json['results'][0]['geometry']['location']['lat'])
 
-		print(sx)
-		print(sy)
-		print(ex)
-		print(ey)
+		geoList["sx"] = sx
+		geoList["sy"] = sy
+		geoList["ex"] = ex
+		geoList["ey"] = ey
+
+
 
 
 		my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
@@ -96,7 +101,7 @@ def get_result(start, end, tsType, pNum):
 	elif eq(s_status,"UNKNOWN_ERROR"):
 		text = "서버오류"
 
-	return title, text, detail_text
+	return geoList, title, text, detail_text
 
 
 def detail_get_pathFind(data, pNum, start, end):
