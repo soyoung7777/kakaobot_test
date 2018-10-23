@@ -579,6 +579,11 @@ def message(request):
             })
 
 
+    return JsonResponse({
+        'message':{'text':txt},
+        'keyboard':{'type':'text'}
+    })
+
 def index(request, pk):
     print("===call index function===")
     #user_id = DB.user_id
