@@ -144,7 +144,7 @@ def detail_get_pathFind(data, pNum, start, end):
 		txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
 	else:
 		txt = "더 이상 경로가 없어요!!\n"
-		detail_txt = ""
+		detail_txt = "경로가 없어요!"
 
 
 

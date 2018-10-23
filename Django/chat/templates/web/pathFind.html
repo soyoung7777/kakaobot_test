@@ -35,12 +35,12 @@
 		map.panToBounds(_boundary);
 
 
-     	var sx = 126.93737555322481;
-     	var sy = 37.55525165729346;
-     	var ex = 126.88265238619182;
-     	var ey = 37.481440035175375;
+     	var sx = 126.88292;
+     	var sy = 37.502186;
+     	var ex = 126.95693;
+     	var ey = 37.495148;
 
-        var pNum = {{pNum}};
+
 
 
      	function searchPubTransPathAJAX() {
@@ -53,7 +53,7 @@
      			if (xhr.readyState == 4 && xhr.status == 200) {
      			console.log( JSON.parse(xhr.responseText) ); // <- xhr.responseText 로 결과를 가져올 수 있음
      			//노선그래픽 데이터 호출
-     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][pNum].info.mapObj);
+     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
      			}
      		}
      	}
