@@ -95,11 +95,11 @@ def detail_get_pathFind(data, pNum):
 	path_len = len(data)
 
 	if pNum < path_len:
-		pType = path_data[pNum]['pathType']
-		subPath = path_data[pNum]['subPath']
+		pType = data[pNum]['pathType']
+		subPath = data[pNum]['subPath']
 
 		count = len(subPath)
-		
+
 		if pType == 1:
 			# txt += "[지하철로 이동 🚋🚋]\n"
 			for i in range(0, count):
