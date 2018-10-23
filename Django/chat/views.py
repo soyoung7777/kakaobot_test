@@ -591,7 +591,6 @@ def index(request, pk):
     #return render(request, 'chat/index.html')
 
 def pathFind(request, pk):
-    print("===call index function===")
     #user_id = DB.user_id
     DB = allData.objects.get(pk=pk)
 
