@@ -160,8 +160,8 @@ def subway_detail(swPath):
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
 		sdText += swPath['passStopList']['stations']['stationName']
-		if i < cnt:
-			sdText += "➡"
+		if i < (cnt-1):
+			sdText += " ➡ "
 
 	sdText += "\n\n"
 
@@ -175,11 +175,11 @@ def bus_detail(busPath):
 	bdText += str(busPath['stationCount'])+"개 정류장 이동 후\n"
 	bdText += busPath['endName']+"정류장에서 하차하세요\n\n"
 
-	cnt = swPath['stationCount']
+	cnt = busPath['stationCount']
 	for i in range(0, cnt):
-		bdText += swPath['passStopList']['stations']['stationName']
-		if i < cnt:
-			bdText += "➡"
+		bdText += busPath['passStopList']['stations']['stationName']
+		if i < (cnt-1):
+			bdText += " ➡ "
 
 	bdText += "\n\n"
 
