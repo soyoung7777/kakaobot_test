@@ -71,7 +71,7 @@ def get_result(start, end, tsType, pNum):
 			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 			detail_txt = ""
 
-		txt, detail_txt = detail_get_pathFind(path_datat)
+		txt, detail_txt = detail_get_pathFind(path_data)
 
 
 	elif eq(s_status,"ZERO_RESULTS"):
