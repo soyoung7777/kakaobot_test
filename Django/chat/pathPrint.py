@@ -70,7 +70,7 @@ def get_result(start, end, tsType, pNum):
 
 		try:
 			path_data = data['result']['path']
-			txt, detail_txt = detail_get_pathFind(path_data)
+			txt, detail_txt = detail_get_pathFind(path_data, pNum)
 		except KeyError:
 			txt = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 			detail_txt = ""
@@ -90,7 +90,7 @@ def get_result(start, end, tsType, pNum):
 	return txt, detail_txt
 
 
-def detail_get_pathFind(data):
+def detail_get_pathFind(data, pNum):
 
 	path_len = len(data)
 
@@ -99,8 +99,7 @@ def detail_get_pathFind(data):
 		subPath = path_data[pNum]['subPath']
 
 		count = len(subPath)
-		print(count)
-
+		
 		if pType == 1:
 			# txt += "[지하철로 이동 🚋🚋]\n"
 			for i in range(0, count):
