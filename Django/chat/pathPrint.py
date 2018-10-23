@@ -72,7 +72,7 @@ def get_result(start, end, tsType, pNum):
 
 		try:
 			path_data = data['result']['path']
-			text, detail_text = detail_get_pathFind(path_data, pNum)
+			text, detail_text = detail_get_pathFind(path_data, pNum, start, end)
 		except KeyError:
 			text = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
 			detail_text = ""
@@ -92,11 +92,11 @@ def get_result(start, end, tsType, pNum):
 	return text, detail_text
 
 
-def detail_get_pathFind(data, pNum):
+def detail_get_pathFind(data, pNum, start, end):
 
 	path_len = len(data)
 
-	txt = ""
+	txt = start +"에서 "+end+"까지 경로를 안내해드릴게요!"
 	detail_txt = ""
 
 	if pNum < path_len:
