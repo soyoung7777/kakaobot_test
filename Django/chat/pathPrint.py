@@ -7,7 +7,7 @@ import ast
 def subway(swPath):
 	sText = ""
 	sText += "💜"+swPath['startName']+"역에서\n"
-	sText += swPath['lane'][0]['name']+"을 탑승\n"
+	sText += swPath['lane'][0]['name']+"을 탑승\n⬇⬇⬇\n"
 	sText += "("+swPath['passStopList']['stations'][1]['stationName']+"방면)\n"
 	sText += "💜"+swPath['endName']+"역에서 하차\n"
 	sText += "("+str(swPath['stationCount'])+"개 정류장 이동)\n"
@@ -18,7 +18,7 @@ def subway(swPath):
 def bus(busPath):
 	bText = ""
 	bText += "💛"+busPath['startName']+"정류장에서\n"
-	bText += busPath['lane'][0]['busNo']+"번 버스 탑승\n"
+	bText += busPath['lane'][0]['busNo']+"번 버스 탑승\n⬇⬇⬇\n"
 	bText += "💛"+busPath['endName']+"정류장에서 하차\n"
 	bText += "("+str(busPath['stationCount'])+"개 정류장 이동)\n"
 
@@ -101,13 +101,13 @@ def get_result(start, end, tsType, pNum):
 					if tType == 1 :
 						# txt += "\n[지하철로 이동 🚋🚋]\n"
 						txt += subway(subPath[i])
-						if i < count:
-							txt += "\n⬇\n"
+						if i < (count-1):
+							txt += "⬇⬇⬇\n"
 					elif tType == 2:
 						# txt += "\n[버스로 이동 🚌🚌]\n"
 						txt += bus(subPath[i])
-						if i < count:
-							txt += "\n⬇\n"
+						if i < (count-1):
+							txt += "⬇⬇⬇\n"
 
 
 			txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"

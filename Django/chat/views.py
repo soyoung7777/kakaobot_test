@@ -284,7 +284,7 @@ def message(request):
 
         return JsonResponse({
             'message': {'text': text+"\n\n\n\n\n"+detail_res,
-                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/path/"+enc_userid+"/"}
                         },
         })
 
@@ -323,7 +323,7 @@ def message(request):
         DB.save()
 
         print("finish")
-        
+
         return JsonResponse({
         'message': {'text': res},
         })
