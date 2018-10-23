@@ -27,10 +27,18 @@
 
      	var map = new naver.maps.Map('map', mapOptions);
 
+        var _boundary = new naver.maps.LatLngBounds(
+			                new naver.maps.LatLng(37.55865373137171, 126.87939340413621),
+			                new naver.maps.LatLng(37.48119041180724, 126.93684177635454)
+			                );
+		map.panToBounds(_boundary);
+
+
      	var sx = 126.93737555322481;
      	var sy = 37.55525165729346;
      	var ex = 126.88265238619182;
      	var ey = 37.481440035175375;
+
 
      	function searchPubTransPathAJAX() {
      		var xhr = new XMLHttpRequest();
@@ -42,7 +50,7 @@
      			if (xhr.readyState == 4 && xhr.status == 200) {
      			console.log( JSON.parse(xhr.responseText) ); // <- xhr.responseText 로 결과를 가져올 수 있음
      			//노선그래픽 데이터 호출
-     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+     			callMapObjApiAJAX((JSON.parse(xhr.responseText)).result.path[0].info.mapObj);
      			}
      		}
      	}
