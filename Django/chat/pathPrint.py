@@ -91,7 +91,7 @@ def get_result(start, end, tsType, pNum):
 	elif eq(s_status,"UNKNOWN_ERROR"):
 		text = "서버오류"
 
-	return text, detail_text
+	return title, text, detail_text
 
 
 def detail_get_pathFind(data, pNum, start, end):
@@ -148,7 +148,7 @@ def detail_get_pathFind(data, pNum, start, end):
 
 
 
-	return title, text, detail_txt
+	return text, detail_txt
 
 def subway_detail(swPath):
 	sdText = ""

@@ -272,7 +272,7 @@ def message(request):
         DB.diff_path = 0
         start = str(data['result']['parameters']['all_from'])
         end = str(data['result']['parameters']['all_to'])
-        titel, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+        title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
         enc_userid = urllib.parse.quote_plus(user_id)
         DB.detail_message = str(detail_res)
         DB.title = str(title)
