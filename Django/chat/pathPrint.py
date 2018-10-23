@@ -67,11 +67,13 @@ def get_result(start, end, tsType, pNum):
 		json_rt = response.read().decode('utf-8')
 		data = json.loads(json_rt)
 
+		title = ""
 		text = ""
 		detail_text = ""
 
 		try:
 			path_data = data['result']['path']
+			title = start +"에서 "+end+"까지 경로"
 			text, detail_text = detail_get_pathFind(path_data, pNum, start, end)
 		except KeyError:
 			text = "문제가 생겼어요😂잠시 후 다시 이용해주시겠어요?"
@@ -96,7 +98,7 @@ def detail_get_pathFind(data, pNum, start, end):
 
 	path_len = len(data)
 
-	txt = start +"에서 "+end+"까지 경로를 안내해드릴게요!"
+	txt = start +"에서 "+end+"까지 경로를 안내해드릴게요!\n\n"
 	detail_txt = ""
 
 	if pNum < path_len:
@@ -129,14 +131,14 @@ def detail_get_pathFind(data, pNum, start, end):
 					detail_txt += subway_detail(subPath[i])
 					if i < (count-2):
 						txt += "⬇⬇⬇\n"
-						detail_txt += "⬇⬇⬇\n"
+						detail_txt += "⬇⬇⬇<br>"
 				elif tType == 2:
 					# txt += "\n[버스로 이동 🚌🚌]\n"
 					txt += bus(subPath[i])
 					detail_txt += bus_detail(subPath[i])
 					if i < (count-2):
 						txt += "⬇⬇⬇\n"
-						detail_txt += "⬇⬇⬇\n"
+						detail_txt += "⬇⬇⬇<br>"
 
 
 		txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
@@ -146,7 +148,7 @@ def detail_get_pathFind(data, pNum, start, end):
 
 
 
-	return txt, detail_txt
+	return title, text, detail_txt
 
 def subway_detail(swPath):
 	sdText = ""

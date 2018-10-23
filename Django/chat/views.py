@@ -272,9 +272,10 @@ def message(request):
         DB.diff_path = 0
         start = str(data['result']['parameters']['all_from'])
         end = str(data['result']['parameters']['all_to'])
-        text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+        titel, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
         enc_userid = urllib.parse.quote_plus(user_id)
         DB.detail_message = str(detail_res)
+        DB.title = str(title)
         DB.save()
 
         if not eq(text[0],"더"):
@@ -594,10 +595,8 @@ def pathFind(request, pk):
     #user_id = DB.user_id
     DB = allData.objects.get(pk=pk)
 
-
     msg = DB.detail_message
     title = DB.title
-    print("detail_message : "+msg)
-    print("detail_message : "+str(type(msg)))
+
     msg = mark_safe(msg)
     return render_to_response('web/pathFind.html', {'message': msg, 'title':title})
