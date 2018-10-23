@@ -76,8 +76,6 @@ def get_result(start, end, tsType, pNum):
 			detail_txt = ""
 
 
-
-
 	elif eq(s_status,"ZERO_RESULTS"):
 		txt = "존재하지 않는 주소입니다"
 	elif eq(s_status,"OVER_QUERY_LIMIT") :
@@ -94,7 +92,7 @@ def get_result(start, end, tsType, pNum):
 
 def detail_get_pathFind(data):
 
-	path_len = len(path_data)
+	path_len = len(data)
 
 	if pNum < path_len:
 		pType = path_data[pNum]['pathType']

@@ -600,4 +600,4 @@ def pathFind(request, pk):
     print("detail_message : "+msg)
     print("detail_message : "+str(type(msg)))
     msg = mark_safe(msg)
-    return render_to_response('web/index.html', {'message': msg, 'title':title})
+    return render_to_response('web/pathFind.html', {'message': msg, 'title':title})
