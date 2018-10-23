@@ -284,7 +284,7 @@ def message(request):
 
         return JsonResponse({
             'message': {'text': text+"\n\n\n\n\n"+detail_res,
-                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/path/"+enc_userid+"/"}
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"}
                         },
         })
 
@@ -589,7 +589,7 @@ def index(request, pk):
     return render_to_response('web/index.html', {'message': msg, 'title':title})
     #return render(request, 'chat/index.html')
 
-def detail_pathFind(request, pk):
+def pathFind(request, pk):
     print("===call index function===")
     #user_id = DB.user_id
     DB = allData.objects.get(pk=pk)
