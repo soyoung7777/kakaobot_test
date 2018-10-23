@@ -32,6 +32,7 @@
      	var ex = 126.95693;
      	var ey = 37.495148;
 
+        var pNum = {{pNum}};
 
      	function searchPubTransPathAJAX() {
      		var xhr = new XMLHttpRequest();
@@ -43,7 +44,7 @@
      			if (xhr.readyState == 4 && xhr.status == 200) {
      			console.log( JSON.parse(xhr.responseText) ); // <- xhr.responseText 로 결과를 가져올 수 있음
      			//노선그래픽 데이터 호출
-     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
+     			callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][pNum].info.mapObj);
      			}
      		}
      	}

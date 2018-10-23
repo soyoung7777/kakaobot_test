@@ -602,6 +602,7 @@ def pathFind(request, pk):
 
     msg = DB.detail_message
     title = DB.title
+    pNum = DB.diff_path
 
     msg = mark_safe(msg)
-    return render_to_response('web/pathFind.html', {'message': msg, 'title':title})
+    return render_to_response('web/pathFind.html', {'message': msg, 'title':title, 'pNum':pNum})
