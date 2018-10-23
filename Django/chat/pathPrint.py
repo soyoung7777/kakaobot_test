@@ -7,8 +7,8 @@ import ast
 def subway(swPath):
 	sText = ""
 	sText = swPath['startName']+"역에서\n"
-	sText += swPath['lane'][0]['name']+"을 탑승\n⬇⬇⬇\n"
-	sText += "("+swPath['passStopList']['stations'][1]['stationName']+"방면)\n"
+	sText += swPath['lane'][0]['name']+"을 탑승\n"
+	sText += "("+swPath['passStopList']['stations'][1]['stationName']+"방면)\n⬇⬇⬇\n"
 	sText += swPath['endName']+"역에서 하차\n"
 	sText += "("+str(swPath['stationCount'])+"개 정류장 이동)\n"
 
@@ -131,14 +131,14 @@ def detail_get_pathFind(data, pNum, start, end):
 					detail_txt += subway_detail(subPath[i])
 					if i < (count-2):
 						txt += "⬇⬇⬇\n"
-						detail_txt += "⬇⬇⬇<br>"
+						detail_txt += "⬇⬇⬇<br><br>"
 				elif tType == 2:
 					# txt += "\n[버스로 이동 🚌🚌]\n"
 					txt += bus(subPath[i])
 					detail_txt += bus_detail(subPath[i])
 					if i < (count-2):
 						txt += "⬇⬇⬇\n"
-						detail_txt += "⬇⬇⬇<br>"
+						detail_txt += "⬇⬇⬇<br><br>"
 
 
 		txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
@@ -152,12 +152,12 @@ def detail_get_pathFind(data, pNum, start, end):
 
 def subway_detail(swPath):
 	sdText = ""
-	sdText = swPath['startName']+"역에서<br>"
-	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로\n"
-	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br>⬇⬇⬇<br>"
+	sdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+swPath['startName']+"</font>역에서"
+	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로<br>"
+	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br><br>⬇⬇⬇<br><br>"
 
-	sdText += str(swPath['stationCount'])+"개 정류장 이동 후<br>"
-	sdText += swPath['endName']+"역에서 하차하세요!<br><br>"
+	sdText += str(swPath['stationCount'])+"개 정류장 이동 후"
+	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+swPath['endName']+"</font>역에서 하차하세요!<br><br>"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
@@ -171,11 +171,11 @@ def subway_detail(swPath):
 
 def bus_detail(busPath):
 	bdText = ""
-	bdText = busPath['startName']+"정류장에서<br>"
-	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요<br>⬇⬇⬇<br>"
+	bdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+busPath['startName']+"</font>정류장에서<br>"
+	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요<br><br>⬇⬇⬇<br><br>"
 
 	bdText += str(busPath['stationCount'])+"개 정류장 이동 후<br>"
-	bdText += busPath['endName']+"정류장에서 하차하세요<br><br>"
+	bdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+busPath['endName']+"</font>정류장에서 하차하세요<br><br>"
 
 	cnt = busPath['stationCount']
 	for i in range(0, cnt):
