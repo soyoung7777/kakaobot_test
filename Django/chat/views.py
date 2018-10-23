@@ -98,7 +98,11 @@ def message(request):
                 if eq(str(data['result']['metadata']['intentName']),"PathFind"):
                     start = str(data['result']['parameters']['all_from'])
                     end = str(data['result']['parameters']['all_to'])
-                    text = pathPrint.get_result(start, end, '', DB.diff_path)
+                    title, text, detail_res = pathPrint.get_result(start, end, '', DB.diff_path)
+                    enc_userid = urllib.parse.quote_plus(user_id)
+                    DB.detail_message = str(detail_res)
+                    DB.title = str(title)
+                    DB.save()
 
                     if not eq(text[0],"더"):
                         DB.diff_path += 1
@@ -106,7 +110,9 @@ def message(request):
                         DB.save()
 
                     return JsonResponse({
-                    'message': {'text': text},
+                        'message': {'text': text,
+                                    'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"}
+                                    },
                     })
 
 
