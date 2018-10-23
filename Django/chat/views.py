@@ -283,7 +283,7 @@ def message(request):
             DB.save()
 
         return JsonResponse({
-            'message': {'text': text+"\n\n\n\n\n"+detail_res,
+            'message': {'text': text,
                         'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/pathFind/"+enc_userid+"/"}
                         },
         })

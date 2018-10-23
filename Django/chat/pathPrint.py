@@ -150,12 +150,12 @@ def detail_get_pathFind(data, pNum):
 
 def subway_detail(swPath):
 	sdText = ""
-	sdText = swPath['startName']+"역에서\n"
+	sdText = swPath['startName']+"역에서<br>"
 	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로\n"
-	sdText += swPath['lane'][0]['name']+"을 탑승하세요!\n⬇⬇⬇\n"
+	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br>⬇⬇⬇<br>"
 
-	sdText += str(swPath['stationCount'])+"개 정류장 이동 후\n"
-	sdText += swPath['endName']+"역에서 하차하세요!\n\n"
+	sdText += str(swPath['stationCount'])+"개 정류장 이동 후<br>"
+	sdText += swPath['endName']+"역에서 하차하세요!<br><br>"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
@@ -163,17 +163,17 @@ def subway_detail(swPath):
 		if i < (cnt-1):
 			sdText += " ➡ "
 
-	sdText += "\n\n"
+	sdText += "<br><br>"
 
 	return sdText;
 
 def bus_detail(busPath):
 	bdText = ""
-	bdText = busPath['startName']+"정류장에서\n"
-	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요\n⬇⬇⬇\n"
+	bdText = busPath['startName']+"정류장에서<br>"
+	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요<br>⬇⬇⬇<br>"
 
-	bdText += str(busPath['stationCount'])+"개 정류장 이동 후\n"
-	bdText += busPath['endName']+"정류장에서 하차하세요\n\n"
+	bdText += str(busPath['stationCount'])+"개 정류장 이동 후<br>"
+	bdText += busPath['endName']+"정류장에서 하차하세요<br><br>"
 
 	cnt = busPath['stationCount']
 	for i in range(0, cnt):
@@ -181,6 +181,6 @@ def bus_detail(busPath):
 		if i < (cnt-1):
 			bdText += " ➡ "
 
-	bdText += "\n\n"
+	bdText += "<br><br>"
 
 	return bdText
