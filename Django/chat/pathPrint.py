@@ -159,7 +159,7 @@ def subway_detail(swPath):
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
-		sdText += swPath['passStopList']['stations']['stationName']
+		sdText += str(swPath['passStopList']['stations'][i]['stationName'])
 		if i < (cnt-1):
 			sdText += " ➡ "
 
@@ -177,7 +177,7 @@ def bus_detail(busPath):
 
 	cnt = busPath['stationCount']
 	for i in range(0, cnt):
-		bdText += busPath['passStopList']['stations']['stationName']
+		bdText += str(busPath['passStopList']['stations'][i]['stationName'])
 		if i < (cnt-1):
 			bdText += " ➡ "
 
