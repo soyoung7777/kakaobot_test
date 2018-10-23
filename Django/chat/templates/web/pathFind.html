@@ -31,6 +31,7 @@
 			                new naver.maps.LatLng(37.55865373137171, 126.87939340413621),
 			                new naver.maps.LatLng(37.48119041180724, 126.93684177635454)
 			                );
+
 		map.panToBounds(_boundary);
 
 
@@ -55,8 +56,7 @@
      		}
      	}
 
-     	//길찾기 API 호출
-     	searchPubTransPathAJAX();
+
 
      	function callMapObjApiAJAX(mabObj){
      		var xhr = new XMLHttpRequest();
@@ -127,6 +127,9 @@
      			}
      		}
      	}
+
+        //길찾기 API 호출
+     	searchPubTransPathAJAX();
       </script>
   </div>
 <div class = "footer">
