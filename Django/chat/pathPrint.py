@@ -56,6 +56,10 @@ def get_result(start, end, tsType, pNum):
 		geoList["ex"] = ex
 		geoList["ey"] = ey
 
+		print(sx)
+		print(sy)
+		print(ex)
+		print(ey)
 
 
 
