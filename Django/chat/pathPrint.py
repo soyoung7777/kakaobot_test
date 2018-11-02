@@ -159,12 +159,12 @@ def detail_get_pathFind(data, pNum, start, end):
 
 def subway_detail(swPath):
 	sdText = ""
-	sdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+swPath['startName']+"</font>역에서 "
-	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로<br>"
-	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br>⬇⬇⬇<br>"
+	sdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['startName']+"</font>역에서 "
+	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로<br><br>"
+	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br><br>⬇⬇⬇<br><br>"
 
 	sdText += str(swPath['stationCount'])+"개 정류장 이동 후 "
-	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+swPath['endName']+"</font>역에서 하차하세요!<br><br>"
+	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['endName']+"</font>역에서 하차하세요!<br><br>"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
@@ -172,17 +172,17 @@ def subway_detail(swPath):
 		if i < (cnt-1):
 			sdText += " >> "
 
-	sdText += "<br>"
+	sdText += "<br><br>"
 
 	return sdText;
 
 def bus_detail(busPath):
 	bdText = ""
-	bdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+busPath['startName']+"</font> 정류장에서<br>"
-	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요<br>⬇⬇⬇<br>"
+	bdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+busPath['startName']+"</font> 정류장에서<br><br>"
+	bdText += busPath['lane'][0]['busNo']+"번 버스를 탑승하세요<br><br>⬇⬇⬇<br><br>"
 
-	bdText += str(busPath['stationCount'])+"개 정류장 이동 후<br>"
-	bdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+busPath['endName']+"</font> 정류장에서 하차하세요<br>"
+	bdText += str(busPath['stationCount'])+"개 정류장 이동 후<br><br>"
+	bdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+busPath['endName']+"</font> 정류장에서 하차하세요<br><br>"
 
 	cnt = busPath['stationCount']
 	for i in range(0, cnt):
@@ -190,6 +190,6 @@ def bus_detail(busPath):
 		if i < (cnt-1):
 			bdText += " >> "
 
-	bdText += "<br>"
+	bdText += "<br><br>"
 
 	return bdText

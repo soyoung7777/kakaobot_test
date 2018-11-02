@@ -39,6 +39,7 @@ body {
  bottom: -80px;
  border:30px transparent solid;
  border-top:50px #efefef solid;
+ word-wrap: break-word;
 }
 .bubble-speech .title {
  max-width: 700px;
@@ -47,6 +48,7 @@ body {
  margin: 0;
  margin-left: 20px;
  padding: 30px 12px 2px 30px;
+ word-wrap: break-word;
 }
 
 .bubble-speech .message {
@@ -62,7 +64,14 @@ body {
   bottom: 5%;
   width: 100%;
   position:fixed;
+  word-wrap: break-word;
 }
 #magic{
  margin:20px;
+}
+
+.map_in_bubble{
+    margin-left:20px;
+    margin-right:20px;
+    height:600px;
 }
