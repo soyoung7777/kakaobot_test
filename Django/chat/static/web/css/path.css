@@ -9,7 +9,7 @@ body {
  overflow-x:hidden;
  overflow-y:auto;
  word-wrap: break-word;
- line-height: 1.2em;
+ line-height: 15px;
 }
 
 .bubble-speech {
@@ -63,8 +63,7 @@ body {
 .footer{
   bottom: 5%;
   width: 100%;
-  position:fixed;
-  word-wrap: break-word;
+  /* position:fixed; */
 }
 #magic{
  margin:20px;
@@ -74,5 +73,5 @@ body {
     margin-left:20px;
     margin-right:20px;
     height:600px;
-    width:90%;
+    width:100%;
 }
