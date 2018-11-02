@@ -9,19 +9,20 @@ body {
  overflow-x:hidden;
  overflow-y:auto;
  word-wrap: break-word;
- line-height: 30px;
+ line-height: 1.3em;
 }
 
 .bubble-speech {
  position: relative;
  font-family: 'Source Sans Pro', sans-serif;
  margin: auto;
+ line-height: 1.3em;
  /* line-height: 22px; */
  letter-spacing: 1px;
  margin-top: 20px;
  margin-bottom: 48px;
  width: 90%;
- height: 60%;
+ height: 80%;
  margin-left: 5%;
  margin-right: 5%;
  background-color: #EFEFEF;
@@ -51,7 +52,6 @@ body {
  margin-left: 20px;
  padding: 30px 12px 2px 30px;
  word-wrap: break-word;
- overflow-y:auto;
 }
 
 .bubble-speech .message {
@@ -66,7 +66,7 @@ body {
 .footer{
   bottom: 5%;
   width: 100%;
-  /* position:fixed; */
+  position:fixed;
 }
 #magic{
  margin:20px;
