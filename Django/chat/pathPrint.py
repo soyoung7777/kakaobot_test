@@ -170,7 +170,7 @@ def subway_detail(swPath):
 	sdText = ""
 	sdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['startName']+"</font>역에서 "
 	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로<br><br>"
-	sdText += swPath['lane'][0]['name']+"을 탑승하세요!<br><br>⬇⬇⬇<br><br>"
+	sdText += swPath['lane'][0]['name']+" 지하철을 탑승하세요!<br><br>⬇⬇⬇<br><br>"
 
 	sdText += str(swPath['stationCount'])+"개 정류장 이동 후 "
 	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['endName']+"</font>역에서 하차하세요!<br><br>"

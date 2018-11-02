@@ -9,14 +9,14 @@ body {
  overflow-x:hidden;
  overflow-y:auto;
  word-wrap: break-word;
- line-height: 1.3em;
+ /* line-height: 1.3em; */
 }
 
 .bubble-speech {
  position: relative;
  font-family: 'Source Sans Pro', sans-serif;
  margin: auto;
- line-height: 1.3em;
+ line-height: 2em;
  /* line-height: 22px; */
  letter-spacing: 1px;
  margin-top: 20px;
@@ -64,9 +64,9 @@ body {
 }
 
 .footer{
-  bottom: 5%;
+  bottom: 2%;
   width: 100%;
-  position:fixed;
+  position: static;
 }
 #magic{
  margin:20px;
