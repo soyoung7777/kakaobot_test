@@ -30,8 +30,8 @@ def get_result(start, end, tsType, pNum):
 
 	geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=false&language=ko&address="
 
-	sUrl = geoUrl+urllib.parse.quote_plus(start+"역")
-	eUrl = geoUrl+urllib.parse.quote_plus(end+"역")
+	sUrl = geoUrl+urllib.parse.quote_plus(start)
+	eUrl = geoUrl+urllib.parse.quote_plus(end)
 
 	print(start)
 	print(end)
