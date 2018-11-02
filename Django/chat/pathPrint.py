@@ -56,6 +56,11 @@ def get_result(start, end, tsType, pNum):
 		geoList["ex"] = ex
 		geoList["ey"] = ey
 
+		print(sx)
+		print(sy)
+		print(ex)
+		print(ey)
+
 		my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
 		encMy = urllib.parse.quote_plus(my)
 
