@@ -157,7 +157,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     for d in direction:
         print("방향 : "+d)
         print("괄호안 : "+re.search('\((.*?)\)',d).group())
-        if "상행" or "외선" in d:
+        if eq("(상행)",re.search('\((.*?)\)',d).group()) or eq("(외선)",re.search('\((.*?)\)',d).group()):
             print("상행이나 외선")
             try:
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
