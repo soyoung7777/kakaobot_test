@@ -543,11 +543,13 @@ def getStationExistSimple(stationName, laneID, direction):
                 print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
                     print("상행")
+                    print("updnLine : "+rlist['updnLine'])
                     if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'외선'):
                         arrivalData = rlist
                         break
                 else:
                     print("하행")
+                    print("updnLine : "+rlist['updnLine'])
                     if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'내선'):
                         arrivalData = rlist
                         break
