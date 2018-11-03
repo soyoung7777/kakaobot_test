@@ -28,7 +28,6 @@ body {
  background-color: #EFEFEF;
  float:right;
  word-wrap: break-word;
- overflow-y:auto;
 }
 
 .bubble-speech.bubble-bottom:after {
@@ -58,7 +57,6 @@ body {
  margin-left: 20px;
  font-family: 'Noto Sans KR', sans-serif;
  word-wrap: break-word;
- overflow-y:auto;
 }
 
 .footer{
