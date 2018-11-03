@@ -46,7 +46,7 @@ body {
  font-family: 'Jeju Gothic', serif;
  font-size:250%;
  margin-left: 20px;
- margin-top: 5px;
+ margin-top: 15px;
  /* padding: 30px 12px 2px 30px; */
  word-wrap: break-word;
 }
@@ -74,5 +74,5 @@ body {
     height:500px;
 }
 .br_line {
-    line-height: 150%   
+    line-height: 250%
 }
