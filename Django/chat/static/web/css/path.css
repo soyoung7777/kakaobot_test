@@ -41,8 +41,6 @@ body {
  bottom: -80px;
  border:30px transparent solid;
  border-top:50px #efefef solid;
- word-wrap: break-word;
- overflow-y:auto;
 }
 .bubble-speech .title {
  max-width: 700px;
@@ -50,7 +48,7 @@ body {
  font-size:250%;
  margin: 0;
  margin-left: 20px;
- padding: 30px 12px 2px 30px;
+ /* padding: 30px 12px 2px 30px; */
  word-wrap: break-word;
 }
 
@@ -64,7 +62,7 @@ body {
 }
 
 .footer{
-  bottom: 2%;
+  /* bottom: 2%; */
   width: 100%;
   position: static;
 }
