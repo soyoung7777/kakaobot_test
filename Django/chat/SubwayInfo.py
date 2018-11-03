@@ -473,7 +473,7 @@ def getStationExist(stationName, laneID, direction):
     open_data_key = "714d78526b7369683130356e4d455357"
     enckey = urllib.parse.quote_plus(open_data_key)
 
-    stationName = re.sub('\((.*?)\)','',stationName)
+    #stationName = re.sub('\((.*?)\)','',stationName)
     stationName = re.sub("[역]$","", stationName)
 
     encStationname = urllib.parse.quote_plus(stationName)
