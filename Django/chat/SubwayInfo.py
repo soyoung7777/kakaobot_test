@@ -546,7 +546,7 @@ def getStationExistSimple(stationName, laneID, direction):
                     print("updnLine : "+rlist['updnLine'])
                     print("updnLine type : "+str(type(rlist['updnLine'])))
 
-                    if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'외선'):
+                    if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'내선'):
                         print("방향 일치")
                         arrivalData = rlist
                         break
@@ -555,7 +555,7 @@ def getStationExistSimple(stationName, laneID, direction):
                     print("updnLine : "+rlist['updnLine'])
                     print("updnLine type : "+str(type(rlist['updnLine'])))
 
-                    if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'내선'):
+                    if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'외선'):
                         print("방향 일치")
                         arrivalData = rlist
                         break
