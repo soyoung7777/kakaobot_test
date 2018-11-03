@@ -33,9 +33,6 @@ def get_result(start, end, tsType, pNum):
 	sUrl = geoUrl+urllib.parse.quote_plus(start)
 	eUrl = geoUrl+urllib.parse.quote_plus(end)
 
-	print(start)
-	print(end)
-
 	s_request = urllib.request.Request(sUrl+'&key=AIzaSyBZNZ54ytcVVd6JZMCsEJ55pasegJRAIt8')
 	e_request = urllib.request.Request(eUrl+'&key=AIzaSyBZNZ54ytcVVd6JZMCsEJ55pasegJRAIt8')
 
@@ -59,11 +56,6 @@ def get_result(start, end, tsType, pNum):
 		geoList["sy"] = sy
 		geoList["ex"] = ex
 		geoList["ey"] = ey
-
-		print(sx)
-		print(sy)
-		print(ex)
-		print(ey)
 
 		my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
 		encMy = urllib.parse.quote_plus(my)
@@ -143,12 +135,10 @@ def detail_get_pathFind(data, pNum, start, end):
 				tType = subPath[i]['trafficType']
 				if tType == 1 :
 					# txt += "\n[지하철로 이동 🚋🚋]\n"
-					txt += subway(subPath[i])
+					txt += subway(subPath[i]) + "\n\n\ni값 : "+ str(i) + "\n\n\n"
 					detail_txt += subway_detail(subPath[i])
-					print(i)
 					if i < (count-2):
-						print("if문 안 : "+str(i))
-						txt += "⬇⬇⬇\n"
+						txt += "⬇⬇⬇\n \n\n\nif문 안 i값"+ str(i) +"\n\n\n"
 						detail_txt += "⬇⬇⬇<br><br>"
 				elif tType == 2:
 					# txt += "\n[버스로 이동 🚌🚌]\n"
