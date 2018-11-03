@@ -73,12 +73,20 @@ def get_subway_station(json_Data):
 # def get_result(stationName, line_number):
 def config_exist_subway_station_and_number(subwayData):
     stationName = subwayData[0]
-    data = getStationInfo(stationName)
-    station_info = data['result']['station']
+    #data = getStationInfo(stationName)
+    #station_info = data['result']['station']
+    with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
+        subwaylinemap = json.load(f)
+    laneID = getLaneID(subwayData[1])
+    subwaylinemap = subwaylinemap[str(laneID)]
     Exist = False
-    for idx, info in enumerate(station_info):
-        if subwayData[1] in info['laneName'] and stationName in info['stationName']:
-            Exist = True
+    for item in subwaylinemap:
+        for key, value in item.items():
+            if stationName in key:
+                Exist = True
+    #for idx, info in enumerate(station_info):
+        #if subwayData[1] in info['laneName'] and stationName in info['stationName']:
+            #Exist = True
     return Exist
 
 def simple_get_subway_station_and_number_information(subwayData):
