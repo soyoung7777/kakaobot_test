@@ -161,7 +161,7 @@ def message(request):
         print(str(dialog_data))
         print("status : " + str(dialog_data['result']['actionIncomplete']))
 
-        if eq((dialog_data['result']['actionIncomplete']),"True") :
+        if eq(str(dialog_data['result']['actionIncomplete']),"True") :
             print("True")
             DB.jsondata = dialog_data
             DB.save()
