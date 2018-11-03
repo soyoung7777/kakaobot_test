@@ -402,6 +402,7 @@ def message(request):
         Exist = SubwayInfo.config_exist_subway_station_and_number([data['result']['parameters']['subway_station'],
         data['result']['parameters']['subway_number']])
         if Exist:
+            print("해당 지하철역명과 호선 존재")
             res = SubwayInfo.simple_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
 
