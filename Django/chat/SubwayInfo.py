@@ -79,6 +79,7 @@ def config_exist_subway_station_and_number(subwayData):
         subwaylinemap = json.load(f)
     laneID = getLaneID(subwayData[1])
     subwaylinemap = subwaylinemap[str(laneID)]
+    print(str(subwaylinemap))
     Exist = False
     for item in subwaylinemap:
         print(str(item))
