@@ -537,19 +537,19 @@ def getStationExistSimple(stationName, laneID, direction):
         realtimeList = real_data['realtimeArrivalList']
         print("======realtimeList======")
         print(str(realtimeList))
-        for list in realtimeList:
-            #print("========list========\n"+str(list))
-            if eq(list['subwayId'],str(laneID)):
+        for rlist in realtimeList:
+            print("========list========\n"+str(list))
+            if eq(rlist['subwayId'],str(laneID)):
                 print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
                     print("상행")
-                    if eq(list['updnLine'],'상행') or eq(list['updnLine'],'외선'):
-                        arrivalData = list
+                    if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'외선'):
+                        arrivalData = rlist
                         break
                 else:
                     print("하행")
-                    if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
-                        arrivalData = list
+                    if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'내선'):
+                        arrivalData = rlist
                         break
         print("arrival Data : "+str(arrivalData))
         print("arrival Data type : "+str(type(arrivalData)))
