@@ -473,6 +473,7 @@ def getStationExist(stationName, laneID, direction):
     open_data_key = "714d78526b7369683130356e4d455357"
     enckey = urllib.parse.quote_plus(open_data_key)
 
+    stationName = re.sub('\((.*?)\)','',stationName)
     stationName = re.sub("[역]$","", stationName)
 
     encStationname = urllib.parse.quote_plus(stationName)
@@ -486,6 +487,7 @@ def getStationExist(stationName, laneID, direction):
 
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
+
         realtimeList = real_data['realtimeArrivalList']
         #print("======realtimeList======")
         #print(str(realtimeList))
