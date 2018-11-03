@@ -97,83 +97,85 @@
          				}
 
 
-                        if(data.result.lane[i].class == 1){//버스
-                            if(data.result.lane[i].type == 11){//간선
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0068b7'});
-                            }else if(data.result.lane[i].type == 12){//지선
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#53b332'});
-                            }else if(data.result.lane[i].type == 3){//마을버스
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#53b332'});
-                            }else if(data.result.lane[i].type == 13){//순환
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#f2b70a'});
-                            }else if(data.result.lane[i].type == 14){//광역
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
-                            }else if(data.result.lane[i].type == 5){//공항버스
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#3d5bab'});
-                            }else if(data.result.lane[i].type == 2){//좌석
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0068b7'});
-                            }else if(data.result.lane[i].type == 1){//일반
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009e96'});
-                            }else if(data.result.lane[i].type == 4){//직행좌석
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
-                            }else if(data.result.lane[i].type == 6){//간선급행
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
-                            }else if(data.result.lane[i].type == 10){//외곽
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009D3E'});
-                            }else{
-                                var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#2F4F4F'});
-                            }
+                        if(data.result.lane[i].class == 1){//
+                            var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 5, strokeColor: '#ff0000'});
+                            // if(data.result.lane[i].type == 11){//간선
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 5, strokeColor: '#0068b7'});
+                            // }else if(data.result.lane[i].type == 12){//지선
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#53b332'});
+                            // }else if(data.result.lane[i].type == 3){//마을버스
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#53b332'});
+                            // }else if(data.result.lane[i].type == 13){//순환
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#f2b70a'});
+                            // }else if(data.result.lane[i].type == 14){//광역
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
+                            // }else if(data.result.lane[i].type == 5){//공항버스
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#3d5bab'});
+                            // }else if(data.result.lane[i].type == 2){//좌석
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0068b7'});
+                            // }else if(data.result.lane[i].type == 1){//일반
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009e96'});
+                            // }else if(data.result.lane[i].type == 4){//직행좌석
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
+                            // }else if(data.result.lane[i].type == 6){//간선급행
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#e60012'});
+                            // }else if(data.result.lane[i].type == 10){//외곽
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009D3E'});
+                            // }else{
+                            //     var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#2F4F4F'});
+                            // }
 
                         }else if(data.result.lane[i].class == 2){//지하철
-                            if(data.result.lane[i].type == 1){//1호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0052A4'});
-             				}else if(data.result.lane[i].type == 2){//2호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009D3E'});
-             				}else if(data.result.lane[i].type == 3){//3호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#EF7C1C'});
-             				}else if(data.result.lane[i].type == 4){//4호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#00A5DE'});
-             				}else if(data.result.lane[i].type == 5){//5호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#996CAC'});
-             				}else if(data.result.lane[i].type == 6){//6호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#CD7C2F'});
-             				}else if(data.result.lane[i].type == 7){//7호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#747F00'});
-             				}else if(data.result.lane[i].type == 8){//8호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#EA545D'});
-             				}else if(data.result.lane[i].type == 9){//9호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#A17E46'});
-             				}else if(data.result.lane[i].type == 100){//분당선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#F5A200'});
-             				}else if(data.result.lane[i].type == 101){//공항철도
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0090D2'});
-             				}else if(data.result.lane[i].type == 104){//경의중앙선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#77C4A3'});
-             				}else if(data.result.lane[i].type == 107){//에버라인
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#6FB245'});
-                            }else if(data.result.lane[i].type == 108){//경춘선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0C8E72'});
-                            }else if(data.result.lane[i].type == 102){//자기부상철도
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#FFCD12'});
-                            }else if(data.result.lane[i].type == 109){//신분당선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#D4003B'});
-             				}else if(data.result.lane[i].type == 110){//의정부경전철
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#FDA600'});
-             				}else if(data.result.lane[i].type == 111){//수인선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#F5A200'});
-                            }else if(data.result.lane[i].type == 112){//경강선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#003DA5'});
-                            }else if(data.result.lane[i].type == 113){//우이신설선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#B0CE18'});
-                            }else if(data.result.lane[i].type == 114){//서해선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#8EC31F'});
-                            }else if(data.result.lane[i].type == 21){//인천1호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#7CA8D5'});
-                            }else if(data.result.lane[i].type == 22){//인천2호선
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#ED8B00'});
-                            }else{
-             					var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#2F4F4F'});
-             				}
+                            var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 5, strokeColor: '#ff0000'});
+                            // if(data.result.lane[i].type == 1){//1호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0052A4'});
+             				// }else if(data.result.lane[i].type == 2){//2호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#009D3E'});
+             				// }else if(data.result.lane[i].type == 3){//3호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#EF7C1C'});
+             				// }else if(data.result.lane[i].type == 4){//4호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#00A5DE'});
+             				// }else if(data.result.lane[i].type == 5){//5호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#996CAC'});
+             				// }else if(data.result.lane[i].type == 6){//6호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#CD7C2F'});
+             				// }else if(data.result.lane[i].type == 7){//7호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#747F00'});
+             				// }else if(data.result.lane[i].type == 8){//8호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#EA545D'});
+             				// }else if(data.result.lane[i].type == 9){//9호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#A17E46'});
+             				// }else if(data.result.lane[i].type == 100){//분당선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#F5A200'});
+             				// }else if(data.result.lane[i].type == 101){//공항철도
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0090D2'});
+             				// }else if(data.result.lane[i].type == 104){//경의중앙선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#77C4A3'});
+             				// }else if(data.result.lane[i].type == 107){//에버라인
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#6FB245'});
+                            // }else if(data.result.lane[i].type == 108){//경춘선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#0C8E72'});
+                            // }else if(data.result.lane[i].type == 102){//자기부상철도
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#FFCD12'});
+                            // }else if(data.result.lane[i].type == 109){//신분당선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#D4003B'});
+             				// }else if(data.result.lane[i].type == 110){//의정부경전철
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#FDA600'});
+             				// }else if(data.result.lane[i].type == 111){//수인선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#F5A200'});
+                            // }else if(data.result.lane[i].type == 112){//경강선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#003DA5'});
+                            // }else if(data.result.lane[i].type == 113){//우이신설선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#B0CE18'});
+                            // }else if(data.result.lane[i].type == 114){//서해선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#8EC31F'});
+                            // }else if(data.result.lane[i].type == 21){//인천1호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#7CA8D5'});
+                            // }else if(data.result.lane[i].type == 22){//인천2호선
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#ED8B00'});
+                            // }else{
+             				// 	var polyline = new naver.maps.Polyline({map: map, path: lineArray, strokeWeight: 3, strokeColor: '#2F4F4F'});
+             				// }
 
                         }
 
@@ -184,7 +186,7 @@
             //길찾기 API 호출
          	searchPubTransPathAJAX();
           </script>
-    <br>      
+    <br>
     </div>
     <div class = "footer">
         <img id = "magic" src="{% static 'web/image/magic.png'%}" style="width:25%; height:25% float:left;">
