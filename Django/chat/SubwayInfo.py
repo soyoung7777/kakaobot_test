@@ -344,7 +344,8 @@ def getDayType():
 
 def getLaneID(laneName):
     print("===get Lane ID function===")
-    laneName = "수도권 "+laneName
+    if "수도권" not in laneName:
+        laneName = "수도권 "+laneName
     print("lane Name : "+laneName)
 
     for (first, last) in subwayID:
