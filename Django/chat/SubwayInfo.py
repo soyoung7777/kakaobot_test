@@ -81,6 +81,7 @@ def config_exist_subway_station_and_number(subwayData):
     subwaylinemap = subwaylinemap[str(laneID)]
     Exist = False
     for item in subwaylinemap:
+        print(str(item))
         for key, value in item.items():
             if stationName in key:
                 Exist = True
