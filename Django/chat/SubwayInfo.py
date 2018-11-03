@@ -93,7 +93,7 @@ def config_exist_subway_station_and_number(subwayData):
     return Exist
 
 def simple_get_subway_station_and_number_information(subwayData):
-
+    print("=========get simple============")
     day = getDayType()
     stationName = subwayData[0]
     subwayData[1] = re.sub('\'',"",subwayData[1])
@@ -200,7 +200,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     return text
 
 def detail_get_subway_station_and_number_information(subwayData):
-
+    print("===========get detail========")
     day = getDayType()
     stationName = subwayData[0]
     subwayData[1] = re.sub('\'',"",subwayData[1])
