@@ -39,12 +39,13 @@ CLIENT_ACCESS_TOKEN = 'f087d3e9915f48e9935bba49078b7d83'
 
 
 
-def dialogflow(msg_str):
+def dialogflow(msg_str, session_id):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
     dialogflow_request = ai.text_request()
 
     dialogflow_request.lang = 'ko'
     dialogflow_request.query = msg_str
+    dialogflow_request.session_id = session_id
     response = dialogflow_request.getresponse()
 
     data = json.loads(response.read().decode('utf-8'))
@@ -156,7 +157,7 @@ def message(request):
     #     'message': {'text': text},
     #     })
     if DB.dialogflow_action == 0 :
-        dialog_data = dialogflow(msg_str)
+        dialog_data = dialogflow(msg_str, user_id)
         print("============dialog_data==============")
         print(str(dialog_data))
         print("status : " + str(dialog_data['result']['actionIncomplete']))
