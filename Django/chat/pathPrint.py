@@ -188,10 +188,11 @@ def subway_detail(swPath):
 def bus_detail(busPath):
 	bdText = ""
 	bdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+busPath['startName']+"</font> 정류장에서<br>"
-	bdText += busPath['lane'][0]['busNo']+"번 <font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>버스</font>를 탑승하세요<br><br>⬇⬇⬇<br><br>"
+	bdText += busPath['lane'][0]['busNo']+"번 <font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>버스</font>를 탑승하세요"
+	bdText += "<br class=br_line>⬇⬇⬇<br class=br_line>"
 
 	bdText += str(busPath['stationCount'])+"개 정류장 이동 후<br>"
-	bdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+busPath['endName']+"</font> 정류장에서 하차하세요<br><br>"
+	bdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+busPath['endName']+"</font> 정류장에서 하차하세요<br class=br_line>"
 
 	cnt = busPath['stationCount']
 	for i in range(0, cnt):
@@ -199,6 +200,6 @@ def bus_detail(busPath):
 		if i < (cnt-1):
 			bdText += " >> "
 
-	bdText += "<br><br>"
+	bdText += "<br class=br_line>"
 
 	return bdText
