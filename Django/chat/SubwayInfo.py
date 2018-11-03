@@ -341,8 +341,9 @@ def getDayType():
 
 def getLaneID(laneName):
     print("===get Lane ID function===")
-    print("lane Name : "+laneName)
     laneName = "수도권 "+laneName
+    print("lane Name : "+laneName)
+
     for (first, last) in subwayID:
         if eq(laneName,last):
             open_data_subwayID = first #예:수도권 4호선인 경우 open_data_subwayID = 1004
