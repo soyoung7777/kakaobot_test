@@ -111,9 +111,13 @@ def simple_get_subway_station_and_number_information(subwayData):
     # print("station Dictionary : "+str(subwayData[1]))
     # print("station Dictionary type: "+str(type(subwayData[1])))
     # print("station ID : "+str(subwayData[1][subwayData[0]]))
+
+    print("laneName(subwayData[1]) : "+subwayData[1])
+    
     if "수도권" not in subwayData[1]:
         subwayData[1] = "수도권 "+subwayData[1]
 
+    print("laneName(subwayData[1]) : "+subwayData[1])
     for idx, info in enumerate(station_info):
         if subwayData[1] in info['laneName'] or subwayData[1] in str(info['laneName']):
             #current_stationID = int(data['result']['station'][idx]['stationID'])
