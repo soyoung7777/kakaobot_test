@@ -365,6 +365,8 @@ def getLaneID(laneName):
     return open_data_subwayID
 
 def getStationInfo(myStationName):
+    myStationName = myStationName.replace(r'\((.*?)\)','')
+    print("myStationName : "+myStationName)
     myKey = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
     encKey = urllib.parse.quote_plus(myKey)
     encStationname = urllib.parse.quote_plus(myStationName)
