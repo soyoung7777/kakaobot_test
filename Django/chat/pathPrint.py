@@ -154,7 +154,7 @@ def detail_get_pathFind(data, pNum, start, end):
 					detail_txt += bus_detail(subPath[i])
 					if i < (count-2):
 						txt += "⬇⬇⬇\n"
-						detail_txt += "⬇⬇⬇<br><br>"
+						detail_txt += "⬇⬇⬇<br class=br_line>"
 
 
 		txt +=  "\n\n다른경로를 원하시나요?\n원하시면 10초내로 'Y/ㅇ/응/어' 중 응답해주세요!"
@@ -170,10 +170,11 @@ def subway_detail(swPath):
 	sdText = ""
 	sdText = "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['startName']+"</font>역에서 "
 	sdText += swPath['passStopList']['stations'][1]['stationName']+"방면으로<br>"
-	sdText += swPath['lane'][0]['name']+" <font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>지하철</font>을 탑승하세요<br><br>⬇⬇⬇<br><br>"
+	sdText += swPath['lane'][0]['name']+" <font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>지하철</font>을 탑승하세요"
+	sdText += "<br class=br_line>⬇⬇⬇<br class=br_line>"
 
 	sdText += str(swPath['stationCount'])+"개 정류장 이동 후 "
-	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['endName']+"</font>역에서 하차하세요<br><br>"
+	sdText += "<font color='#FF4D45'style='font-weight: bold;line-height:1.3em;'>"+swPath['endName']+"</font>역에서 하차하세요<br class=br_line>"
 
 	cnt = swPath['stationCount']
 	for i in range(0, cnt):
@@ -181,7 +182,7 @@ def subway_detail(swPath):
 		if i < (cnt-1):
 			sdText += " >> "
 
-	sdText += "<br><br>"
+	sdText += "<br class=br_line>"
 
 	return sdText;
 
