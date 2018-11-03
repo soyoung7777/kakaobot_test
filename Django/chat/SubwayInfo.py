@@ -156,7 +156,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     print("direction : "+str(direction))
     for d in direction:
         print("방향 : "+d)
-        print("괄호안 : "+re.match('\((.*?)\)',str(d)))
+        print("괄호안 : "+re.search('\((.*?)\)',d).group())
         if "상행" or "외선" in d:
             print("상행이나 외선")
             try:
