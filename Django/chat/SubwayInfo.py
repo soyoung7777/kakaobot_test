@@ -167,6 +167,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                     return text
                 elif eq(StationExistName, "none"):
                     print("none")
+                    text +="💌["+d+"]💌\n\n"
                     text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
                     text +="💌["+d+"]💌\n\n"
@@ -188,6 +189,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                     return text
                 elif eq(StationExistName, "none"):
                     print("none")
+                    text +="💌["+d+"]💌\n\n"
                     text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
                     text +="💌["+d+"]💌\n\n"
