@@ -475,7 +475,7 @@ def getStationExist(stationName, laneID, direction):
 
     #stationName = re.sub('\((.*?)\)','',stationName)
     stationName = re.sub("[역]$","", stationName)
-
+    print("stationName : "+stationName)
     encStationname = urllib.parse.quote_plus(stationName)
     open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
     print("laneID : "+str(laneID))
@@ -487,7 +487,7 @@ def getStationExist(stationName, laneID, direction):
 
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
-
+        print(str(real_data))
         realtimeList = real_data['realtimeArrivalList']
         #print("======realtimeList======")
         #print(str(realtimeList))
