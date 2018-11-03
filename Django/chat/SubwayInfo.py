@@ -155,7 +155,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     direction = list(set(direction))
     print("direction : "+str(direction))
     for d in direction:
-        if "상행" or "외선" in d:
+        if "상행" or "내선" in d:
             try:
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
