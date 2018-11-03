@@ -145,7 +145,9 @@ def detail_get_pathFind(data, pNum, start, end):
 					# txt += "\n[지하철로 이동 🚋🚋]\n"
 					txt += subway(subPath[i])
 					detail_txt += subway_detail(subPath[i])
+					print(i)
 					if i < (count-2):
+						print("if문 안 : "+str(i))
 						txt += "⬇⬇⬇\n"
 						detail_txt += "⬇⬇⬇<br><br>"
 				elif tType == 2:
