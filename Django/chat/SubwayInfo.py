@@ -538,7 +538,7 @@ def getStationExistSimple(stationName, laneID, direction):
         print("======realtimeList======")
         print(str(realtimeList))
         for rlist in realtimeList:
-            print("========list========\n"+str(list))
+            print("========list========\n"+str(rlist))
             if eq(rlist['subwayId'],str(laneID)):
                 print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
