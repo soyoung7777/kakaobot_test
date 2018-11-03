@@ -156,7 +156,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     print("direction : "+str(direction))
     for d in direction:
         print("방향 : "+d)
-        if "상행" or "내선" in d:
+        if "상행" or "외선" in d:
             try:
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
@@ -547,7 +547,7 @@ def getStationExistSimple(stationName, laneID, direction):
                     print("updnLine : "+rlist['updnLine'])
                     print("updnLine type : "+str(type(rlist['updnLine'])))
 
-                    if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'내선'):
+                    if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'외선'):
                         print("방향 일치")
                         arrivalData = rlist
                         break
@@ -556,7 +556,7 @@ def getStationExistSimple(stationName, laneID, direction):
                     print("updnLine : "+rlist['updnLine'])
                     print("updnLine type : "+str(type(rlist['updnLine'])))
 
-                    if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'외선'):
+                    if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'내선'):
                         print("방향 일치")
                         arrivalData = rlist
                         break
