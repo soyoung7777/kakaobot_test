@@ -114,7 +114,9 @@ def simple_get_subway_station_and_number_information(subwayData):
 
     print("laneName(subwayData[1]) : "+subwayData[1])
 
-    if "수도권" not in subwayData[1]:
+    if eq(subwayData[1],"경의중앙선"):
+        continue
+    elif "수도권" not in subwayData[1]:
         subwayData[1] = "수도권 "+subwayData[1]
 
     print("laneName(subwayData[1]) : "+subwayData[1])
