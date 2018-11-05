@@ -13,7 +13,7 @@ subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수�
 
 def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
-    print("searchST " + searchST)
+    #print("searchST " + searchST)
     res = ""
     ACCESS = "rxJqZMHh6oQDUSfc7Kh42uCXZuHEhmj7dY7VWber2ryr9L5t2CFRy3z834JMR7RygMzaVby7ZQ3sW%2ByCZZn0Ig%3D%3D"
     my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
@@ -79,7 +79,7 @@ def config_exist_subway_station_and_number(subwayData):
         subwaylinemap = json.load(f)
     laneID = getLaneID(subwayData[1])
     subwaylinemap = subwaylinemap[str(laneID)]
-    print(str(subwaylinemap))
+    #print(str(subwaylinemap))
     Exist = False
     for item in subwaylinemap:
         #print(str(item))
@@ -101,34 +101,34 @@ def simple_get_subway_station_and_number_information(subwayData):
     subwayData[1] = subwayData[1].strip()
     print("stationName : "+subwayData[0])
     print("lineNumber : "+subwayData[1])
-    print("lineNumber type : "+str(type(subwayData[1])))
+    #print("lineNumber type : "+str(type(subwayData[1])))
     data = getStationInfo(stationName)
 
     station_info = data['result']['station']
     #current_stationID = 0
 
-    print(json.loads(json.dumps(data)))
+    #print(json.loads(json.dumps(data)))
     # print("station Dictionary : "+str(subwayData[1]))
     # print("station Dictionary type: "+str(type(subwayData[1])))
     # print("station ID : "+str(subwayData[1][subwayData[0]]))
 
-    print("laneName(subwayData[1]) : "+subwayData[1])
+    #print("laneName(subwayData[1]) : "+subwayData[1])
 
     if not eq(subwayData[1],"경의중앙선") and "수도권" not in subwayData[1]:
         subwayData[1] = "수도권 "+subwayData[1]
 
-    print("laneName(subwayData[1]) : "+subwayData[1])
-    print(str(station_info))
+    #print("laneName(subwayData[1]) : "+subwayData[1])
+    #print(str(station_info))
     for idx, info in enumerate(station_info):
-        print(str(info))
+        #print(str(info))
         if subwayData[1] in info['laneName'] or subwayData[1] in str(info['laneName']):
             #current_stationID = int(data['result']['station'][idx]['stationID'])
             current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
             break
 
     current_laneID = getLaneID(current_laneName)
-    print("current_laneName : "+current_laneName)
-    print("current_laneID : "+str(current_laneID))
+    #print("current_laneName : "+current_laneName)
+    #print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
     # with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
@@ -138,10 +138,10 @@ def simple_get_subway_station_and_number_information(subwayData):
         subwaylinemap = json.load(f)
 
     subwaylinemap = subwaylinemap[str(current_laneID)]
-    print("subwaylinemap : "+str(subwaylinemap))
+    #print("subwaylinemap : "+str(subwaylinemap))
     #current_subwaylinemap = getLineMap(stationName,subwaylinemap)
     current_subwaylinemap = subwaylinemap[stationName]
-    print("current_subwaylinemap : "+str(current_subwaylinemap))
+    #print("current_subwaylinemap : "+str(current_subwaylinemap))
 
     text=""
     direction = []
@@ -155,8 +155,8 @@ def simple_get_subway_station_and_number_information(subwayData):
     direction = list(set(direction))
     print("direction : "+str(direction))
     for d in direction:
-        print("방향 : "+d)
-        print("괄호안 : "+re.search('\((.*?)\)',d).group())
+        #print("방향 : "+d)
+        #print("괄호안 : "+re.search('\((.*?)\)',d).group())
         if eq("(상행)",re.search('\((.*?)\)',d).group()) or eq("(외선)",re.search('\((.*?)\)',d).group()):
             print("상행이나 외선")
             try:
@@ -229,14 +229,14 @@ def detail_get_subway_station_and_number_information(subwayData):
     subwayData[1] = subwayData[1].strip()
     print("stationName : "+subwayData[0])
     print("lineNumber : "+subwayData[1])
-    print("lineNumber type : "+str(type(subwayData[1])))
+    #print("lineNumber type : "+str(type(subwayData[1])))
 
     data = getStationInfo(stationName)
 
     station_info = data['result']['station']
 
     #current_stationID = 0
-    print(json.loads(json.dumps(data)))
+    #print(json.loads(json.dumps(data)))
     # print("station Dictionary : "+str(subwayData[1]))
     # print("station Dictionary type: "+str(type(subwayData[1])))
     # print("station ID : "+str(subwayData[1][subwayData[0]]))
@@ -246,8 +246,8 @@ def detail_get_subway_station_and_number_information(subwayData):
             current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
             break
     current_laneID = getLaneID(current_laneName)
-    print("current_laneName : "+current_laneName)
-    print("current_laneID : "+str(current_laneID))
+    #print("current_laneName : "+current_laneName)
+    #print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
     #if eq(direction,"상행") or eq(direction,"내선"):
     # with open('/home/ubuntu/Django/chat/SubwayStationID.json', encoding='utf-8') as f:
@@ -256,10 +256,10 @@ def detail_get_subway_station_and_number_information(subwayData):
     with open('/home/ubuntu/Django/chat/SubwayLineMap.json', encoding='utf-8') as f:
         subwaylinemap = json.load(f)
     subwaylinemap = subwaylinemap[str(current_laneID)]
-    print("subwaylinemap : "+str(subwaylinemap))
+    #print("subwaylinemap : "+str(subwaylinemap))
     #current_subwaylinemap = getLineMap(stationName,subwaylinemap)
     current_subwaylinemap = subwaylinemap[stationName]
-    print("current_subwaylinemap : "+str(current_subwaylinemap))
+    #print("current_subwaylinemap : "+str(current_subwaylinemap))
 
     text=""
     direction = []
@@ -297,12 +297,12 @@ def detail_get_subway_station_and_number_information(subwayData):
     for idx, full_list in enumerate(direction_stationlist):
         text +="<font color='#FF4D45'>"+"💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌"+"</font><br/><br/><br/>"
         for s in full_list:
-            print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
+            #print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
                 #start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 1)
                 #print("--- %s seconds ---" %(time.time() - start_time))
-                print("StationExistName : "+StationExistName)
+                #print("StationExistName : "+StationExistName)
                 if eq(StationExistName,"error" or "none"):#시간표정보
 
                     text +=detail_get_schedule(stationName, day, 1,current_laneName)
@@ -315,15 +315,15 @@ def detail_get_subway_station_and_number_information(subwayData):
                 #start_time = time.time()
                 StationExistName = getStationExist(s, current_laneID, 2)
                 #print("--- %s seconds ---" %(time.time() - start_time))
-                print("StationExistName : "+StationExistName)
+                #print("StationExistName : "+StationExistName)
                 if eq(StationExistName,"error" or "none"):#시간표정보
                     text +=detail_get_schedule(stationName, day, 2,current_laneName)
                 else:
                     StationExistNameList.append(StationExistName)
-        print("station Exist Name List : "+str(StationExistNameList))
+        #print("station Exist Name List : "+str(StationExistNameList))
 
         StationExistNameList = list(set(StationExistNameList))
-        print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
+        #print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
 
         for total in full_list:
             exist = False
@@ -345,7 +345,7 @@ def detail_get_subway_station_and_number_information(subwayData):
         text+="<br/><br/><br/><br/>"
         #text = text.replace("\r\n","<br/>")
         StationExistNameList.clear()
-    print(text)
+    #print(text)
     return title,text
 
 def getDayType():
@@ -361,12 +361,12 @@ def simple_get_schedule(stationName, day, direction, laneName):
 
     text = ""
 
-    print("stationName : "+stationName)
-    print("day : "+str(day))
-    print("direction : "+str(direction))
-    print("laneName : "+laneName)
+    #print("stationName : "+stationName)
+    #print("day : "+str(day))
+    #print("direction : "+str(direction))
+    #print("laneName : "+laneName)
     laneName = re.sub("수도권 ","", laneName)
-    print("laneName : "+laneName)
+    #print("laneName : "+laneName)
     file_name = ""
     if day == 1:
         file_name+="ord_lane_"+laneName+".json"
@@ -383,7 +383,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
     now = datetime.now()
     #hour = now.hour
     print("hour : "+ str(now.hour))
-    print("hour type: "+ str(type(now.hour)))
+    #print("hour type: "+ str(type(now.hour)))
 
     if direction ==1:
         time_schedule = schedule[stationName]["up"]
@@ -393,7 +393,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
     time_list = ""
 
     for item in time_schedule:
-        print("idx in item : "+str(item["Idx"]))
+        #print("idx in item : "+str(item["Idx"]))
         if item["Idx"] == now.hour:
             print("item in time schedule : "+str(item))
             print("===schedule===")
@@ -409,12 +409,12 @@ def simple_get_schedule(stationName, day, direction, laneName):
 
 
 def detail_get_schedule(stationName, day, direction, laneName):
-    print("stationName : "+stationName)
-    print("day : "+str(day))
-    print("direction : "+str(direction))
-    print("laneName : "+laneName)
+    #print("stationName : "+stationName)
+    #print("day : "+str(day))
+    #print("direction : "+str(direction))
+    #print("laneName : "+laneName)
     laneName = re.sub("수도권 ","", laneName)
-    print("laneName : "+laneName)
+    #print("laneName : "+laneName)
     file_name = ""
     if day == 1:
         file_name+="ord_lane_"+laneName+".json"
@@ -431,7 +431,7 @@ def detail_get_schedule(stationName, day, direction, laneName):
     now = datetime.now()
     #hour = now.hour
     print("hour : "+ str(now.hour))
-    print("hour type: "+ str(type(now.hour)))
+    #print("hour type: "+ str(type(now.hour)))
 
     if direction ==1:
         time_schedule = schedule[stationName]["up"]
@@ -477,9 +477,9 @@ def getLaneID(laneName):
     return open_data_subwayID
 
 def getStationInfo(myStationName):
-    print(str(type(myStationName)))
+    #print(str(type(myStationName)))
     myStationName = re.sub('\((.*?)\)','',myStationName)
-    print("myStationName : "+myStationName)
+    #print("myStationName : "+myStationName)
     myKey = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
     encKey = urllib.parse.quote_plus(myKey)
     encStationname = urllib.parse.quote_plus(myStationName)
@@ -587,11 +587,11 @@ def getStationExist(stationName, laneID, direction):
 
     #stationName = re.sub('\((.*?)\)','',stationName)
     stationName = re.sub("[역]$","", stationName)
-    print("stationName : "+stationName)
+    #print("stationName : "+stationName)
     encStationname = urllib.parse.quote_plus(stationName)
     open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
-    print("laneID : "+str(laneID))
-    print("direction : "+str(direction))
+    #print("laneID : "+str(laneID))
+    #print("direction : "+str(direction))
     arrivalData={}
     try:
         request = urllib.request.Request(open_data_url)
@@ -599,26 +599,26 @@ def getStationExist(stationName, laneID, direction):
 
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
-        print(str(real_data))
+        #print(str(real_data))
         realtimeList = real_data['realtimeArrivalList']
         #print("======realtimeList======")
         #print(str(realtimeList))
         for list in realtimeList:
             #print("========list========\n"+str(list))
             if eq(list['subwayId'],str(laneID)):
-                print("subwayID 일치")
+                #print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
-                    print("상행")
+                    #print("상행")
                     if eq(list['updnLine'],'상행') or eq(list['updnLine'],'외선'):
                         arrivalData = list
                         break
                 else:
-                    print("하행")
+                    #print("하행")
                     if eq(list['updnLine'],'하행') or eq(list['updnLine'],'내선'):
                         arrivalData = list
                         break
-        print("arrival Data : "+str(arrivalData))
-        print("arrival Data type : "+str(type(arrivalData)))
+        #print("arrival Data : "+str(arrivalData))
+        #print("arrival Data type : "+str(type(arrivalData)))
 
         if not arrivalData:
             print("none!!")
@@ -637,8 +637,8 @@ def getStationExistSimple(stationName, laneID, direction):
 
     encStationname = urllib.parse.quote_plus(stationName)
     open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
-    print("laneID : "+str(laneID))
-    print("direction : "+str(direction))
+    #print("laneID : "+str(laneID))
+    #print("direction : "+str(direction))
     arrivalData={}
     try:
         request = urllib.request.Request(open_data_url)
@@ -647,32 +647,32 @@ def getStationExistSimple(stationName, laneID, direction):
         real_json = response.read().decode('utf-8')
         real_data = json.loads(real_json)
         realtimeList = real_data['realtimeArrivalList']
-        print("======realtimeList======")
-        print(str(realtimeList))
+        #print("======realtimeList======")
+        #print(str(realtimeList))
         for rlist in realtimeList:
-            print("========list========\n"+str(rlist))
+            #print("========list========\n"+str(rlist))
             if eq(rlist['subwayId'],str(laneID)):
-                print("subwayID 일치")
+                #print("subwayID 일치")
                 if direction == 1:#상행 or 외선인 경우
-                    print("상행")
-                    print("updnLine : "+rlist['updnLine'])
-                    print("updnLine type : "+str(type(rlist['updnLine'])))
+                    # print("상행")
+                    # print("updnLine : "+rlist['updnLine'])
+                    # print("updnLine type : "+str(type(rlist['updnLine'])))
 
                     if eq(rlist['updnLine'],'상행') or eq(rlist['updnLine'],'외선'):
-                        print("방향 일치")
+                        #print("방향 일치")
                         arrivalData = rlist
                         break
                 else:
-                    print("하행")
-                    print("updnLine : "+rlist['updnLine'])
-                    print("updnLine type : "+str(type(rlist['updnLine'])))
+                    # print("하행")
+                    # print("updnLine : "+rlist['updnLine'])
+                    # print("updnLine type : "+str(type(rlist['updnLine'])))
 
                     if eq(rlist['updnLine'],'하행') or eq(rlist['updnLine'],'내선'):
-                        print("방향 일치")
+                        #print("방향 일치")
                         arrivalData = rlist
                         break
-        print("arrival Data : "+str(arrivalData))
-        print("arrival Data type : "+str(type(arrivalData)))
+        # print("arrival Data : "+str(arrivalData))
+        # print("arrival Data type : "+str(type(arrivalData)))
         if not arrivalData:
             print("none!!")
             return "none","none"
