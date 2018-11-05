@@ -378,8 +378,8 @@ def getSchedule(stationName, day, direction, laneName):
         time_schedule = schedule[stationName]["down"]
 
     for item in time_schedule:
-        print("item in time schedule : "+str(item))
         if eq(item["Idx"],str(now.hour)):
+            print("item in time schedule : "+str(item))
             print("===schedule===")
             print(str(item["list"]))
             return item["list"]
