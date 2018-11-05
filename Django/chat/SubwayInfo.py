@@ -404,7 +404,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
         print("t : "+t)
         print("t 괄호 제거 : "+re.sub('\((.*?)\)',"",t))
         if now.minute > re.sub('\((.*?)\)',"",t):
-            text += re.search('\((.*?)\)',d).group())+"행 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
+            text += re.search('\((.*?)\)',d).group()+"행 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
             return text
 
 
