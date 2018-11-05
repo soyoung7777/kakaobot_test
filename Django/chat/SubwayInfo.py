@@ -435,7 +435,7 @@ def detail_get_schedule(stationName, day, direction, laneName):
     print("hour : "+ str(now.hour))
     #print("hour type: "+ str(type(now.hour)))
 
-    if direction ==1:
+    if direction ==2:
         time_schedule = schedule[stationName]["up"]
     else:
         time_schedule = schedule[stationName]["down"]
