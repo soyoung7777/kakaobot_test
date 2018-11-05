@@ -268,9 +268,9 @@ def detail_get_subway_station_and_number_information(subwayData):
     direction_stationlist = []
     StationExistNameList = []
     if eq(stationName,"서울역"):
-        title=stationName+" "+current_laneName+" 실시간 도착정보"
+        title=stationName+" "+current_laneName+"\n실시간 도착정보"
     else:
-        title=stationName+"역 "+current_laneName+" 실시간 도착정보"
+        title=stationName+"역 "+current_laneName+"\n실시간 도착정보"
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
@@ -297,7 +297,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     #             text +=StationExistName+"\n\n"
 
     for idx, full_list in enumerate(direction_stationlist):
-        text +="<font color='#FF4D45'>"+"💌["+stationName+" "+current_laneName+" "+direction[idx]+"]💌"+"</font><br/><br/><br/>"
+        text +="<font color='#FF4D45'>"+"💌["+direction[idx]+"]💌"+"</font><br/><br/><br/>"
         for s in full_list:
             #print("====>"+s+"역의 지하철 실시간 도착정보를 알아보자")
             if "상행" in direction[idx]:
