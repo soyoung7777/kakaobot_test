@@ -163,8 +163,8 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
                     print("error")
-                    #text +=getSchedule(stationName, day, 1,current_laneName)
-                    text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+                    text +=getSchedule(stationName, day, 1,current_laneName)
+                    #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                     return text
                 elif eq(StationExistName, "none"):
                     print("none")
@@ -186,8 +186,8 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 2)
                 if eq(StationExistName, "error"):
                     print("error")
-                    text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
-                    #text +=getSchedule(stationName, day, 2,current_laneName)
+                    #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+                    text +=getSchedule(stationName, day, 2,current_laneName)
                     return text
                 elif eq(StationExistName, "none"):
                     print("none")
