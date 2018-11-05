@@ -13,6 +13,8 @@ subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수�
 
 def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
+    searchST = re.sub('\((.*?)\)','',searchST)
+
     #print("searchST " + searchST)
     res = ""
     ACCESS = "rxJqZMHh6oQDUSfc7Kh42uCXZuHEhmj7dY7VWber2ryr9L5t2CFRy3z834JMR7RygMzaVby7ZQ3sW%2ByCZZn0Ig%3D%3D"
