@@ -364,7 +364,7 @@ def getSchedule(stationName, day, direction, laneName):
 
     print("file name : "+file_name)
 
-    with open('/home/ubuntu/Django/chat/'+file_name, encoding='utf-8') as f:
+    with open('/home/ubuntu/Django/chat/subway_schedule/'+file_name, encoding='utf-8') as f:
         schedule = json.load(f)
 
     now = datetime.now()
