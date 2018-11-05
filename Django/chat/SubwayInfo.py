@@ -408,7 +408,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
         t = t.lstrip("0")
         print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
         print("현재 시간 : "+str(now.minute))
-        if now.minute < int(re.sub('\((.*?)\)',"",t)):
+        if now.minute <= int(re.sub('\((.*?)\)',"",t)):
             Tschedule = t
             if time_exp_list is not "":
                 for et in time_exp_list.split(" "):
@@ -425,7 +425,40 @@ def simple_get_schedule(stationName, day, direction, laneName):
                 text += subway_direction+"행 "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",Tschedule)+"분 도착 예정"
             return text
 
+    for item in time_schedule:
+        #print("idx in item : "+str(item["Idx"]))
+        if item["Idx"] == now.hour+1:
+            print("item in time schedule : "+str(item))
+            print("===schedule===")
+            print(str(item["list"]))
+            time_list = item["list"]
+            if 'expList' in item:
+                time_exp_list = item["expList"]
 
+    isExp = False
+    time_list = ""
+    time_exp_list = ""
+    for t in time_list.split(" "):
+        #print("t : "+t)
+        t = t.lstrip("0")
+        print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
+        print("현재 시간 : "+str(now.minute))
+        if now.minute <= int(re.sub('\((.*?)\)',"",t)):
+            Tschedule = t
+            if time_exp_list is not "":
+                for et in time_exp_list.split(" "):
+                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(re.sub('\((.*?)\)',"",t)) < int(re.sub('\((.*?)\)',"",et)):
+                        Tschedule = et
+                        isExp = True
+            subway_direction =re.search('\((.*?)\)',Tschedule).group()
+            subway_direction = re.sub("^\(","",subway_direction)
+            subway_direction = re.sub("\)","",subway_direction)
+
+            if isExp:
+                text += subway_direction+"행(급행) "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",Tschedule)+"분 도착 예정"
+            else:
+                text += subway_direction+"행 "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",Tschedule)+"분 도착 예정"
+            return text
 def detail_get_schedule(stationName, day, direction, laneName):
     #print("stationName : "+stationName)
     #print("day : "+str(day))
