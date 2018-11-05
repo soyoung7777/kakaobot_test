@@ -9,7 +9,7 @@ from operator import eq
 
 subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수도권 3호선"],[1004, "수도권 4호선"],[1005, "수도권 5호선"]
 ,[1006, "수도권 6호선"],[1007, "수도권 7호선"],[1008, "수도권 8호선"],[1009, "수도권 9호선"],[1065,"수도권 공항철도"]
-,[1071,"수도권 수인선"],[1075,"수도권 분당선"],[1063,"경의중앙선"],[1067,"수도권 경춘선"],[1077,"수도권 신분당선"]]
+,[1071,"수도권 수인선"],[1075,"수도권 분당선"],[1063,"수도권 경의중앙선"],[1067,"수도권 경춘선"],[1077,"수도권 신분당선"]]
 
 def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
@@ -163,6 +163,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
                     print("error")
+                    #text +=getSchedule(stationName, day, 1,current_laneName)
                     text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                     return text
                 elif eq(StationExistName, "none"):
@@ -186,6 +187,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                 if eq(StationExistName, "error"):
                     print("error")
                     text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
+                    #text +=getSchedule(stationName, day, 2,current_laneName)
                     return text
                 elif eq(StationExistName, "none"):
                     print("none")
@@ -338,7 +340,10 @@ def getDayType():
         return 2
     elif now.tm_wday == 6:#일
         return 3
-
+def getSchedule(stationName, day, direction, laneName):
+    file_name = ""
+    if day == 1:
+        file_name+="ord_"
 # def getSchedule(subwaystationid, direction, day):
 #     open_data_key = "714d78526b7369683130356e4d455357"
 #     enckey = urllib.parse.quote_plus(open_data_key)
