@@ -402,6 +402,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
 
     for t in time_list.split(" "):
         #print("t : "+t)
+        t = t.lstrip("0")
         print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
         print("현재 시간 : "+str(now.minute))
         if now.minute > int(re.sub('\((.*?)\)',"",t)):
