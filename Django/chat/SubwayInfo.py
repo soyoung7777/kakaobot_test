@@ -267,10 +267,12 @@ def detail_get_subway_station_and_number_information(subwayData):
     direction = []
     direction_stationlist = []
     StationExistNameList = []
+    stationName = re.sub('\((.*?)\)','',stationName)
+
     if eq(stationName,"서울역"):
-        title=stationName+" "+current_laneName+"<br/><br/><br/>"+"실시간 도착정보"
+        title=stationName+" "+current_laneName+" 실시간 도착정보"
     else:
-        title=stationName+"역 "+current_laneName+"<br/><br/><br/>"+"실시간 도착정보"
+        title=stationName+"역 "+current_laneName+" 실시간 도착정보"
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
