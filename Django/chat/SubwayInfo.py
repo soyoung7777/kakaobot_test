@@ -399,7 +399,8 @@ def simple_get_schedule(stationName, day, direction, laneName):
             print("===schedule===")
             print(str(item["list"]))
             time_list = item["list"]
-            time_exp_list = item["expList"]
+            if 'expList' in item:
+                time_exp_list = item["expList"]
 
     isExp = False
     for t in time_list.split(" "):
@@ -409,10 +410,11 @@ def simple_get_schedule(stationName, day, direction, laneName):
         print("현재 시간 : "+str(now.minute))
         if now.minute < int(re.sub('\((.*?)\)',"",t)):
             Tschedule = t
-            for et in time_exp_list.split(" "):
-                if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(re.sub('\((.*?)\)',"",t)) < int(re.sub('\((.*?)\)',"",et)):
-                    Tschedule = et
-                    isExp = True
+            if time_exp_list is not "":
+                for et in time_exp_list.split(" "):
+                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(re.sub('\((.*?)\)',"",t)) < int(re.sub('\((.*?)\)',"",et)):
+                        Tschedule = et
+                        isExp = True
             subway_direction =re.search('\((.*?)\)',Tschedule).group()
             subway_direction = re.sub("^\(","",subway_direction)
             subway_direction = re.sub("\)","",subway_direction)
