@@ -406,7 +406,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
         print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
         print("현재 시간 : "+str(now.minute))
         if now.minute < int(re.sub('\((.*?)\)',"",t)):
-            text += re.search('\((.*?)\)',t).group()+"행 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
+            text += re.search('\((.*?)\)',t).group()+"행 "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
             return text
 
 
