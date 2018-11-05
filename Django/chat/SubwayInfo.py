@@ -163,7 +163,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
                     print("error")
-                    text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n\n"
+                    #text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n\n"
                     text +="💌["+d+"]💌\n"
                     text +=simple_get_schedule(stationName, day, 1,current_laneName)+"\n\n"
                     #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
@@ -193,7 +193,7 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 2)
                 if eq(StationExistName, "error"):
                     print("error")
-                    text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n"
+                    #text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n"
                     text +="💌["+d+"]💌\n"
                     #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                     text +=simple_get_schedule(stationName, day, 2,current_laneName)+"\n\n"
