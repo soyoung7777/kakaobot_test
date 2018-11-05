@@ -349,8 +349,8 @@ def getDayType():
 
 def getSchedule(stationName, day, direction, laneName):
     print("stationName : "+stationName)
-    print("day : "+day)
-    print("direction : "+direction)
+    print("day : "+str(day))
+    print("direction : "+str(direction))
     print("laneName : "+laneName)
     laneName = re.sub("수도권 ","", laneName)
     print("laneName : "+laneName)
