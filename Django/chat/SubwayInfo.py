@@ -408,7 +408,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
         if now.minute < int(re.sub('\((.*?)\)',"",t)):
             subway_direction =re.search('\((.*?)\)',t).group()
             subway_direction = re.sub("^\(","",subway_direction)
-            subway_direction = re.sub("^\)","",subway_direction)
+            subway_direction = re.sub("\)","",subway_direction)
             text += subway_direction+"행 "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
             return text
 
