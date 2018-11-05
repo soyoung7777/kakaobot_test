@@ -171,6 +171,8 @@ def simple_get_subway_station_and_number_information(subwayData):
                     text +="💌["+d+"]💌\n\n"
                     text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
+                    text +=getSchedule(stationName, day, 1,current_laneName)
+
                     text +="💌["+d+"]💌\n\n"
                     text +=TrainDirection+"\n"
                     text +=StationExistName+"\n\n"
@@ -195,6 +197,8 @@ def simple_get_subway_station_and_number_information(subwayData):
                     text +="💌["+d+"]💌\n\n"
                     text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
+                    text +=getSchedule(stationName, day, 2,current_laneName)
+
                     text +="💌["+d+"]💌\n\n"
                     text +=TrainDirection+"\n"
                     text +=StationExistName+"\n\n"
@@ -376,6 +380,8 @@ def getSchedule(stationName, day, direction, laneName):
     for item in time_schedule:
         print("item in time schedule : "+str(item))
         if eq(item["Idx"],str(now.hour)):
+            print("===schedule===")
+            print(str(item["list"]))
             return item["list"]
 # def getSchedule(subwaystationid, direction, day):
 #     open_data_key = "714d78526b7369683130356e4d455357"
