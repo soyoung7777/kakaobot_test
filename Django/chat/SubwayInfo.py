@@ -163,22 +163,26 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 1)
                 if eq(StationExistName, "error"):
                     print("error")
-                    text +=getSchedule(stationName, day, 1,current_laneName)
+                    text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n"
+                    text +="💌["+d+"]💌\n\n"
+                    text +=simple_get_schedule(stationName, day, 1,current_laneName)
                     #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
-                    return text
+
                 elif eq(StationExistName, "none"):
                     print("none")
                     text +="💌["+d+"]💌\n\n"
-                    text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
+                    text +=simple_get_schedule(stationName, day, 1,current_laneName)
+                    #text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
-                    text +=getSchedule(stationName, day, 1,current_laneName)
-
+                    #text +=simple_get_schedule(stationName, day, 1,current_laneName)
                     text +="💌["+d+"]💌\n\n"
                     text +=TrainDirection+"\n"
                     text +=StationExistName+"\n\n"
             except:
                 print("except")
-                text +=getSchedule(stationName, day, 1,current_laneName)
+                text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n"
+                text +="💌["+d+"]💌\n\n"
+                text +=simple_get_schedule(stationName, day, 1,current_laneName)
                 #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
                 return text
 
@@ -189,15 +193,17 @@ def simple_get_subway_station_and_number_information(subwayData):
                 StationExistName,TrainDirection = getStationExistSimple(stationName, current_laneID, 2)
                 if eq(StationExistName, "error"):
                     print("error")
+                    text+="공공데이터에 문제가 생겼어요😂😂\n\n[시간표 정보로 안내합니다]\n"
+                    text +="💌["+d+"]💌\n\n"
                     #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
-                    text +=getSchedule(stationName, day, 2,current_laneName)
-                    return text
+                    text +=simple_get_schedule(stationName, day, 2,current_laneName)
                 elif eq(StationExistName, "none"):
                     print("none")
                     text +="💌["+d+"]💌\n\n"
-                    text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
+                    text +=simple_get_schedule(stationName, day, 2,current_laneName)
+                    #text +="해당 정보는 공공데이터에서 알려주지 않고 있어요😂😂\n다른 정보를 검색해보세요❤"
                 else:
-                    text +=getSchedule(stationName, day, 2,current_laneName)
+                    #text +=simple_get_schedule(stationName, day, 2,current_laneName)
 
                     text +="💌["+d+"]💌\n\n"
                     text +=TrainDirection+"\n"
@@ -205,7 +211,8 @@ def simple_get_subway_station_and_number_information(subwayData):
             except:
                 print("except")
                 #text +="공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"
-                text +=getSchedule(stationName, day, 2,current_laneName)
+                text +="💌["+d+"]💌\n\n"
+                text +=simple_get_schedule(stationName, day, 2,current_laneName)
                 return text
 
 
@@ -296,9 +303,11 @@ def detail_get_subway_station_and_number_information(subwayData):
                 StationExistName = getStationExist(s, current_laneID, 1)
                 #print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
-                if not eq(StationExistName,"error" or "none"):#시간표정보
-                    #getSchedule(subwaystationid[s],1,day)
-                #else:
+                if eq(StationExistName,"error" or "none"):#시간표정보
+
+                    text +=detail_get_schedule(stationName, day, 1,current_laneName)
+                    return title,text
+                else:
                     StationExistNameList.append(StationExistName)
                     #print("station Exist Name List : "+str(StationExistNameList))
 
@@ -307,8 +316,9 @@ def detail_get_subway_station_and_number_information(subwayData):
                 StationExistName = getStationExist(s, current_laneID, 2)
                 #print("--- %s seconds ---" %(time.time() - start_time))
                 print("StationExistName : "+StationExistName)
-                if not eq(StationExistName,"error" or "none"):#시간표정보
-                #else:
+                if eq(StationExistName,"error" or "none"):#시간표정보
+                    text +=detail_get_schedule(stationName, day, 2,current_laneName)
+                else:
                     StationExistNameList.append(StationExistName)
         print("station Exist Name List : "+str(StationExistNameList))
 
@@ -347,7 +357,58 @@ def getDayType():
     elif now.tm_wday == 6:#일
         return 3
 
-def getSchedule(stationName, day, direction, laneName):
+def simple_get_schedule(stationName, day, direction, laneName):
+
+    text = ""
+
+    print("stationName : "+stationName)
+    print("day : "+str(day))
+    print("direction : "+str(direction))
+    print("laneName : "+laneName)
+    laneName = re.sub("수도권 ","", laneName)
+    print("laneName : "+laneName)
+    file_name = ""
+    if day == 1:
+        file_name+="ord_lane_"+laneName+".json"
+    elif day == 2:
+        file_name+="sat_lane_"+laneName+".json"
+    elif day == 3:
+        file_name+="sun_lane_"+laneName+".json"
+
+    print("file name : "+file_name)
+
+    with open('/home/ubuntu/Django/chat/subway_schedule/'+file_name, encoding='utf-8') as f:
+        schedule = json.load(f)
+
+    now = datetime.now()
+    #hour = now.hour
+    print("hour : "+ str(now.hour))
+    print("hour type: "+ str(type(now.hour)))
+
+    if direction ==1:
+        time_schedule = schedule[stationName]["up"]
+    else:
+        time_schedule = schedule[stationName]["down"]
+
+    time_list = ""
+
+    for item in time_schedule:
+        print("idx in item : "+str(item["Idx"]))
+        if item["Idx"] == now.hour:
+            print("item in time schedule : "+str(item))
+            print("===schedule===")
+            print(str(item["list"]))
+            time_list = item["list"]
+
+    for t in time_list.split(" "):
+        print("t : "+t)
+        print("t 괄호 제거 : "+re.sub('\((.*?)\)',"",t))
+        if now.minute > re.sub('\((.*?)\)',"",t)
+            text += re.search('\((.*?)\)',d).group())+"행 "+re.sub('\((.*?)\)',"",t)+"분 도착 예정"
+            return text
+
+
+def detail_get_schedule(stationName, day, direction, laneName):
     print("stationName : "+stationName)
     print("day : "+str(day))
     print("direction : "+str(direction))

@@ -406,31 +406,31 @@ def message(request):
             res = SubwayInfo.simple_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
             data['result']['parameters']['subway_number']])
 
-            if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
-                DB.dialogflow_action = 0
-                DB.subway_action = 0
-                DB.subway_selected = ""
-                DB.subway_station_name=""
-                DB.save()
-                return JsonResponse({
-                'message': {'text': res},
-                })
-            else:
-                print("========before call index function=======")
-                title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
-                data['result']['parameters']['subway_number']])
-                print("=========detail_res=======")
-                print(str(detail_res))
-                DB.detail_message=str(detail_res)
-                DB.title = str(title)
-                DB.save()
-                #index(detail_res)
-                enc_userid = urllib.parse.quote_plus(user_id)
-                return JsonResponse({
-                'message': {'text': res,
-                            'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
-                            },
-                })
+            # if isSchedule:
+            #     DB.dialogflow_action = 0
+            #     DB.subway_action = 0
+            #     DB.subway_selected = ""
+            #     DB.subway_station_name=""
+            #     DB.save()
+            #     return JsonResponse({
+            #     'message': {'text': res},
+            #     })
+            # else:
+            print("========before call index function=======")
+            title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([data['result']['parameters']['subway_station'],
+            data['result']['parameters']['subway_number']])
+            print("=========detail_res=======")
+            print(str(detail_res))
+            DB.detail_message=str(detail_res)
+            DB.title = str(title)
+            DB.save()
+            #index(detail_res)
+            enc_userid = urllib.parse.quote_plus(user_id)
+            return JsonResponse({
+            'message': {'text': res,
+                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
+                        },
+            })
         else:
             return JsonResponse({
             'message': {'text': "정확한 지하철 역명과 호선을 입력해주세요😂"},
@@ -550,35 +550,35 @@ def message(request):
         subway_number = DB.subway_selected
         res = SubwayInfo.simple_get_subway_station_and_number_information([DB.subway_station_name,
         DB.subway_selected])
-        if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
-            DB.dialogflow_action = 0
-            DB.subway_action = 0
-            DB.subway_selected = ""
-            DB.subway_station_name=""
-            DB.save()
-            return JsonResponse({
-            'message': {'text': res},
-            })
-        else:
-            title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([DB.subway_station_name,
-            DB.subway_selected])
-            print("=========detail_res=======")
-            print(str(detail_res))
-            DB.detail_message=str(detail_res)
-            DB.title = str(title)
+        # if eq(res,"공공데이터에 문제가 생겼어요😂😂\n10초 뒤에 다시 이용해주시겠어요?\n꼭 다시 오셔야해요❤"):
+        #     DB.dialogflow_action = 0
+        #     DB.subway_action = 0
+        #     DB.subway_selected = ""
+        #     DB.subway_station_name=""
+        #     DB.save()
+        #     return JsonResponse({
+        #     'message': {'text': res},
+        #     })
+        # else:
+        title, detail_res = SubwayInfo.detail_get_subway_station_and_number_information([DB.subway_station_name,
+        DB.subway_selected])
+        print("=========detail_res=======")
+        print(str(detail_res))
+        DB.detail_message=str(detail_res)
+        DB.title = str(title)
 
-            DB.dialogflow_action = 0
-            DB.subway_action = 0
-            DB.subway_selected = ""
-            DB.subway_station_name=""
-            DB.save()
-            #index(detail_res)
-            enc_userid = urllib.parse.quote_plus(user_id)
-            return JsonResponse({
-            'message': {'text': res,
-                        'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
-                        },
-            })
+        DB.dialogflow_action = 0
+        DB.subway_action = 0
+        DB.subway_selected = ""
+        DB.subway_station_name=""
+        DB.save()
+        #index(detail_res)
+        enc_userid = urllib.parse.quote_plus(user_id)
+        return JsonResponse({
+        'message': {'text': res,
+                    'message_button': {'label':"자세히 보기",'url':"http://52.79.176.143/index/"+enc_userid+"/"}
+                    },
+        })
 
 
     return JsonResponse({
