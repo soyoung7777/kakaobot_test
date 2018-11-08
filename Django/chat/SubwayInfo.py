@@ -459,7 +459,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
     isExp = False
     print("time_list : "+str(time_list))
     for t in time_list.split(" "):
-        #print("t : "+t)
+        print("t : "+t)
         if not eq(t, "00"):
             t = t.lstrip("0")
         print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
