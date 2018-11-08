@@ -16,7 +16,7 @@ def get_subway_station(json_Data):
 
     if eq(searchST, "총신대입구(이수)"):
         subway_station_list = ["수도권 4호선", "수도권 7호선"]
-        res += "🤔 호선을 선택해 주세요. 🤗" + "\n"+"(올바른 숫자를 입력하는 센스!)\n\n"
+        res = "🤔 호선을 선택해 주세요. 🤗" + "\n"+"(올바른 숫자를 입력하는 센스!)\n\n"
         for idx, line_number in enumerate(subway_station_list):
             res += str(idx+1) +". " + line_number + "\n"
         return [2,res,subway_station_list]
