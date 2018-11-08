@@ -129,33 +129,37 @@ def simple_get_subway_station_and_number_information(subwayData):
     print("stationName : "+subwayData[0])
     print("lineNumber : "+subwayData[1])
     #print("lineNumber type : "+str(type(subwayData[1])))
-    data = getStationInfo(stationName)
 
-    station_info = data['result']['station']
-    #current_stationID = 0
-
-    #print(json.loads(json.dumps(data)))
-    # print("station Dictionary : "+str(subwayData[1]))
-    # print("station Dictionary type: "+str(type(subwayData[1])))
-    # print("station ID : "+str(subwayData[1][subwayData[0]]))
-
-    #print("laneName(subwayData[1]) : "+subwayData[1])
-
-    if not eq(subwayData[1],"경의중앙선") and "수도권" not in subwayData[1]:
-        subwayData[1] = "수도권 "+subwayData[1]
-
-    #print("laneName(subwayData[1]) : "+subwayData[1])
-    #print(str(station_info))
-    for idx, info in enumerate(station_info):
-        #print(str(info))
-        if subwayData[1] in info['laneName'] or subwayData[1] in str(info['laneName']):
-            #current_stationID = int(data['result']['station'][idx]['stationID'])
-            current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
-            break
     if eq(subwayData[0], "총신대입구(이수)") and eq(subwayData[1],"7호선"):
         current_laneID = 1007
 
-    current_laneID = getLaneID(current_laneName)
+    else:
+        data = getStationInfo(stationName)
+
+        station_info = data['result']['station']
+        #current_stationID = 0
+
+        #print(json.loads(json.dumps(data)))
+        # print("station Dictionary : "+str(subwayData[1]))
+        # print("station Dictionary type: "+str(type(subwayData[1])))
+        # print("station ID : "+str(subwayData[1][subwayData[0]]))
+
+        #print("laneName(subwayData[1]) : "+subwayData[1])
+
+        if not eq(subwayData[1],"경의중앙선") and "수도권" not in subwayData[1]:
+            subwayData[1] = "수도권 "+subwayData[1]
+
+        #print("laneName(subwayData[1]) : "+subwayData[1])
+        #print(str(station_info))
+        for idx, info in enumerate(station_info):
+            #print(str(info))
+            if subwayData[1] in info['laneName'] or subwayData[1] in str(info['laneName']):
+                #current_stationID = int(data['result']['station'][idx]['stationID'])
+                current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
+                break
+
+
+        current_laneID = getLaneID(current_laneName)
     #print("current_laneName : "+current_laneName)
     #print("current_laneID : "+str(current_laneID))
     #line_number = subwayData[1]
