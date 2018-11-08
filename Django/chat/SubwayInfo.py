@@ -36,7 +36,7 @@ def get_subway_station(json_Data):
     for s in searchStation:
         encST = urllib.parse.quote_plus(s)
 
-        odUrl = "https://api.odsay.com/v1/api/searchStation?lang=0&stationName="+s+"&CID=1000&stationClass=2&apiKey="+encMy
+        odUrl = "https://api.odsay.com/v1/api/searchStation?lang=0&stationName="+encST+"&CID=1000&stationClass=2&apiKey="+encMy
 
         request = urllib.request.Request(odUrl)
         response = urllib.request.urlopen(request)
