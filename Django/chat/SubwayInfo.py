@@ -53,7 +53,7 @@ def get_subway_station(json_Data):
 
     subway_station_list = []
     for i in range(0,len(st['result']['station'])):
-        if st['result']['station'][i]['stationName'] == s:
+        if st['result']['station'][i]['stationName'] == searchST:
             subway_station_list.append(st['result']['station'][i]['laneName'])
 
     #subway_station_list = list(set(subway_station_list))
