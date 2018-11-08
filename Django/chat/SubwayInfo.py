@@ -478,7 +478,13 @@ def simple_get_schedule(stationName, day, direction, laneName):
                 text += subway_direction+"행(급행) "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",Tschedule)+"분 도착 예정"
             else:
                 text += subway_direction+"행 "+str(now.hour)+"시 "+re.sub('\((.*?)\)',"",Tschedule)+"분 도착 예정"
+            print("==========return text=========")
             return text
+
+
+    isExp = False
+    time_list = ""
+    time_exp_list = ""
 
     for item in time_schedule:
         #print("idx in item : "+str(item["Idx"]))
@@ -490,9 +496,6 @@ def simple_get_schedule(stationName, day, direction, laneName):
             if 'expList' in item:
                 time_exp_list = item["expList"]
 
-    isExp = False
-    time_list = ""
-    time_exp_list = ""
     for t in time_list.split(" "):
         #print("t : "+t)
         t = t.lstrip("0")
