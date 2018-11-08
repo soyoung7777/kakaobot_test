@@ -391,7 +391,7 @@ def detail_get_subway_station_and_number_information(subwayData):
 
         StationExistNameList = list(set(StationExistNameList))
         #print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
-        if isSchedule:
+        if not isSchedule:
             for total in full_list:
                 exist = False
                 for element in StationExistNameList:
