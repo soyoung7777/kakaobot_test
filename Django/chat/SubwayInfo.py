@@ -459,16 +459,17 @@ def simple_get_schedule(stationName, day, direction, laneName):
     isExp = False
     print("time_list : "+str(time_list))
     for t in time_list.split(" "):
+        t = re.sub('\((.*?)\)',"",t)
         print("t : "+t)
         if not eq(t, "00"):
             t = t.lstrip("0")
-        print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
+        print("시간표 시간 : "+t)
         print("현재 시간 : "+str(now.minute))
-        if now.minute <= int(re.sub('\((.*?)\)',"",t)):
+        if now.minute <= int(t):
             Tschedule = t
             if time_exp_list is not "":
                 for et in time_exp_list.split(" "):
-                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(re.sub('\((.*?)\)',"",t)) < int(re.sub('\((.*?)\)',"",et)):
+                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(t) < int(re.sub('\((.*?)\)',"",et)):
                         Tschedule = et
                         isExp = True
             subway_direction =re.search('\((.*?)\)',Tschedule).group()
@@ -498,15 +499,17 @@ def simple_get_schedule(stationName, day, direction, laneName):
                 time_exp_list = item["expList"]
 
     for t in time_list.split(" "):
-        #print("t : "+t)
-        t = t.lstrip("0")
-        print("시간표 시간 : "+re.sub('\((.*?)\)',"",t))
+        t = re.sub('\((.*?)\)',"",t)
+        print("t : "+t)
+        if not eq(t, "00"):
+            t = t.lstrip("0")
+        print("시간표 시간 : "+t)
         print("현재 시간 : "+str(now.minute))
-        if now.minute <= int(re.sub('\((.*?)\)',"",t)):
+        if now.minute <= int(t):
             Tschedule = t
             if time_exp_list is not "":
                 for et in time_exp_list.split(" "):
-                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(re.sub('\((.*?)\)',"",t)) < int(re.sub('\((.*?)\)',"",et)):
+                    if now.minute < int(re.sub('\((.*?)\)',"",et)) and int(t) < int(re.sub('\((.*?)\)',"",et)):
                         Tschedule = et
                         isExp = True
             subway_direction =re.search('\((.*?)\)',Tschedule).group()
