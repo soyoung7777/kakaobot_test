@@ -43,6 +43,7 @@ body {
  margin: 0;
  margin-left: 20px;
  padding: 30px 12px 2px 30px;
+ align-content: center;
 }
 
 .bubble-speech .message {
