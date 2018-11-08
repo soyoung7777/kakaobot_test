@@ -133,6 +133,7 @@ def simple_get_subway_station_and_number_information(subwayData):
     if eq(subwayData[0], "총신대입구(이수)") and eq(subwayData[1],"7호선"):
         current_laneID = 1007
         current_laneName = "수도권 7호선"
+        stationName = "총신대입구(이수)"
 
     else:
         data = getStationInfo(stationName)
@@ -268,6 +269,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     if eq(subwayData[0], "총신대입구(이수)") and eq(subwayData[1],"7호선"):
         current_laneID = 1007
         current_laneName = "수도권 7호선"
+        stationName = "총신대입구(이수)"
 
     else:
         data = getStationInfo(stationName)
