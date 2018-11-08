@@ -320,9 +320,9 @@ def detail_get_subway_station_and_number_information(subwayData):
     sName = re.sub('\((.*?)\)','',stationName)
 
     if eq(sName,"서울역"):
-        title=sName+" "+current_laneName+"<font style='line-height:1.5em;'>"
+        title=sName+" "+current_laneName
     else:
-        title=sName+"역 "+current_laneName+"<font style='line-height:1.5em;'>"
+        title=sName+"역 "+current_laneName
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
@@ -524,7 +524,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
 def detail_get_schedule(stationName, day, direction, laneName):
     #print("stationName : "+stationName)
     #print("day : "+str(day))
-    #print("direction : "+str(direction))
+    print("direction : "+str(direction))
     #print("laneName : "+laneName)
     laneName = re.sub("수도권 ","", laneName)
     #print("laneName : "+laneName)

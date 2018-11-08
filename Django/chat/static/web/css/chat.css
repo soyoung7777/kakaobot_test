@@ -39,11 +39,11 @@ body {
 .bubble-speech .title {
  max-width: 700px;
  font-family: 'Jeju Gothic', serif;
- font-size:250%;
+ font-size:300%;
  margin: 0;
  margin-left: 20px;
  padding: 30px 12px 2px 30px;
- align-content: center;
+ text-align: center;
 }
 .bubble-speech .p {
  max-width: 700px;
@@ -52,7 +52,7 @@ body {
  margin: 0;
  margin-left: 20px;
  padding: 30px 12px 2px 30px;
- align-content: center;
+ text-align: center;
 }
 
 .bubble-speech .message {
