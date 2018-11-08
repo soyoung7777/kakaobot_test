@@ -13,27 +13,43 @@ subwayID = [[1001, "수도권 1호선"],[1002, "수도권 2호선"],[1003, "수�
 
 def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
-    searchST = re.sub('\((.*?)\)','',searchST)
+    searchST1 = re.sub('\((.*?)\)','',searchST)
+    searchST2 = re.search('\((.*?)\)',searchST).group()
+    searchST2 = re.sub("^\(","",searchST2)
+    searchST2 = re.sub("\)","",searchST2)
 
     print("searchST " + searchST)
+    print("searchST1 " + searchST1)
+    print("searchST2 " + searchST2)
+
+    searchStation = []
+    searchStation.append(searchST1)
+    searchStation.append(searchST2)
+
+    print("searchStation : "+str(searchStation))
+
     res = ""
     ACCESS = "rxJqZMHh6oQDUSfc7Kh42uCXZuHEhmj7dY7VWber2ryr9L5t2CFRy3z834JMR7RygMzaVby7ZQ3sW%2ByCZZn0Ig%3D%3D"
     my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
     encMy = urllib.parse.quote_plus(my)
-    encST = urllib.parse.quote_plus(searchST)
 
-    odUrl = "https://api.odsay.com/v1/api/searchStation?lang=0&stationName="+encST+"&CID=1000&stationClass=2&apiKey="+encMy
+    for s in searchStation:
+        encST = urllib.parse.quote_plus(s)
 
-    request = urllib.request.Request(odUrl)
-    response = urllib.request.urlopen(request)
+        odUrl = "https://api.odsay.com/v1/api/searchStation?lang=0&stationName="+s+"&CID=1000&stationClass=2&apiKey="+encMy
 
-    json_rt = response.read().decode('utf-8')
-    st = json.loads(json_rt)
+        request = urllib.request.Request(odUrl)
+        response = urllib.request.urlopen(request)
 
-    subway_station_list = []
-    for i in range(0,len(st['result']['station'])):
-        if st['result']['station'][i]['stationName'] == searchST:
-            subway_station_list.append(st['result']['station'][i]['laneName'])
+        json_rt = response.read().decode('utf-8')
+        st = json.loads(json_rt)
+
+        subway_station_list = []
+        for i in range(0,len(st['result']['station'])):
+            if st['result']['station'][i]['stationName'] == s:
+                subway_station_list.append(st['result']['station'][i]['laneName'])
+
+    subway_station_list = list(set(subway_station_list))
 
     print(str(subway_station_list))
     print(str(len(subway_station_list)))
