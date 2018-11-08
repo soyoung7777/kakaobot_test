@@ -415,7 +415,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
 
     text = ""
 
-    #print("stationName : "+stationName)
+    print("stationName : "+stationName)
     #print("day : "+str(day))
     #print("direction : "+str(direction))
     #print("laneName : "+laneName)
