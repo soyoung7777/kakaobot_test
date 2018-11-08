@@ -347,7 +347,7 @@ def detail_get_subway_station_and_number_information(subwayData):
     #         if not eq(StationExistName,"none"):
     #             text +="💌["+d+"]💌\n"
     #             text +=StationExistName+"\n\n"
-
+    isSchedule = False
     for idx, full_list in enumerate(direction_stationlist):
         text +="<font color='#FF4D45'>"+"💌["+direction[idx]+"]💌"+"</font><br/><br/><br/>"
         for s in full_list:
@@ -360,6 +360,8 @@ def detail_get_subway_station_and_number_information(subwayData):
                 if eq(StationExistName,"error" or "none"):#시간표정보
                     print(stationName+" 상행")
                     text +=detail_get_schedule(stationName, day, 1,current_laneName)
+                    text = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+tet+"</font>"
+                    isSchedule = True
                     if eq(sName,"서울역"):
                         title=stationName+" "+current_laneName+"시간표 정보"
                     else:
@@ -377,6 +379,8 @@ def detail_get_subway_station_and_number_information(subwayData):
                 if eq(StationExistName,"error" or "none"):#시간표정보
                     print(stationName+" 하행")
                     text +=detail_get_schedule(stationName, day, 2,current_laneName)
+                    text = "<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+tet+"</font>"
+                    isSchedule = True
                     if eq(sName,"서울역"):
                         title=stationName+" "+current_laneName+"시간표 정보"
                     else:
@@ -387,25 +391,25 @@ def detail_get_subway_station_and_number_information(subwayData):
 
         StationExistNameList = list(set(StationExistNameList))
         #print("station Exist Name List(no duplicate) : "+str(StationExistNameList))
-
-        for total in full_list:
-            exist = False
-            for element in StationExistNameList:
-                if eq(element,total):
+        if isSchedule:
+            for total in full_list:
+                exist = False
+                for element in StationExistNameList:
+                    if eq(element,total):
+                        if eq(total,full_list[-1]):
+                            text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋        "
+                        else:
+                            text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋   〰   "
+                        exist = True
+                if exist==False:
+                    # if eq(total,"none"):
+                    #     count_end = count_end+1
+                    #     continue
                     if eq(total,full_list[-1]):
-                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋        "
+                        text +="<font style='line-height:1.5em;'>"+total+"</font>"+"        "
                     else:
-                        text+="<font color='#FF4D45'style='font-weight: bold;line-height:1.5em;'>"+total+"</font>🚋   〰   "
-                    exist = True
-            if exist==False:
-                # if eq(total,"none"):
-                #     count_end = count_end+1
-                #     continue
-                if eq(total,full_list[-1]):
-                    text +="<font style='line-height:1.5em;'>"+total+"</font>"+"        "
-                else:
-                    text+="<font style='line-height:1.5em;'>"+total+"</font>"+"   〰   "
-        text+="<br/><br/><br/><br/>"
+                        text+="<font style='line-height:1.5em;'>"+total+"</font>"+"   〰   "
+            text+="<br/><br/><br/><br/>"
         #text = text.replace("\r\n","<br/>")
         StationExistNameList.clear()
     #print(text)
