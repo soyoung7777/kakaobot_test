@@ -700,7 +700,7 @@ def getStationExist(stationName, laneID, direction):
 
     #stationName = re.sub('\((.*?)\)','',stationName)
     stationName = re.sub("[역]$","", stationName)
-    #print("stationName : "+stationName)
+    print("stationName : "+stationName)
     encStationname = urllib.parse.quote_plus(stationName)
     open_data_url = "http://swopenapi.seoul.go.kr/api/subway/"+enckey+"/json/realtimeStationArrival/0/5/"+encStationname
     #print("laneID : "+str(laneID))
