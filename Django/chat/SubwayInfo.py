@@ -15,7 +15,7 @@ def get_subway_station(json_Data):
     searchST = str(json_Data['result']['parameters']['subway_station'])
     searchST = re.sub('\((.*?)\)','',searchST)
 
-    #print("searchST " + searchST)
+    print("searchST " + searchST)
     res = ""
     ACCESS = "rxJqZMHh6oQDUSfc7Kh42uCXZuHEhmj7dY7VWber2ryr9L5t2CFRy3z834JMR7RygMzaVby7ZQ3sW%2ByCZZn0Ig%3D%3D"
     my = "2Y3C1Vf5IqtpTOyTtlHh1zhP2SJSByC9xqsjCDo/4FQ"
@@ -35,6 +35,8 @@ def get_subway_station(json_Data):
         if st['result']['station'][i]['stationName'] == searchST:
             subway_station_list.append(st['result']['station'][i]['laneName'])
 
+    print(str(subway_station_list))
+    print(str(len(subway_station_list)))
     if len(subway_station_list) == 1 :
         return [1,res,subway_station_list]
 
