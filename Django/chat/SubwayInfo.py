@@ -152,6 +152,8 @@ def simple_get_subway_station_and_number_information(subwayData):
             #current_stationID = int(data['result']['station'][idx]['stationID'])
             current_laneName = data['result']['station'][idx]['laneName'] #예:수도권 1호선
             break
+    if eq(stationName, "총신대입구(이수)") and eq(lineNumber,"7호선"):
+        current_laneID = 1007
 
     current_laneID = getLaneID(current_laneName)
     #print("current_laneName : "+current_laneName)
