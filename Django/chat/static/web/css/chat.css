@@ -45,6 +45,15 @@ body {
  padding: 30px 12px 2px 30px;
  align-content: center;
 }
+.bubble-speech .p {
+ max-width: 700px;
+ font-family: 'Jeju Gothic', serif;
+ font-size:250%;
+ margin: 0;
+ margin-left: 20px;
+ padding: 30px 12px 2px 30px;
+ align-content: center;
+}
 
 .bubble-speech .message {
  font-size:35px;
