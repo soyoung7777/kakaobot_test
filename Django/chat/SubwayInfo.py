@@ -320,9 +320,9 @@ def detail_get_subway_station_and_number_information(subwayData):
     sName = re.sub('\((.*?)\)','',stationName)
 
     if eq(sName,"서울역"):
-        title=sName+" "+current_laneName
+        title=sName+" "+current_laneName+"실시간 도착정보"
     else:
-        title=sName+"역 "+current_laneName
+        title=sName+"역 "+current_laneName+"실시간 도착정보"
     for item in current_subwaylinemap:
         for key, value in item.items():
             direction.append(key)
