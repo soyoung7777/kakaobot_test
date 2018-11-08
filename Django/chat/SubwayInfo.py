@@ -457,6 +457,7 @@ def simple_get_schedule(stationName, day, direction, laneName):
                 time_exp_list = item["expList"]
 
     isExp = False
+    print("time_list : "+str(time_list))
     for t in time_list.split(" "):
         #print("t : "+t)
         t = t.lstrip("0")
